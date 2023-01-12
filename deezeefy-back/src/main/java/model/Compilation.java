@@ -1,8 +1,6 @@
 package model;
 
 public class Compilation extends MusicList{
-
-
 	
 	
 	public Compilation() {
