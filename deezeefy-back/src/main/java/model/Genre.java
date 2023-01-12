@@ -1,9 +1,7 @@
 package model;
 
-public class Genre {
+public enum Genre {
 
-	public Genre() {
-		// TODO Auto-generated constructor stub
-	}
+Pop, Rap, Variete, Latino, Classique, Metal;
 
 }

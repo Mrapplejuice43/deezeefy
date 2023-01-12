@@ -1,9 +1,6 @@
 package model;
 
-public class Sujets {
+public enum Sujets {
 
-	public Sujets() {
-		// TODO Auto-generated constructor stub
-	}
-
+Sport, Voyage, CultureGenerale, DeveloppementPersonnel;	
 }
