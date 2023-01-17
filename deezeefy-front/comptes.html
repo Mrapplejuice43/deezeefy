@@ -25,15 +25,15 @@
             width: 350px;
         }
 
-        .form-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border: solid 1px black;
-            border-radius: 12px;
-            background-color: #fbd597;
-            padding: 16px;
-        }
+		.form-container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				border: solid 1px black;
+				border-radius: 12px;
+				background-color: #fbd597;
+				padding: 16px;
+			}
     </style>
 </head>
 <body>
@@ -43,7 +43,7 @@
 
     <div id="content">
         
-            <input id="btnAddOrdi" type="button" class ="btn btn-success" value="Ajouter">
+            <input id="btnAddCompte" type="button" class ="btn btn-success" value="Ajouter">
             <a href="menuAdmin.html"><input type="button" class ="btn btn-info" value="Retour"></a>
     
             <table class="table table-striped">
@@ -52,16 +52,17 @@
                     <th>Id</th>
                     <th>Login</th>
                     <th>Password</th>
+					<th>Email</th>
                     <th>Nom</th>
                     <th>Prenom</th>
-                    <th>Numero</th>
-                    <th>Voie</th>
-                    <th>Ville</th>
-                    <th>Code Postal</th>
-                    <th>Metier</th>
-                    <th>Parcelle</th>
-                    <th>Type Compte</th>
-                    <th>Actions</th>
+                    <th>Pseudo</th>
+                    <th>Nombre d'auditeur</th>
+					<th>Biographie</th>
+                    <th>Nom de label</th>
+                    <th>Abonnement</th>
+                    <th>Etudiant</th>
+                    <th>Temps d'écoute</th>
+					<th>Type de compte</th>
                 </tr>
             </thead>
             <tbody>
@@ -69,96 +70,24 @@
                     <td>1</td>
                     <td>azert</td>
                     <td>*********</td>
+					<td>azert@dmail.fr</td>
                     <td>Jordan</td>
                     <td>Abid</td>
-                    <td>53</td>
-                    <td>GFDIGJ</td>
-                    <td>Lorem</td>
-                    <td>10100</td>
-                    <td>Ouvrier</td>
-                    <td>2-nomParcelle</td>
-                    <td>CLient</td>
+                    <td>Pseudo</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>Etudiant</td>
+                    <td>true</td>
+                    <td>12:45:00</td>
+					 <td>Utilisateur</td>
                     <td>
-                        <a href="updateOrdinateur.html?id=1"><input type="button" class ="btn btn-warning" value="Modifier"></a>
-                        <a href="ordinateur?id=1&delete" ><input type="button" class ="btn btn-danger" value="Supprimer"></a>
+                        <a href="updateComte.html?id=1"><input type="button" class ="btn btn-warning" value="Modifier"></a>
+                        <a href="compte?id=1&delete" ><input type="button" class ="btn btn-danger" value="Supprimer"></a>
                     </td>
                 </tr>
 
-                <tr>
-                    <td>1</td>
-                    <td>azert</td>
-                    <td>*********</td>
-                    <td>Jordan</td>
-                    <td>Abid</td>
-                    <td>53</td>
-                    <td>GFDIGJ</td>
-                    <td>Lorem</td>
-                    <td>10100</td>
-                    <td>Ouvrier</td>
-                    <td>2-nomParcelle</td>
-                    <td>CLient</td>
-                    <td>
-                        <a href="updateOrdinateur.html?id=1"><input type="button" class ="btn btn-warning" value="Modifier"></a>
-                        <a href="ordinateur?id=1&delete" ><input type="button" class ="btn btn-danger" value="Supprimer"></a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>1</td>
-                    <td>azert</td>
-                    <td>*********</td>
-                    <td>Jordan</td>
-                    <td>Abid</td>
-                    <td>53</td>
-                    <td>GFDIGJ</td>
-                    <td>Lorem</td>
-                    <td>10100</td>
-                    <td>Ouvrier</td>
-                    <td>2-nomParcelle</td>
-                    <td>CLient</td>
-                    <td>
-                        <a href="updateOrdinateur.html?id=1"><input type="button" class ="btn btn-warning" value="Modifier"></a>
-                        <a href="ordinateur?id=1&delete" ><input type="button" class ="btn btn-danger" value="Supprimer"></a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>1</td>
-                    <td>azert</td>
-                    <td>*********</td>
-                    <td>Jordan</td>
-                    <td>Abid</td>
-                    <td>53</td>
-                    <td>GFDIGJ</td>
-                    <td>Lorem</td>
-                    <td>10100</td>
-                    <td>Ouvrier</td>
-                    <td>2-nomParcelle</td>
-                    <td>CLient</td>
-                    <td>
-                        <a href="updateOrdinateur.html?id=1"><input type="button" class ="btn btn-warning" value="Modifier"></a>
-                        <a href="ordinateur?id=1&delete" ><input type="button" class ="btn btn-danger" value="Supprimer"></a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>1</td>
-                    <td>azert</td>
-                    <td>*********</td>
-                    <td>Jordan</td>
-                    <td>Abid</td>
-                    <td>53</td>
-                    <td>GFDIGJ</td>
-                    <td>Lorem</td>
-                    <td>10100</td>
-                    <td>Ouvrier</td>
-                    <td>2-nomParcelle</td>
-                    <td>CLient</td>
-                    <td>
-                        <a href="updateOrdinateur.html?id=1"><input type="button" class ="btn btn-warning" value="Modifier"></a>
-                        <a href="ordinateur?id=1&delete" ><input type="button" class ="btn btn-danger" value="Supprimer"></a>
-                    </td>
-                </tr>
+               
             </tbody>
             </table>
         
