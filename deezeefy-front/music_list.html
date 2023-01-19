@@ -38,132 +38,78 @@
 </head>
 <body>
     <header class="container">
-        <h1>Liste des Comptes</h1>
+        <h1>Liste des MusicList</h1>
     </header>
 
     <div id="content">
         
-            <input id="btnAddOrdi" type="button" class ="btn btn-success" value="Ajouter">
+            <input id="btnAddMusicList" type="button" class ="btn btn-success" value="Ajouter">
             <a href="menuAdmin.html"><input type="button" class ="btn btn-info" value="Retour"></a>
     
             <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Login</th>
-                    <th>Password</th>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Numero</th>
-                    <th>Voie</th>
-                    <th>Ville</th>
-                    <th>Code Postal</th>
-                    <th>Metier</th>
-                    <th>Parcelle</th>
-                    <th>Type Compte</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>azert</td>
-                    <td>*********</td>
-                    <td>Jordan</td>
-                    <td>Abid</td>
-                    <td>53</td>
-                    <td>GFDIGJ</td>
-                    <td>Lorem</td>
-                    <td>10100</td>
-                    <td>Ouvrier</td>
-                    <td>2-nomParcelle</td>
-                    <td>CLient</td>
-                    <td>
-                        <a href="updateOrdinateur.html?id=1"><input type="button" class ="btn btn-warning" value="Modifier"></a>
-                        <a href="ordinateur?id=1&delete" ><input type="button" class ="btn btn-danger" value="Supprimer"></a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>1</td>
-                    <td>azert</td>
-                    <td>*********</td>
-                    <td>Jordan</td>
-                    <td>Abid</td>
-                    <td>53</td>
-                    <td>GFDIGJ</td>
-                    <td>Lorem</td>
-                    <td>10100</td>
-                    <td>Ouvrier</td>
-                    <td>2-nomParcelle</td>
-                    <td>CLient</td>
-                    <td>
-                        <a href="updateOrdinateur.html?id=1"><input type="button" class ="btn btn-warning" value="Modifier"></a>
-                        <a href="ordinateur?id=1&delete" ><input type="button" class ="btn btn-danger" value="Supprimer"></a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>1</td>
-                    <td>azert</td>
-                    <td>*********</td>
-                    <td>Jordan</td>
-                    <td>Abid</td>
-                    <td>53</td>
-                    <td>GFDIGJ</td>
-                    <td>Lorem</td>
-                    <td>10100</td>
-                    <td>Ouvrier</td>
-                    <td>2-nomParcelle</td>
-                    <td>CLient</td>
-                    <td>
-                        <a href="updateOrdinateur.html?id=1"><input type="button" class ="btn btn-warning" value="Modifier"></a>
-                        <a href="ordinateur?id=1&delete" ><input type="button" class ="btn btn-danger" value="Supprimer"></a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>1</td>
-                    <td>azert</td>
-                    <td>*********</td>
-                    <td>Jordan</td>
-                    <td>Abid</td>
-                    <td>53</td>
-                    <td>GFDIGJ</td>
-                    <td>Lorem</td>
-                    <td>10100</td>
-                    <td>Ouvrier</td>
-                    <td>2-nomParcelle</td>
-                    <td>CLient</td>
-                    <td>
-                        <a href="updateOrdinateur.html?id=1"><input type="button" class ="btn btn-warning" value="Modifier"></a>
-                        <a href="ordinateur?id=1&delete" ><input type="button" class ="btn btn-danger" value="Supprimer"></a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>1</td>
-                    <td>azert</td>
-                    <td>*********</td>
-                    <td>Jordan</td>
-                    <td>Abid</td>
-                    <td>53</td>
-                    <td>GFDIGJ</td>
-                    <td>Lorem</td>
-                    <td>10100</td>
-                    <td>Ouvrier</td>
-                    <td>2-nomParcelle</td>
-                    <td>CLient</td>
-                    <td>
-                        <a href="updateOrdinateur.html?id=1"><input type="button" class ="btn btn-warning" value="Modifier"></a>
-                        <a href="ordinateur?id=1&delete" ><input type="button" class ="btn btn-danger" value="Supprimer"></a>
-                    </td>
-                </tr>
-            </tbody>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Id Propriétaire</th>
+                        <th>Titre</th>
+                        <th>Durée</th>
+                        <th>Date de création</th>
+                        <th>Nombre de titres</th>
+                        <th>Pays</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Propriétaire</td>
+                        <td>Titre</td>
+                        <td>Durée</td>
+                        <td>Date de création</td>
+                        <td>Nombre de titres</td>
+                        <td>Pays</td>
+                        <td>
+                            <a href="updateOrdinateur.html?id=1"><input type="button" class ="btn btn-warning" value="Modifier"></a>
+                            <a href="ordinateur?id=1&delete" ><input type="button" class ="btn btn-danger" value="Supprimer"></a>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         
         </div>
         
+        <div id="formCreation" class="container" style="display: none;">
+            <form action="" method="post">
+                <table>
+                    <tr>
+                        <td><label for="inputIdProprietaire">ID propriétaire </label></td>
+                        <td><input type="text" name="idProprietaire" id="inputIdProprietaire"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="inputTitre">Titre </label></td>
+                        <td><input type="text" name="titre" id="inputTitre"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="inputPays">Pays </label></td>
+                        <td><input type="text" name="pays" id="inputPays"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Créer MusicList" class="btn btn-success"></td>
+                        <td><input type="reset" value="Réinitialiser" class="btn btn-warning"></td>
+                    </tr>
+                </table>
+                
+                
+                
+            </form>
+        </div>
         
 </body>
+
+<script>
+    var formAjout = document.getElementById("formCreation");
+    document.getElementById("btnAddMusicList").onclick = ev => {
+        formAjout.style.removeProperty("display");
+    }
+</script>
 </html>
