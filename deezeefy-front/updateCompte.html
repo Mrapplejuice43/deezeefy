@@ -24,10 +24,16 @@
 	Nombre d'auditeur :<input name="nombreAuditeur" placeholder="Saisir nombre d'auditeur" value="" type="number" ><br>    
 	Biographie :<input name="biographie" placeholder="Saisir biographie" value="" type="text"><br>
 	Nom de label:<input name="nomLabel" placeholder="Saisir nom de label" value="" type="text"><br>
-	Abonnment :<select name="abonnement"><option></option><br>
-	Etudiant :<input name="nom" placeholder="Saisir nom" value="SSJ2" type="text" title="nom" maxlength="25"><br>
-	Temps découte :<input name="nom" placeholder="Saisir nom" value="SSJ2" type="text" title="nom" maxlength="25"><br>
-	Type de compte :<input name="nom" placeholder="Saisir nom" value="SSJ2" type="text" title="nom" maxlength="25"><br>
+	Abonnment :<select name="abonnement"><option>Gratuit</option><option>Etudiant</option><option>Perso</option></select><br>
+	Etudiant : Oui <input name="etudiant" type="radio"> Non <input name="etudiant" type="radio"><br>
+	Temps découte :<input name="tempsEcoute" type="number" ><br>
+	Type de compte :<select>
+		<option>Admin</option>
+		<option>Utilisateur</option>
+		<option>Producteur</option>
+		<option>Musicien</option>
+		<option>Groupe</option>
+	</select><br>
 	
     <input class ="btn btn-warning" type="submit" value="Modifier">
     <a href=""><input type="button" class ="btn btn-info" value="Retour"></a>
