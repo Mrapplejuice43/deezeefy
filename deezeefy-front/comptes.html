@@ -93,6 +93,44 @@
         
         </div>
         
-        
+		<div id="addFormCompte">
+		<h3>Ajouter compte</h3>
+		<form >
+			Login :<input value="" name="login" type="text" placeholder="Saisir le login"><br>
+			Password :<input value="" name="password" type="password" placeholder="Saisir le password"><br>
+			Email :<input value="" name="email" type="email"  placeholder="Saisir l'email"><br>
+			Nom :<input name="nom" placeholder="Saisir nom" value="" type="text"><br>
+			Prenom :<input name="prenom" placeholder="Saisir prenom" value="" type="text"><br>
+			Pseudo :<input name="pseudo" placeholder="Saisir pseudo" value="" type="text"><br>
+			Nombre d'auditeur :<input name="nombreAuditeur" placeholder="Saisir nombre d'auditeur" value="" type="number" ><br>    
+			Biographie :<input name="biographie" placeholder="Saisir biographie" value="" type="text"><br>
+			Nom de label:<input name="nomLabel" placeholder="Saisir nom de label" value="" type="text"><br>
+			Abonnment :<select name="abonnement"><option>Gratuit</option><option>Etudiant</option><option>Perso</option></select><br>
+			Etudiant : Oui <input name="etudiant" type="radio"> Non <input name="etudiant" type="radio"><br>
+			Temps découte :<input name="tempsEcoute" type="number" ><br>
+			Type de compte :<select>
+				<option>Admin</option>
+				<option>Utilisateur</option>
+				<option>Producteur</option>
+				<option>Musicien</option>
+				<option>Groupe</option>
+			</select><br>
+		
+		
+		</form>
+        </div>
 </body>
 </html>
+
+<script>
+
+addFormCompte.style.display="none";
+
+btnAddCompte.onclick=function()
+{
+  addFormCompte.style.display="block";
+}
+
+
+
+</script>
