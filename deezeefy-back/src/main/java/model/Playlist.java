@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,41 +17,77 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.persistence.Version;
 
 @Entity
-@Table(name="music_list")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type")
-public abstract class Playlist {
+@Table(name="playlist")
+public class Playlist {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	protected int id;
+	private int id;
+	
+	@Version
+	private int version;
+	
 	@Column(name="title")
-	protected String titre;
+	private String titre;
 	@Column(name="time")
-	protected int duree; // seconde
+	private int duree; // seconde
 	@Column(name="release_date")
-	protected LocalDate date; //date de sortie
+	private LocalDate date; //date de sortie
 	@Column(name="number_track")
-	protected int nbContenu ; //nombre de piste
+	private int nbContenu ; //nombre de piste
 	@Column(name="country")
-	protected String pays;
+	private String pays;
+	@Column(name="type_playlist")
+	@Enumerated(EnumType.STRING)
+	private TypePlaylist typePlaylist;
 	
 	@ManyToOne
 	@JoinColumn(name="author")
-	protected Compte createur;
-	@ManyToMany(mappedBy = "listeSuivies")
-	protected List<Compte> followers;
-	@ManyToMany
-	@JoinTable(name="music_list_content", uniqueConstraints = @UniqueConstraint(columnNames  = {"music_List_id","content_id"}),
-	joinColumns = @JoinColumn(name ="music_List_id")
-	,inverseJoinColumns = @JoinColumn(name="content_id"))
-	protected List<Contenu> contenus; 
+	private Compte createur;
+	
+	@OneToMany(mappedBy = "playlistSuivie")
+	private List<Follow> listeFollow;
+	
+	@OneToMany(mappedBy = "playlist")
+	private List<Rangement> contenuAssocie;
 	
 	public Playlist() {
 		super();
+	}
+
+
+	public int getVersion() {
+		return version;
+	}
+
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+
+	public TypePlaylist getTypePlaylist() {
+		return typePlaylist;
+	}
+
+
+	public void setTypePlaylist(TypePlaylist typePlaylist) {
+		this.typePlaylist = typePlaylist;
+	}
+
+
+	public List<Follow> getListeFollow() {
+		return listeFollow;
+	}
+
+
+	public void setListeFollow(List<Follow> listeFollow) {
+		this.listeFollow = listeFollow;
 	}
 
 
@@ -123,25 +161,6 @@ public abstract class Playlist {
 		this.createur = createur;
 	}
 
-
-	public List<Compte> getFollowers() {
-		return followers;
-	}
-
-
-	public void setFollowers(List<Compte> followers) {
-		this.followers = followers;
-	}
-
-
-	public List<Contenu> getContenus() {
-		return contenus;
-	}
-
-
-	public void setContenus(List<Contenu> contenus) {
-		this.contenus = contenus;
-	}
 
 
 

@@ -6,11 +6,9 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue(value="admin")
 public class Admin  extends Compte{
-
-
+	
 	public Admin() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

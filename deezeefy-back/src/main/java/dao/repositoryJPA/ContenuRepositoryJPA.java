@@ -9,12 +9,11 @@ public class ContenuRepositoryJPA implements IContenuRepository {
 	@Override
 	public Contenu findById(int id) {
 		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
 	public Contenu save(int id) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
