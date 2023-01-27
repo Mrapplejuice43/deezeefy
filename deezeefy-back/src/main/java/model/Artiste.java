@@ -1,8 +1,11 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue(value="artist")
@@ -14,6 +17,8 @@ public class Artiste extends Compte {
 	@Column(name = "biography", length = 400)
 	private long biographie;
 	
+	@OneToMany(mappedBy="auteur")
+	private List<Contenu> listContenu;
 	
 	public Artiste() {
 		super();
@@ -26,6 +31,16 @@ public class Artiste extends Compte {
 		this.biographie = biographie;
 	}
 	
+	
+	
+	public List<Contenu> getListContenu() {
+		return listContenu;
+	}
+
+	public void setListContenu(List<Contenu> listContenu) {
+		this.listContenu = listContenu;
+	}
+
 	public int getNdAuditeur() {
 		return ndAuditeur;
 	}

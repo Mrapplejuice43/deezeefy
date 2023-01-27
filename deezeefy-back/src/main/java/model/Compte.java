@@ -17,6 +17,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.persistence.Version;
 
 
 @Entity
@@ -28,6 +29,9 @@ public abstract class Compte {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected int id;
+	
+	@Version
+	protected int version;
 	
 	@Column
 	protected String login; 
@@ -49,13 +53,12 @@ public abstract class Compte {
 	protected List<Playlist> listeCrees = new ArrayList<>();
 	
 	
-	@ManyToMany
-	@JoinTable(name="account_musicList", uniqueConstraints = @UniqueConstraint(columnNames  = {"account_id","music_List_id"}),
-	joinColumns = @JoinColumn(name ="account_id")
-	,inverseJoinColumns = @JoinColumn(name="music_List_id"))
-	protected List<Playlist> listeSuivies = new ArrayList<>();
+	@OneToMany(mappedBy = "follower")
+	protected List<Follow> listeFollowed = new ArrayList<>();
 	
-
+	
+	@OneToMany(mappedBy = "compte")
+	protected List<Historique> ecoutes;
 	
 	public Compte(int id, String login, String password, String email, String nom, String prenom, String pseudo) {
 		super();
@@ -76,6 +79,42 @@ public abstract class Compte {
 
 
 
+	public int getVersion() {
+		return version;
+	}
+
+
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+
+
+	public List<Follow> getListeFollowed() {
+		return listeFollowed;
+	}
+
+
+
+	public void setListeFollowed(List<Follow> listeFollowed) {
+		this.listeFollowed = listeFollowed;
+	}
+
+
+
+	public List<Historique> getEcoutes() {
+		return ecoutes;
+	}
+
+
+
+	public void setEcoutes(List<Historique> ecoutes) {
+		this.ecoutes = ecoutes;
+	}
+
+
+
 	public List<Playlist> getListeCrees() {
 		return listeCrees;
 	}
@@ -86,17 +125,6 @@ public abstract class Compte {
 		this.listeCrees = listeCrees;
 	}
 
-
-
-	public List<Playlist> getListeSuivies() {
-		return listeSuivies;
-	}
-
-
-
-	public void setListeSuivies(List<Playlist> listeSuivies) {
-		this.listeSuivies = listeSuivies;
-	}
 
 
 
