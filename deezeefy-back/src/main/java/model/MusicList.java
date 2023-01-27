@@ -42,7 +42,7 @@ public abstract class MusicList {
 	protected Compte createur;
 	@ManyToMany(mappedBy = "listeSuivies")
 	protected List<Compte> followers;
-	@ManyToMany(mappedBy = "")  
+	@ManyToMany
 	@JoinTable(name="music_list_content", uniqueConstraints = @UniqueConstraint(columnNames  = {"music_List_id","content_id"}),
 	joinColumns = @JoinColumn(name ="musicList_id")
 	,inverseJoinColumns = @JoinColumn(name="content_id"))

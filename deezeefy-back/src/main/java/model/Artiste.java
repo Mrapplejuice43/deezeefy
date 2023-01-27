@@ -15,7 +15,10 @@ public class Artiste extends Compte {
 	private long biographie;
 	
 	
-	
+	public Artiste() {
+		super();
+	}
+
 	public Artiste(int id, String login, String password, String email, String nom, String prenom, String pseudo,
 			int ndAuditeur, long biographie) {
 		super(id, login, password, email, nom, prenom, pseudo);
