@@ -1,7 +1,7 @@
 package dao;
 
-import model.MusicList;
+import model.Playlist;
 
-public interface IMusicListRepository extends IRepository<MusicList> {
+public interface IMusicListRepository extends IRepository<Playlist> {
 
 }

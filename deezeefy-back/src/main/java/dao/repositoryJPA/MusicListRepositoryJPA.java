@@ -1,7 +1,7 @@
 package dao.repositoryJPA;
 
 import dao.IMusicListRepository;
-import model.MusicList;
+import model.Playlist;
 
 public class MusicListRepositoryJPA implements IMusicListRepository {
 
@@ -10,19 +10,19 @@ public class MusicListRepositoryJPA implements IMusicListRepository {
 	}
 
 	@Override
-	public MusicList findById(int id) {
+	public Playlist findById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public MusicList save(int id) {
+	public Playlist save(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void delete(MusicList obj) {
+	public void delete(Playlist obj) {
 		// TODO Auto-generated method stub
 		
 	}

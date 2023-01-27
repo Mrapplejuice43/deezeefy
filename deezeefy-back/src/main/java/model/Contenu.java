@@ -23,6 +23,8 @@ public abstract class Contenu {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	protected int idcontenu;
 	
+	private int version;
+	
 	@Column(name= "title", length= 200)
 	protected String titre;
 	

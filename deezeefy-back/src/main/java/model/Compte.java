@@ -46,14 +46,14 @@ public abstract class Compte {
 	protected String pseudo; 
 	
 	@OneToMany(mappedBy = "createur")
-	protected List<MusicList> listeCrees = new ArrayList<>();
+	protected List<Playlist> listeCrees = new ArrayList<>();
 	
 	
 	@ManyToMany
 	@JoinTable(name="account_musicList", uniqueConstraints = @UniqueConstraint(columnNames  = {"account_id","music_List_id"}),
 	joinColumns = @JoinColumn(name ="account_id")
 	,inverseJoinColumns = @JoinColumn(name="music_List_id"))
-	protected List<MusicList> listeSuivies = new ArrayList<>();
+	protected List<Playlist> listeSuivies = new ArrayList<>();
 	
 
 	
@@ -76,25 +76,25 @@ public abstract class Compte {
 
 
 
-	public List<MusicList> getListeCrees() {
+	public List<Playlist> getListeCrees() {
 		return listeCrees;
 	}
 
 
 
-	public void setListeCrees(List<MusicList> listeCrees) {
+	public void setListeCrees(List<Playlist> listeCrees) {
 		this.listeCrees = listeCrees;
 	}
 
 
 
-	public List<MusicList> getListeSuivies() {
+	public List<Playlist> getListeSuivies() {
 		return listeSuivies;
 	}
 
 
 
-	public void setListeSuivies(List<MusicList> listeSuivies) {
+	public void setListeSuivies(List<Playlist> listeSuivies) {
 		this.listeSuivies = listeSuivies;
 	}
 
