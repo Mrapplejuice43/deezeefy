@@ -1,8 +1,13 @@
 package model;
 
-public class Playlist {
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue(value="playlist")
+public class Playlist extends MusicList{
 	
-	
+
 
 	public Playlist() {
 		// TODO Auto-generated constructor stub

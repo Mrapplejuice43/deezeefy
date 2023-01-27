@@ -1,9 +1,16 @@
 package model;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue(value="admin")
 public class Admin  extends Compte{
 
-	public Admin(int id, String login, String password, String email, String nom, String prenom, String pseudo) {
-		super(id, login, password, email, nom, prenom, pseudo);
+
+	public Admin() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override

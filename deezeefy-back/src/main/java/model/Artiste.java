@@ -1,8 +1,17 @@
 package model;
 
-public class Artiste extends Compte {
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
+@Entity
+@DiscriminatorValue(value="artist")
+public class Artiste extends Compte {
+	
+	@Column(name = "listener_number", length = 10)
 	private int ndAuditeur;
+	
+	@Column(name = "biography", length = 400)
 	private long biographie;
 	
 	
