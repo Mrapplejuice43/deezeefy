@@ -1,13 +1,28 @@
 package model;
 
-public class Utilisateur extends Compte {
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
+@Entity
+@DiscriminatorValue(value="user")
+public class Utilisateur extends Compte {
+	@Column(name="subscription")
+	@Enumerated(EnumType.STRING)
 	private Abonnement abonnement;
+	@Column(name="student")
 	private boolean etudiant;
+	@Column(name="listening_time")
 	private int tempsEcoute;
 	
 	
 	
+	public Utilisateur() {
+		super();
+	}
+
 	public Utilisateur(int id, String login, String password, String email, String nom, String prenom, String pseudo,
 			Abonnement abonnement, boolean etudiant, int tempsEcoute) {
 		super(id, login, password, email, nom, prenom, pseudo);

@@ -1,6 +1,6 @@
 package model;
 
-public enum Sujets {
+public enum Sujet {
 
 Sport, Voyage, CultureGenerale, DeveloppementPersonnel;	
 }

@@ -1,23 +1,15 @@
 package model;
 
-import java.time.LocalDate;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
+@Entity
+@DiscriminatorValue(value="album")
 public class Album  extends MusicList{
-	
+	@Column(name="type_album")
 	private String type;// album single, ep
 	
-	
-	
-	
-
-	public Album(Compte compte, int id, String titre, int duree, LocalDate date, int nbContenu, Contenu contenu,
-			String pays, String type) {
-		super(compte, id, titre, duree, date, nbContenu, contenu, pays);
-		this.type = type;
-	}
-
-
-
 
 
 	public Album() {

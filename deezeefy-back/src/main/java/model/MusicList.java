@@ -1,49 +1,55 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+@Entity
+@Table(name="music_list")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type")
 public abstract class MusicList {
-	
-	protected Compte compte;
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	protected int id;
-	
-
+	@Column(name="title")
 	protected String titre;
+	@Column(name="time")
 	protected int duree; // seconde
-	protected LocalDate date;
-	protected int nbContenu ;
-	protected Contenu contenu; // 
+	@Column(name="release_date")
+	protected LocalDate date; //date de sortie
+	@Column(name="number_track")
+	protected int nbContenu ; //nombre de piste
+	@Column(name="country")
 	protected String pays;
 	
-
-	public MusicList(Compte compte, int id, String titre, int duree, LocalDate date, int nbContenu, Contenu contenu,
-			String pays) {
-		super();
-		this.compte = compte;
-		this.id = id;
-		this.titre = titre;
-		this.duree = duree;
-		this.date = date;
-		this.nbContenu = nbContenu;
-		this.contenu = contenu;
-		this.pays = pays;
-	}
-
-
-
+	@ManyToOne
+	@JoinColumn(name="author")
+	protected Compte createur;
+	@ManyToMany(mappedBy = "listeSuivies")
+	protected List<Compte> followers;
+	@ManyToMany(mappedBy = "")  
+	@JoinTable(name="music_list_content", uniqueConstraints = @UniqueConstraint(columnNames  = {"music_List_id","content_id"}),
+	joinColumns = @JoinColumn(name ="musicList_id")
+	,inverseJoinColumns = @JoinColumn(name="content_id"))
+	protected List<Contenu> contenus; 
+	
 	public MusicList() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-	
-	public Compte getCompte() {
-		return compte;
-	}
-
-
-	public void setCompte(Compte compte) {
-		this.compte = compte;
+		super();
 	}
 
 
@@ -97,16 +103,7 @@ public abstract class MusicList {
 	}
 
 
-	public Contenu getContenu() {
-		return contenu;
-	}
-
-
-	public void setContenu(Contenu contenu) {
-		this.contenu = contenu;
-	}
-
-
+	
 	public String getPays() {
 		return pays;
 	}
@@ -114,6 +111,36 @@ public abstract class MusicList {
 
 	public void setPays(String pays) {
 		this.pays = pays;
+	}
+
+
+	public Compte getCreateur() {
+		return createur;
+	}
+
+
+	public void setCreateur(Compte createur) {
+		this.createur = createur;
+	}
+
+
+	public List<Compte> getFollowers() {
+		return followers;
+	}
+
+
+	public void setFollowers(List<Compte> followers) {
+		this.followers = followers;
+	}
+
+
+	public List<Contenu> getContenus() {
+		return contenus;
+	}
+
+
+	public void setContenus(List<Contenu> contenus) {
+		this.contenus = contenus;
 	}
 
 
