@@ -1,19 +1,21 @@
 package dao.repositoryJPA;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import context.Application;
-import dao.IContenuRepository;
-import model.Contenu;
+import dao.IPlaylistRepository;
+import model.Playlist;
 
-public class ContenuRepositoryJPA implements IContenuRepository {
-
+public class PlaylistRepositoryJPA  implements IPlaylistRepository{
 
 	@Override
-	public Contenu findById(int id) {
-		Contenu contenu = null;
+	public Playlist findById(int id) {
+		Playlist playlist = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -23,7 +25,7 @@ public class ContenuRepositoryJPA implements IContenuRepository {
 			tx = em.getTransaction();
 			tx.begin();
 
-			contenu = em.find(Contenu.class, id);
+			playlist = em.find(Playlist.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -37,13 +39,12 @@ public class ContenuRepositoryJPA implements IContenuRepository {
 			}
 		}
 
-		return contenu;
+		return playlist;
 
 	}
 
-
 	@Override
-	public void delete(Contenu contenu) {
+	public Playlist save(Playlist playlist) {
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -53,7 +54,34 @@ public class ContenuRepositoryJPA implements IContenuRepository {
 			tx = em.getTransaction();
 			tx.begin();
 
-			em.remove(em.merge(contenu));
+			playlist = em.merge(playlist);
+
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+		
+		return playlist;
+	}
+
+	@Override
+	public void delete(Playlist playlist) {
+		EntityManager em = null;
+		EntityTransaction tx = null;
+
+		try {
+			em = Application.getInstance().getEmf().createEntityManager();
+			tx = em.getTransaction();
+			tx.begin();
+
+			em.remove(em.merge(playlist));
 
 			tx.commit();
 		} catch (Exception e) {
@@ -79,7 +107,7 @@ public class ContenuRepositoryJPA implements IContenuRepository {
 			tx = em.getTransaction();
 			tx.begin();
 			
-			TypedQuery<Contenu> query = em.createQuery("delete from Contenu c where c.id = :id", Contenu.class);
+			TypedQuery<Playlist> query = em.createQuery("delete from Playlist p where p.id = :id", Playlist.class);
 			query.setParameter("id", id);
 			query.executeUpdate();
 
@@ -95,13 +123,13 @@ public class ContenuRepositoryJPA implements IContenuRepository {
 			}
 		}
 		
+		
 	}
 
 	@Override
-	public Contenu findByTitre(String titre) {
-
-		Contenu contenu = null;
-
+	public List<Playlist> findByPays(String pays) {
+		
+		List<Playlist> playlists = new ArrayList<>();
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -110,12 +138,9 @@ public class ContenuRepositoryJPA implements IContenuRepository {
 			tx = em.getTransaction();
 			tx.begin();
 			
-			TypedQuery<Contenu> query = em.createQuery("Select c from Contenu c where c.titre = :title", Contenu.class);
-			query.setParameter("title", titre);
-			
-			contenu = query.getSingleResult();
-
-		
+			TypedQuery<Playlist> query = em.createQuery("select p from Playlist p where p.pays = :country", Playlist.class);
+			query.setParameter("country", pays);
+			playlists = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -128,42 +153,9 @@ public class ContenuRepositoryJPA implements IContenuRepository {
 				em.close();
 			}
 		}
-
-		return contenu;
-
-	}
-
-
-	@Override
-	public Contenu save(Contenu contenu) {
-		
-
-		EntityManager em = null;
-		EntityTransaction tx = null;
-
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			contenu = em.merge(contenu);
-
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
-		
-		return contenu;
-	}
-
+		return playlists;
 	
+	}
 
+	}
 
-}

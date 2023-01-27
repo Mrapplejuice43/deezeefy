@@ -5,10 +5,10 @@ import javax.persistence.Persistence;
 
 import dao.ICompteRepository;
 import dao.IContenuRepository;
-import dao.IMusicListRepository;
+import dao.IPlaylistRepository;
 import dao.repositoryJPA.CompteRepositoryJPA;
 import dao.repositoryJPA.ContenuRepositoryJPA;
-import dao.repositoryJPA.MusicListRepositoryJPA;
+import dao.repositoryJPA.PlaylistRepositoryJPA;
 
 public class Application {
 
@@ -18,7 +18,7 @@ public class Application {
 	
 	private final ICompteRepository compteRepo = new CompteRepositoryJPA();
 	private final IContenuRepository contenuRepo = new ContenuRepositoryJPA();
-	private final IMusicListRepository musicListRepo = new MusicListRepositoryJPA();
+	private final IPlaylistRepository musicListRepo = new PlaylistRepositoryJPA();
 	
 	public static Application getInstance() {
 		if(instance == null) {
@@ -42,7 +42,7 @@ public class Application {
 	}
 
 
-	public IMusicListRepository getMusicListRepo() {
+	public IPlaylistRepository getMusicListRepo() {
 		return musicListRepo;
 	}
 
