@@ -13,6 +13,7 @@ public class ContenuRepositoryJPA implements IContenuRepository {
 
 	@Override
 	public Contenu findById(int id) {
+
 		Contenu contenu = null;
 
 		EntityManager em = null;
@@ -38,6 +39,7 @@ public class ContenuRepositoryJPA implements IContenuRepository {
 		}
 
 		return contenu;
+
 
 	}
 
@@ -164,6 +166,5 @@ public class ContenuRepositoryJPA implements IContenuRepository {
 	}
 
 	
-
 
 }
