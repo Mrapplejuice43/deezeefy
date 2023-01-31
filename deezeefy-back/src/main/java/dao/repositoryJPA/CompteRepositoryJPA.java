@@ -100,10 +100,14 @@ public class CompteRepositoryJPA implements ICompteRepository{
 			if (em != null) {
 				em.close();
 			}
+
 		}
 		
 		
 		return compte;
+
+
+		
 	}
 
 	@Override
@@ -119,6 +123,9 @@ public class CompteRepositoryJPA implements ICompteRepository{
 			tx.begin();
 
 			compte = em.find(Compte.class, id);
+
+
+
 
 			tx.commit();
 		} catch (Exception e) {
@@ -146,8 +153,9 @@ public class CompteRepositoryJPA implements ICompteRepository{
 			em = Application.getInstance().getEmf().createEntityManager();
 			tx = em.getTransaction();
 			tx.begin();
-
 			compte = em.merge(compte);
+
+	
 
 			tx.commit();
 		} catch (Exception e) {
@@ -163,8 +171,6 @@ public class CompteRepositoryJPA implements ICompteRepository{
 		
 		return compte;
 	}
-
-
 
 
 
