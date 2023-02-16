@@ -1,9 +1,11 @@
 package formation.sopra.deezeefy.repository;
 
-import formation.sopra.deezeefy.model.Compte;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import formation.sopra.deezeefy.model.Admin;
 
-public interface AdminRepository extends JpaRepository<Compte, Integer>{
+
+public interface AdminRepository extends JpaRepository<Admin, Integer>{
     
 }

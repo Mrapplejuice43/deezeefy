@@ -1,9 +1,10 @@
 package formation.sopra.deezeefy.repository;
 
-import formation.sopra.deezeefy.model.Compte;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import formation.sopra.deezeefy.model.Artiste;
 
-public interface ArtistRepository extends JpaRepository<Compte, Integer>{
+
+public interface ArtistRepository extends JpaRepository<Artiste, Integer>{
     
 }
