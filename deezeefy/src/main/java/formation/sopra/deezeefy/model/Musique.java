@@ -25,4 +25,12 @@ public class Musique extends Contenu{
     public String toString() {
         return String.format("Musique : %s (%d s)", getTitre(), getDuree());
     }
+
+	public Genre getGenre() {
+		return genre;
+	}
+
+	public void setGenre(Genre genre) {
+		this.genre = genre;
+	}
 }
