@@ -13,7 +13,7 @@ public abstract class Contenu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Version
-    private Integer verison;
+    private Integer version;
     private String titre;
     private Integer duree;
     @Lob
@@ -45,15 +45,15 @@ public abstract class Contenu {
         this.id = id;
     }
 
-    public Integer getVerison() {
-        return verison;
-    }
+    public Integer getVersion() {
+		return version;
+	}
 
-    public void setVerison(Integer verison) {
-        this.verison = verison;
-    }
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
 
-    public String getTitre() {
+	public String getTitre() {
         return titre;
     }
 

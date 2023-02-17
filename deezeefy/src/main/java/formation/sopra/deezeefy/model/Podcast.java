@@ -25,4 +25,12 @@ public class Podcast extends Contenu{
     public String toString() {
         return String.format("Podcast : %s (%d s)", getTitre(), getDuree());
     }
+
+	public Sujet getSujet() {
+		return sujet;
+	}
+
+	public void setSujet(Sujet sujet) {
+		this.sujet = sujet;
+	}
 }
