@@ -41,10 +41,6 @@ public class PlaylistRestController {
 	public Playlist findById(@PathVariable Integer id) {
 		Playlist playlist = playlistService.findById(id);
 
-		if (playlist.isEmpty()) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
-
 		return playlist;
 	}
 
@@ -63,9 +59,6 @@ public class PlaylistRestController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 
-		if (!playlistService.existsById(id)) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
 
 		playlist = playlistService.update(playlist);
 

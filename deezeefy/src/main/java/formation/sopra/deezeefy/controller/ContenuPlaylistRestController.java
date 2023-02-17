@@ -15,65 +15,56 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.fasterxml.jackson.annotation.JsonView;
-
 import formation.sopra.deezeefy.model.ContenuPlaylist;
-import formation.sopra.deezeefy.repository.ContenuPlaylistRepository;
+import formation.sopra.deezeefy.service.ContenuPlaylistService;
 
 
 @RestController
-@RequestMapping("/contenuPlaylist")
+@RequestMapping("/contenuContenuPlaylist")
 public class ContenuPlaylistRestController {
 	@Autowired
-	private ContenuPlaylistRepository contenuPlaylistRepository;
+	private ContenuPlaylistService contenuContenuPlaylistService;
 
 	@GetMapping("")
 	//@JsonView(Views.ViewContenuPlaylist.class)
 	public List<ContenuPlaylist> findAll() {
-		List<ContenuPlaylist> contenuPlaylists = contenuPlaylistRepository.findAll();
+		List<ContenuPlaylist> contenuContenuPlaylists = contenuContenuPlaylistService.findAll();
 
-		return contenuPlaylists;
+		return contenuContenuPlaylists;
 	}
 
 	@GetMapping("/{id}")
 	//@JsonView(Views.ViewContenuPlaylist.class)
 	public ContenuPlaylist findById(@PathVariable Integer id) {
-		Optional<ContenuPlaylist> optContenuPlaylist = contenuPlaylistRepository.findById(id);
+		ContenuPlaylist contenuContenuPlaylist = contenuContenuPlaylistService.findById(id);
 
-		if (optContenuPlaylist.isEmpty()) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
-
-		return optContenuPlaylist.get();
+		return contenuContenuPlaylist;
 	}
 
 	@PostMapping("")
 	//@JsonView(Views.ViewContenuPlaylist.class)
-	public ContenuPlaylist create(@RequestBody ContenuPlaylist contenuPlaylist) {
-		contenuPlaylist = contenuPlaylistRepository.save(contenuPlaylist);
+	public ContenuPlaylist create(@RequestBody ContenuPlaylist contenuContenuPlaylist) {
+		contenuContenuPlaylist = contenuContenuPlaylistService.create(contenuContenuPlaylist);
 
-		return contenuPlaylist;
+		return contenuContenuPlaylist;
 	}
 
 	@PutMapping("/{id}")
 	//@JsonView(Views.ViewContenuPlaylist.class)
-	public ContenuPlaylist update(@RequestBody ContenuPlaylist contenuPlaylist, @PathVariable Integer id) {
-		if (id != contenuPlaylist.getId()) {
+	public ContenuPlaylist update(@RequestBody ContenuPlaylist contenuContenuPlaylist, @PathVariable Integer id) {
+		if (id != contenuContenuPlaylist.getId()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 
-		if (!contenuPlaylistRepository.existsById(id)) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
 
-		contenuPlaylist = contenuPlaylistRepository.save(contenuPlaylist);
+		contenuContenuPlaylist = contenuContenuPlaylistService.update(contenuContenuPlaylist);
 
-		return contenuPlaylist;
+		return contenuContenuPlaylist;
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
-		contenuPlaylistRepository.deleteById(id);
+		contenuContenuPlaylistService.deleteById(id);
 	}
 
 }
