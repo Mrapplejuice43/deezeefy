@@ -37,4 +37,8 @@ public class CompteHistoryService {
     public void delete(CompteHistory compteHistory) {
         deleteById(compteHistory.getId());
     }
+
+    public boolean existById(Integer id) {
+        return compteHistoryRepository.existsById(id);
+    }
 }

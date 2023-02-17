@@ -1,31 +1,52 @@
 package formation.sopra.deezeefy.model;
 
-import java.time.LocalDate;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonView;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Playlist {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonView(Views.ViewBase.class)
     private Integer id;
+
     @Version
+    @JsonView(Views.ViewBase.class)
     private Integer version;
+
+    @JsonView(Views.ViewBase.class)
     private String titre;
+
+    @JsonView(Views.ViewBase.class)
     private Integer duree;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonView(Views.ViewBase.class)
     private LocalDate dateCreation;
+
+    @JsonView(Views.ViewBase.class)
     private Integer nbContenu;
+
     @Enumerated(EnumType.STRING)
+    @JsonView(Views.ViewBase.class)
     private TypePlaylist typePlaylist;
 
     @ManyToOne
     @JoinColumn(name = "createur_id")
+    @JsonView(Views.ViewPlaylist.class)
     private Compte createur;
+
     @OneToMany(mappedBy = "playlistSuivie")
+    @JsonView(Views.ViewPlaylistWithListeFollowers.class)
     private List<PlaylistFollower> listeFollower;
+
     @OneToMany(mappedBy = "playlistAssociee")
+    @JsonView(Views.ViewPlaylistWithListeContenuAssocie.class)
     private List<ContenuPlaylist> listeContenuAssocie;
 
     public Playlist() {}

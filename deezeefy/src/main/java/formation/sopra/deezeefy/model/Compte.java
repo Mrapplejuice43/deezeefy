@@ -1,7 +1,8 @@
 package formation.sopra.deezeefy.model;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonView;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -11,29 +12,42 @@ public abstract class Compte {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonView(Views.ViewBase.class)
     private Integer id;
     @Version
+    @JsonView(Views.ViewBase.class)
     private Integer version;
+    @JsonView(Views.ViewBase.class)
     private String login;
+    @JsonView(Views.ViewBase.class)
     private String password;
+    @JsonView(Views.ViewBase.class)
     private String email;
+    @JsonView(Views.ViewBase.class)
     private String nom;
+    @JsonView(Views.ViewBase.class)
     private String prenom;
+    @JsonView(Views.ViewBase.class)
     private String pseudo;
 
     @OneToMany(mappedBy = "compte")
+    @JsonView(Views.ViewCompteWithCompteHistory.class)
     private List<CompteHistory> ecoutes;
 
     @OneToMany(mappedBy = "createur")
+    @JsonView(Views.ViewCompteWithPlaylistCrees.class)
     private List<Playlist> playlistCreees;
 
     @OneToMany(mappedBy = "follower")
+    @JsonView(Views.ViewCompteWithListPlaylistSuivies.class)
     private List<PlaylistFollower> listePlaylistSuivies;
 
     @OneToMany(mappedBy = "follower")
+    @JsonView(Views.ViewCompteWithListeComptesSuivis.class)
     private List<CompteFollower> listeComptesSuivis;
 
     @OneToMany(mappedBy = "compteSuivi")
+    @JsonView(Views.ViewCompteWithListeFollowers.class)
     private List<CompteFollower> listeFollowers;
 
     public Compte() {}

@@ -1,38 +1,27 @@
 package formation.sopra.deezeefy.controller;
 
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
-
 import com.fasterxml.jackson.annotation.JsonView;
-
 import formation.sopra.deezeefy.model.Musique;
 import formation.sopra.deezeefy.model.Views;
 import formation.sopra.deezeefy.service.MusiqueService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/musique")
-public class MusiqueRestController {
+public class MusiqueController {
+
 	@Autowired
 	private MusiqueService musiqueService;
 
 	@GetMapping("")
 	@JsonView(Views.ViewMusique.class)
 	public List<Musique> findAll() {
-		List<Musique> musiques = musiqueService.findAll();
-
-		return musiques;
+		return musiqueService.findAll();
 	}
 
 	@GetMapping("/{id}")
@@ -50,7 +39,7 @@ public class MusiqueRestController {
 	@PutMapping("/{id}")
 	@JsonView(Views.ViewMusique.class)
 	public Musique update(@RequestBody Musique musique, @PathVariable Integer id) {
-		if(id != musique.getId()) {
+		if(!id.equals(musique.getId())) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 		
@@ -58,16 +47,11 @@ public class MusiqueRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 		
-		musique = musiqueService.update(musique);
-		
-		return musique;
+		return musiqueService.update(musique);
 	}
-	
 
-	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
 		musiqueService.deleteById(id);
 	}
-	
 }

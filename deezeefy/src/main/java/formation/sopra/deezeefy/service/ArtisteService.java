@@ -1,7 +1,6 @@
 package formation.sopra.deezeefy.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +11,7 @@ import formation.sopra.deezeefy.model.Artiste;
 import formation.sopra.deezeefy.repository.ArtistRepository;
 
 @Service
-public class ArtistService {
+public class ArtisteService {
 	@Autowired
 	private ArtistRepository artisteRepository;
 	
@@ -58,7 +57,7 @@ public class ArtistService {
 		if(id == null) {
 			throw new CompteException("id est null");		
 		}	
-		artisteRepository.deleteById(id);;
+		artisteRepository.deleteById(id);
 	}
 	
 }

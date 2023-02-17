@@ -1,15 +1,12 @@
 package formation.sopra.deezeefy.service;
 
-import java.util.List;
-import java.util.Optional;
-
+import formation.sopra.deezeefy.exception.CompteException;
+import formation.sopra.deezeefy.model.Admin;
+import formation.sopra.deezeefy.repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import formation.sopra.deezeefy.exception.CompteException;
-import formation.sopra.deezeefy.model.Admin;
-import formation.sopra.deezeefy.model.Compte;
-import formation.sopra.deezeefy.repository.AdminRepository;
+import java.util.List;
 
 
 @Service
@@ -30,7 +27,7 @@ public class AdminService {
 		
 	}
 	
-	public Optional<Admin> findById(Integer id) {
+	public Admin findById(Integer id) {
 		if (id == null) {
 			throw new CompteException();	
 		}  
@@ -61,7 +58,7 @@ public class AdminService {
 		if(id == null) {
 			throw new CompteException("id est null");		
 		}	
-		adminRepository.deleteById(id);;
+		adminRepository.deleteById(id);
 	}
 	
 }

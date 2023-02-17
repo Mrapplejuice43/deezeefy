@@ -37,4 +37,8 @@ public class CompteFollowerService {
     public void delete(CompteFollower compteFollower) {
         deleteById(compteFollower.getId());
     }
+
+    public boolean existById(Integer id) {
+        return compteFollowerRepository.existsById(id);
+    }
 }

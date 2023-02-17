@@ -1,5 +1,7 @@
 package formation.sopra.deezeefy.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,6 +12,7 @@ import javax.persistence.Enumerated;
 public class Musique extends Contenu{
 
     @Enumerated(EnumType.STRING)
+    @JsonView(Views.ViewMusique.class)
     private Genre genre;
     
     public Musique() {}

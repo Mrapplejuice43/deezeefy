@@ -1,7 +1,8 @@
 package formation.sopra.deezeefy.model;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonView;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -11,22 +12,36 @@ public abstract class Contenu {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonView(Views.ViewBase.class)
     private Integer id;
+
     @Version
+    @JsonView(Views.ViewBase.class)
     private Integer version;
+
+    @JsonView(Views.ViewBase.class)
     private String titre;
+
+    @JsonView(Views.ViewBase.class)
     private Integer duree;
+
     @Lob
     @Basic(fetch = FetchType.LAZY)
     @Column(nullable = false)
+    @JsonView(Views.ViewBase.class)
     private Byte[] piste;
 
     @ManyToOne
     @JoinColumn(name = "artiste_id")
+    @JsonView(Views.ViewContenu.class)
     private Artiste auteur;
+
     @OneToMany(mappedBy = "contenu")
+    @JsonView(Views.ViewContenuWithAuditeurs.class)
     private List<CompteHistory> auditeurs;
+
     @OneToMany(mappedBy = "contenuAssocie")
+    @JsonView(Views.ViewContenuWithPlaylistAssociees.class)
     private List<ContenuPlaylist> listePlaylistAssociees;
 
     public Contenu() {}

@@ -1,5 +1,7 @@
 package formation.sopra.deezeefy.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,7 +12,9 @@ import javax.persistence.Enumerated;
 public class Utilisateur extends Compte {
 
     @Enumerated(EnumType.STRING)
+    @JsonView(Views.ViewBase.class)
     private Abonnement abonnement;
+    @JsonView(Views.ViewBase.class)
     private Integer tempsEcoute;
 
     public Utilisateur(String login,String password,String email,String nom,String prenom,String pseudo, Abonnement abonnement, Integer tempsEcoute) {

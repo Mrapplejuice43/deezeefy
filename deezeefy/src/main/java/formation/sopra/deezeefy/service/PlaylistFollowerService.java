@@ -37,4 +37,8 @@ public class PlaylistFollowerService {
     public void delete(PlaylistFollower playlistFollower) {
         deleteById(playlistFollower.getId());
     }
+
+    public boolean existById(Integer id) {
+        return playlistFollowerRepository.existsById(id);
+    }
 }

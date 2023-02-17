@@ -1,19 +1,23 @@
 package formation.sopra.deezeefy.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-
 import java.util.List;
 
 @Entity
 @DiscriminatorValue(value = "artist")
 public class Artiste extends Compte {
-    
+
+    @JsonView(Views.ViewBase.class)
     private Integer nbAuditeur;
+    @JsonView(Views.ViewBase.class)
     private String biographie;
 
     @OneToMany(mappedBy = "auteur")
+    @JsonView(Views.ViewArtisteWithListeContenu.class)
     private List<Contenu> listeContenu;
 
     public Artiste() {}
