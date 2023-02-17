@@ -21,88 +21,88 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 
-import formation.sopra.deezeefy.model.Admin;
-import formation.sopra.deezeefy.service.AdminService;
+import formation.sopra.deezeefy.model.Artiste;
+import formation.sopra.deezeefy.service.ArtistService;
 
 @RestController
-@RequestMapping("/admin")
-public class AdminController {
+@RequestMapping("/artiste")
+public class ArtisteController {
 	
 	@Autowired
-	private AdminService adminService;
+	private ArtistService artistService;
 	
 	@GetMapping("")
-	public List<Admin> findAll() {
-		List<Admin> admins = adminService.findAll();
+	public List<Artiste> findAll() {
+		List<Artiste> artistes = artistService.findAll();
 
-		return admins;
+		return artistes;
 	}
 
 	@GetMapping("/{id}")
-	public Admin findById(@PathVariable Integer id) {
-		Optional<Admin> optAdmin = adminService.findById(id);
+	public Artiste findById(@PathVariable Integer id) {
+		Optional<Artiste> optArtiste = Optional.of(artistService.findById(id));
 
-		if(optAdmin.isEmpty()) {
+		if(optArtiste.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 		
-		return optAdmin.get();
+		return optArtiste.get();
 	}
 	
 	@PostMapping("")
-	public Admin create(@RequestBody Admin admin) {
-		admin = adminService.create(admin);
+	public Artiste create(@RequestBody Artiste artiste) {
+		artiste = artistService.create(artiste);
 		
-		return admin;
+		return artiste;
 	}
 	
 	@PutMapping("/{id}")
-	public Admin update(@RequestBody Admin admin, @PathVariable Integer id) {
-		if(id != admin.getId()) {
+	public Artiste update(@RequestBody Artiste artiste, @PathVariable Integer id) {
+		if(id != artiste.getId()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 		
-		admin = adminService.create(admin);
+		artiste = artistService.create(artiste);
 		
-		return admin;
+		return artiste;
 	}
 	
 	@PatchMapping("/{id}")
-	public Admin partialUpdate(@PathVariable Integer id, @RequestBody Map<String, Object> fields) {
-		Optional<Admin>  optAdmin = adminService.findById(id);
+	public Artiste partialUpdate(@PathVariable Integer id, @RequestBody Map<String, Object> fields) {
+		Optional<Artiste>  optArtiste = Optional.of(artistService.findById(id));
 
-		if (optAdmin.isEmpty()) {
+		if (optArtiste.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 
-		final Admin admin = optAdmin.get();
+		final Artiste artiste = optArtiste.get();
 
 //		if(fields.containsKey("nom")) {
-//			admin.setNom((String) fields.get("nom"));
+//			artiste.setNom((String) fields.get("nom"));
 //		}
 //		
 //		if(fields.containsKey("prenom")) {
-//			admin.setPrenom((String) fields.get("prenom"));
+//			artiste.setPrenom((String) fields.get("prenom"));
 //		}
 //
 //		if(fields.containsKey("email")) {
-//			admin.setEmail((String) fields.get("email"));
+//			artiste.setEmail((String) fields.get("email"));
 //		}
 
 		fields.forEach((key, value) -> {
-			Field field = ReflectionUtils.findField(Admin.class, key);
+			Field field = ReflectionUtils.findField(Artiste.class, key);
 			if (field == null) {
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Propriété : " + key + "non trouvée");
 			}
 			ReflectionUtils.makeAccessible(field);
-			ReflectionUtils.setField(field, admin, value);
+			ReflectionUtils.setField(field, artiste, value);
 		});
 
-		return  adminService.create(admin);
+		return  artistService.create(artiste);
 	}
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
-		adminService.deleteById(id);
+		artistService.deleteById(id);
 	}
 }
