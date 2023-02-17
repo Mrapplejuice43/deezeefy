@@ -17,57 +17,57 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import formation.sopra.deezeefy.model.Musique;
+import formation.sopra.deezeefy.model.Podcast;
 import formation.sopra.deezeefy.model.Views;
-import formation.sopra.deezeefy.service.MusiqueService;
+import formation.sopra.deezeefy.service.PodcastService;
 
 @RestController
-@RequestMapping("/musique")
-public class MusiqueRestController {
+@RequestMapping("/podcast")
+public class PodcastRestController {
 	@Autowired
-	private MusiqueService musiqueService;
+	private PodcastService podcastService;
 
 	@GetMapping("")
-	@JsonView(Views.ViewMusique.class)
-	public List<Musique> findAll() {
-		List<Musique> musiques = musiqueService.findAll();
+	@JsonView(Views.ViewPodcast.class)
+	public List<Podcast> findAll() {
+		List<Podcast> podcasts = podcastService.findAll();
 
-		return musiques;
+		return podcasts;
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewMusique.class)
-	public Musique findById(@PathVariable Integer id) {
-	return musiqueService.findById(id);
+	@JsonView(Views.ViewPodcast.class)
+	public Podcast findById(@PathVariable Integer id) {
+	return podcastService.findById(id);
 	}
 	
 	@PostMapping("")
-	@JsonView(Views.ViewMusique.class)
-	public Musique create(@RequestBody Musique musique) {
-	return musiqueService.create(musique);
+	@JsonView(Views.ViewPodcast.class)
+	public Podcast create(@RequestBody Podcast podcast) {
+	return podcastService.create(podcast);
 	}
 	
 	@PutMapping("/{id}")
-	@JsonView(Views.ViewMusique.class)
-	public Musique update(@RequestBody Musique musique, @PathVariable Integer id) {
-		if(id != musique.getId()) {
+	@JsonView(Views.ViewPodcast.class)
+	public Podcast update(@RequestBody Podcast podcast, @PathVariable Integer id) {
+		if(id != podcast.getId()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 		
-		if(!musiqueService.existsById(id)) {
+		if(!podcastService.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 		
-		musique = musiqueService.update(musique);
+		podcast = podcastService.update(podcast);
 		
-		return musique;
+		return podcast;
 	}
 	
 
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
-		musiqueService.deleteById(id);
+		podcastService.deleteById(id);
 	}
 	
 }

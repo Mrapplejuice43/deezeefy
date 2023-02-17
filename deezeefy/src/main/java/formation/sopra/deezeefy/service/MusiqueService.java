@@ -30,6 +30,10 @@ public class MusiqueService {
 		return musiqueRepo.findById(id).orElseThrow(MusiqueException::new);
 	}
 
+	public boolean existsById (Integer id) {
+		return musiqueRepo.existsById(id);
+	}
+	
 	public Musique update(Musique musique) {
 		
 		Musique musiqueEnBase = findById(musique.getId());
@@ -49,12 +53,10 @@ public class MusiqueService {
 	}
 
 	public void delete(Musique musique) {
-		checkExist(musique);
-		filiereRepo.setReferentToNullByReferent(musique);
 		musiqueRepo.delete(musique);
 	}
 
-	public void delete(Integer id) {
+	public void deleteById(Integer id) {
 		delete(findById(id));
 	}
 }
