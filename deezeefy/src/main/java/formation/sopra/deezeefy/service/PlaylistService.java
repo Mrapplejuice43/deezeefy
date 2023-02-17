@@ -28,10 +28,10 @@ public class PlaylistService {
 	}
 	// suppression
 	public void delete(Playlist playlist) {
-		playlistRepo.delete(playlist);
+		playlistRepo.deleteById(playlist.getId());
 	}
 
-	public void delete(Integer id) {
+	public void deleteById(Integer id) {
 		playlistRepo.deleteById(id);
 	}
 
@@ -41,7 +41,7 @@ public class PlaylistService {
 	}
 
 	public Playlist findById(Integer id) {
-		return playlistRepo.findById(id).orElseThrow(()->{new PlaylistException();});
+		return playlistRepo.findById(id).orElseThrow(()->{throw new PlaylistException();});
 	}
 
 

@@ -74,7 +74,7 @@ public class PlaylistRestController {
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
-		playlistService.delete(id);
+		playlistService.deleteById(id);
 	}
 
 }
