@@ -9,9 +9,9 @@ import { RechercheComponent } from './recherche/recherche.component';
 const routes: Routes = [
   {path: "home", component: HomeComponent},
   {path: "musique", component: Musique},
+  {path: "recherche", component: RechercheComponent},
   {path: "", redirectTo: "home", pathMatch: 'full'},
-  {path: "**", component: PageNotFoundComponent},
-  {path: "recherche", component: RechercheComponent}
+  {path: "**", component: PageNotFoundComponent}
 ];
 
 @NgModule({

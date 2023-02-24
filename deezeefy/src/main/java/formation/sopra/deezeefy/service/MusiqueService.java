@@ -59,4 +59,8 @@ public class MusiqueService {
 	public void deleteById(Integer id) {
 		delete(findById(id));
 	}
+	
+	public List<Musique> findAllByTitre(String titre) {
+		return musiqueRepo.findAllByTitre(titre);
+	}
 }

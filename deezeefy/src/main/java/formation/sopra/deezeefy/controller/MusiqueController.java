@@ -12,6 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = {"*"})
 @RequestMapping("/musique")
 public class MusiqueController {
 
@@ -54,4 +55,12 @@ public class MusiqueController {
 	public void delete(@PathVariable Integer id) {
 		musiqueService.deleteById(id);
 	}
+	
+	@GetMapping("/recherche/{titre}")
+	@JsonView(Views.ViewMusique.class)
+	public List<Musique> findAllByTitre(@PathVariable String titre){
+		return musiqueService.findAllByTitre(titre);
+	}
+	
+	
 }
