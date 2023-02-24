@@ -11,12 +11,12 @@ export class RechercheComponent {
 
   constructor(){}
 
-  search(): Array<Musique> {
+  /*search(): Array<Musique> {
     if(this.recherche) {
-      return this.clientService.findAllByNomOrPrenom(this.recherche);
+      return this.musiqueService.findAllByTitre(this.recherche);
     } 
 
-    return this.clientService.findAll();
-  }
+    return this.musiqueService.findAll();
+  }*/
 
 }
