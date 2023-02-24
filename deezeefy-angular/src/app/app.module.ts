@@ -8,8 +8,14 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { MusiqueComponent } from './musique/musique.component';
+import { ArtistComponent } from './artist/artist.component';
+import { AdminComponent } from './admin/admin.component';
+import { UtilisateurComponent } from './utilisateur/utilisateur.component';
+import { PodcastComponent } from './podcast/podcast.component';
+import { PlaylistComponent } from './playlist/playlist.component';
+import { SeConnecterComponent } from './se-connecter/se-connecter.component';
 import { RechercheComponent } from './recherche/recherche.component';
+import { MusiqueComponent } from './musique/musique.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +23,13 @@ import { RechercheComponent } from './recherche/recherche.component';
     NavbarComponent,
     HomeComponent,
     PageNotFoundComponent,
+    ArtistComponent,
+    AdminComponent,
+    UtilisateurComponent,
     MusiqueComponent,
+    PodcastComponent,
+    PlaylistComponent,
+    SeConnecterComponent
     RechercheComponent
   ],
   imports: [
