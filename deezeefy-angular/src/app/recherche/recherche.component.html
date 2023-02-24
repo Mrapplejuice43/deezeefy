@@ -1,4 +1,4 @@
-<p>Recherche par titre :</p> <input type="text" [(ngModel)]="titre" /><br/>
+<p>Recherche par titre :</p> <input type="text" [(ngModel)]="titre" /><button (click)="valider()">Valider</button><br/>
 
 <table>
     <thead>
@@ -10,7 +10,7 @@
     </thead>
 
     <tbody>
-        <tr *ngFor="let m of search()">
+        <tr *ngFor="let m of selection">
             <td>{{m.id }}</td>
             <td>{{m.titre }}</td>
             <td>{{m.duree}}</td>

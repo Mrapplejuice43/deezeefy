@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Musique } from '../model';
 import { RechercheService } from './recherche.service';
 
@@ -11,12 +11,14 @@ export class RechercheComponent {
 
   titre: string="";
 
-  constructor(private rServ: RechercheService){}
+  
 
-  search() :Array<Musique> {
-    if(this.titre){
-      return this.rServ.findAllByTitre(this.titre);}
-    return null;
-  }
+  selection: Array<Musique> = new Array<Musique>();
 
+  constructor(private rServ : RechercheService){}
+
+
+valider(){
+  this.rServ.findAllByTitre(this.titre).subscribe(resp => { this.selection = resp;})
+}
 }
