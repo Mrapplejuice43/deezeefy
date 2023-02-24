@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { Musique } from './model';
 import { HomeComponent } from './home/home.component';
+import { MusiqueComponent } from './musique/musique.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ArtistComponent } from './artist/artist.component';
 import { AdminComponent } from './admin/admin.component';
@@ -9,6 +11,7 @@ import { MusiqueComponent } from './musique/musique.component';
 import { PodcastComponent } from './podcast/podcast.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { SeConnecterComponent } from './se-connecter/se-connecter.component';
+import { RechercheComponent } from './recherche/recherche.component';
 
 
 const routes: Routes = [
@@ -23,8 +26,9 @@ const routes: Routes = [
   
 
   // Toujours en dernier 
+  {path: "recherche", component: RechercheComponent},
   {path: "", redirectTo: "home", pathMatch: 'full'},
-  {path: "**", component: PageNotFoundComponent},
+  {path: "**", component: PageNotFoundComponent}
 ];
 
 @NgModule({

@@ -11,10 +11,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ArtistComponent } from './artist/artist.component';
 import { AdminComponent } from './admin/admin.component';
 import { UtilisateurComponent } from './utilisateur/utilisateur.component';
-import { MusiqueComponent } from './musique/musique.component';
 import { PodcastComponent } from './podcast/podcast.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { SeConnecterComponent } from './se-connecter/se-connecter.component';
+import { RechercheComponent } from './recherche/recherche.component';
+import { MusiqueComponent } from './musique/musique.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SeConnecterComponent } from './se-connecter/se-connecter.component';
     PodcastComponent,
     PlaylistComponent,
     SeConnecterComponent
+    RechercheComponent
   ],
   imports: [
     BrowserModule,

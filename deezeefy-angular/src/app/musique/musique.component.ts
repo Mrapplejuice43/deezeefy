@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MusiqueHttpService } from './musique-http.service';
 
 @Component({
   selector: 'app-musique',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./musique.component.scss']
 })
 export class MusiqueComponent {
+  constructor(
+    private musiqueService: MusiqueHttpService
+  ) {}
+
+  public findAll() {
+    return this.musiqueService.findAll();
+  }
+
 
 }
