@@ -8,9 +8,9 @@ export abstract class Compte {
     password:string;
     nom:string;
     prenom:string;
-    pseudo:string; 
+    pseudo:string;
     biographie:string;
-    
+
     constructor(id?:number, version?: number , type?: string, nom?: string, prenom?: string, email? :string,login?:string,password?:string,pseudo?:string, biographie?:string ) {
         this.id = id;
         this.version = version;
@@ -20,9 +20,9 @@ export abstract class Compte {
 }
 
 export class Admin extends Compte {
- 
+
     constructor(id?:number, version?: number, type?: string, nom?: string, prenom?: string, email? :string,login?:string,password?:string,pseudo?:string, biographie?:string) {
-        super();
+        super(id, version, type, nom, prenom, email,login,password,pseudo, biographie);
 
     }
 }
@@ -41,9 +41,9 @@ export abstract class Contenu {
     }
 }
     export class Musique extends Contenu {
-       
+
         genre:string;
-    
+
         constructor(id?:number, version?:number, titre?:string, duree?:number, genre?:string ){
             super(id, version,titre,duree);
            this.genre=genre;
