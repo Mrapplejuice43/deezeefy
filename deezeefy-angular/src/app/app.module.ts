@@ -29,8 +29,8 @@ import { MusiqueComponent } from './musique/musique.component';
     MusiqueComponent,
     PodcastComponent,
     PlaylistComponent,
-    SeConnecterComponent
-    RechercheComponent
+    SeConnecterComponent,
+    RechercheComponent,
   ],
   imports: [
     BrowserModule,
