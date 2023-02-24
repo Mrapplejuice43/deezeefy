@@ -16,8 +16,12 @@ class DeezeefyApplicationTests {
 	@Test
 	void preloadBase() {
 		Byte[] b = {0xF};
-		Musique m = new Musique("titre", 123, b, Genre.CLASSIQUE);
+		Musique m = new Musique("Experience", 363, b, Genre.CLASSIQUE);
 		musiqueRepository.save(m);
+		Musique m2 = new Musique("Beyond", 345, b, Genre.ELECTRONIQUE);
+		musiqueRepository.save(m2);
+		Musique m3 = new Musique("Take Me Back", 285, b, Genre.RAP);
+		musiqueRepository.save(m3);
 	}
 
 
