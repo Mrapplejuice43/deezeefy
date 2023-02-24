@@ -17,7 +17,7 @@ import { RechercheComponent } from './recherche/recherche.component';
     NavbarComponent,
     HomeComponent,
     PageNotFoundComponent,
-    MusiqueComponent
+    MusiqueComponent,
     RechercheComponent
   ],
   imports: [
