@@ -1,28 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Contenu } from '../model';
+import { Musique } from '../model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MusiqueHttpService {
-  contenus: Array<Contenu> = new Array<Contenu>();
-  genres: Map<string, string> = new Map<string,string>();
+  musiques: Array<Musique> = new Array<Musique>();
   
   
   constructor(private http: HttpClient) {
     this.load();
   }
 
-  findAllGenre(): Map<string, string> {
-    return this.genres;
-  }
 
-  findAll(): Array<Contenu> {
-    return this.contenus;
+
+  findAll(): Array<Musique> {
+    return this.musiques;
   }
   
-  load() {}
 
+  private load(): void {
+    this.http.get<Array<Musique>>("http://localhost:8080/musique").subscribe(resp => {
+      this.musiques = resp;
+    });
+  }
 
 }
