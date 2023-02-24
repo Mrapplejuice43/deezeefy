@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Contenu } from 'model';
+import { Contenu } from '../model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class MusiqueHttpService {
     return this.contenus;
   }
   
-
+  load() {}
 
 
 }
