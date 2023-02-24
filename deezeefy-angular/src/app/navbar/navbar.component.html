@@ -5,19 +5,17 @@
     <div class="row ms-1">
       <a [routerLink]="['/stagiaire']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-book"></i> Stagiaires</a>
       <a [routerLink]="['/recherche']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-box"></i>Recherche</a>
-   
-      <a [routerLink]="['/artiste']"class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-person-badge"></i>Artiste</a>      
-
-
+      <a [routerLink]="['/artiste']"class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-person-badge"></i>Artiste</a>
       <a [routerLink]="['/admin']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-person-fill-lock"></i> Admin</a>
       <a [routerLink]="['/utilisateur']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-person-fill"></i> Utilisateur</a>
       <a [routerLink]="['/musique']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-music-note-beamed"></i> Musique</a>
       <a [routerLink]="['/podcast']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-mic"></i> Podcast</a>
       <a [routerLink]="['/playlist']" class="nav-link col-auto" [routerLinkActive]="'active'"><i  class="bi bi-music-note-list"></i> Playlist</a>
+      <a [routerLink]="['/lecture-musique']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-book"></i> Lecture Musique</a>
     </div>
 
     <a [routerLink]="['/connection']" class="nav-link ms-auto me-1" [routerLinkActive]="'active'"><i class="bi bi-person"></i> Se Connecter</a>
-    
+
     <!-- <div class="row ms-auto me-1" *ngIf="currentUser" >
       <div class="col-auto">
         <select class="form-control" name="rolesOpt" id="rolesOpt" (change)="changeView()" [(ngModel)]="roleSelected">

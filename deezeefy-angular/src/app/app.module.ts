@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LectureMusiqueComponent } from './lecture-musique/lecture-musique.component';
 import { ArtistComponent } from './artist/artist.component';
 import { AdminComponent } from './admin/admin.component';
 import { UtilisateurComponent } from './utilisateur/utilisateur.component';
@@ -31,6 +32,7 @@ import { MusiqueComponent } from './musique/musique.component';
     PlaylistComponent,
     SeConnecterComponent,
     RechercheComponent,
+    LectureMusiqueComponent,
   ],
   imports: [
     BrowserModule,
