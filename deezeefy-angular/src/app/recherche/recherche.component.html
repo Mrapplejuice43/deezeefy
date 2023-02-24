@@ -1,0 +1,22 @@
+<p>Recherche par titre :</p> <input type="text" [(ngModel)]="recherche" /><br/>
+
+<table>
+    <thead>
+        <tr>
+            <th>Identifiant</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Chiffre d'affaire</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let cli of search()">
+            <td>{{cli.id }}</td>
+            <td>{{cli.nom }}</td>
+            <td>{{cli.prenom | caps:'all'}}</td>
+            <td [style.color]="cli.ca | clientCategory">{{cli.ca}} ({{cli.ca | clientCategory:"desc"}})</td>
+            <td><a [routerLink]="['/client', cli.id]">Détail</a>&nbsp;<a (click)="editer(cli.id)">Editer</a>&nbsp;<a (click)="supprimer(cli.id)">Supprimer</a></td>
+        </tr>
+    </tbody>
