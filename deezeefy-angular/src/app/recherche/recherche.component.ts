@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Musique } from '../model';
+import { RechercheService } from './recherche.service';
 
 @Component({
   selector: 'app-recherche',
@@ -7,16 +9,14 @@ import { Component } from '@angular/core';
 })
 export class RechercheComponent {
 
-  recherche: string;
+  titre: string="";
 
-  constructor(){}
+  constructor(private rServ: RechercheService){}
 
-  /*search(): Array<Musique> {
-    if(this.recherche) {
-      return this.musiqueService.findAllByTitre(this.recherche);
-    } 
-
-    return this.musiqueService.findAll();
-  }*/
+  search() :Array<Musique> {
+    if(this.titre){
+      return this.rServ.findAllByTitre(this.titre);}
+    return null;
+  }
 
 }
