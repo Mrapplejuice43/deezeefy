@@ -12,6 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = {"*"})
 @RequestMapping("/compteFollower")
 public class CompteFollowerController {
 

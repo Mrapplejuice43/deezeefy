@@ -11,6 +11,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface MusiqueRepository extends JpaRepository<Musique, Integer>{
     
-	@Query("select m from Musique m where m.titre=:t")
-	List<Musique> findAllByTitre(@Param("t") String titre) ;
+	
+	List<Musique> findByTitreContaining(String titre);
 }

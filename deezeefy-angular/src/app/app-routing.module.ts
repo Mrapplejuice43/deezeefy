@@ -8,7 +8,7 @@ import { RechercheComponent } from './recherche/recherche.component';
 
 const routes: Routes = [
   {path: "home", component: HomeComponent},
-  {path: "musique", component: Musique},
+  {path: "musique", component: MusiqueComponent},
   {path: "recherche", component: RechercheComponent},
   {path: "", redirectTo: "home", pathMatch: 'full'},
   {path: "**", component: PageNotFoundComponent}

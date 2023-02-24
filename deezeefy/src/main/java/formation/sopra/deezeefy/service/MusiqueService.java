@@ -61,6 +61,6 @@ public class MusiqueService {
 	}
 	
 	public List<Musique> findAllByTitre(String titre) {
-		return musiqueRepo.findAllByTitre(titre);
+		return musiqueRepo.findByTitreContaining(titre);
 	}
 }
