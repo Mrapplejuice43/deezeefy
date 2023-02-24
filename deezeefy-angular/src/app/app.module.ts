@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MusiqueComponent } from './musique/musique.component';
+import { RechercheComponent } from './recherche/recherche.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { MusiqueComponent } from './musique/musique.component';
     HomeComponent,
     PageNotFoundComponent,
     MusiqueComponent
+    RechercheComponent
   ],
   imports: [
     BrowserModule,

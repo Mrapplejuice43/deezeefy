@@ -1,0 +1,18 @@
+<p>Recherche par titre :</p> <input type="text" [(ngModel)]="recherche" /><br/>
+
+<table>
+    <thead>
+        <tr>
+            <th>Identifiant</th>
+            <th>Titre</th>
+            <th>Duree</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let m of search()">
+            <td>{{m.id }}</td>
+            <td>{{m.titre }}</td>
+            <td>{{m.duree}}</td>
+        </tr>
+    </tbody>
