@@ -4,15 +4,19 @@
     <a [routerLink]="['/home']" class="nav-link" [routerLinkActive]="'active'"><i class="bi bi-house"></i> Home</a>
     <div class="row ms-1">
       <a [routerLink]="['/stagiaire']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-book"></i> Stagiaires</a>
-      <a [routerLink]="['/formateur']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-brush"></i> Formateurs</a>
-      <a [routerLink]="['/client']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-briefcase-fill"></i> Clients</a>
-      <a [routerLink]="['/filiere']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-person-video3"></i> Filieres</a>
-      <a [routerLink]="['/matiere']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-vector-pen"></i> Matières</a>
-      <a [routerLink]="['/ordinateur']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-laptop"></i> Ordinateurs</a>
-      <a [routerLink]="['/salle']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-box"></i> Salles</a>
+   
+      <a [routerLink]="['/artiste']"class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-person-badge"></i>Artiste</a>      
+
+
+      <a [routerLink]="['/admin']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-person-fill-lock"></i> Admin</a>
+      <a [routerLink]="['/utilisateur']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-person-fill"></i> Utilisateur</a>
+      <a [routerLink]="['/musique']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-music-note-beamed"></i> Musique</a>
+      <a [routerLink]="['/podcast']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-mic"></i> Podcast</a>
+      <a [routerLink]="['/playlist']" class="nav-link col-auto" [routerLinkActive]="'active'"><i  class="bi bi-music-note-list"></i> Playlist</a>
     </div>
 
     <a [routerLink]="['/connection']" class="nav-link ms-auto me-1" [routerLinkActive]="'active'"><i class="bi bi-person"></i> Se Connecter</a>
+    
     <!-- <div class="row ms-auto me-1" *ngIf="currentUser" >
       <div class="col-auto">
         <select class="form-control" name="rolesOpt" id="rolesOpt" (change)="changeView()" [(ngModel)]="roleSelected">
