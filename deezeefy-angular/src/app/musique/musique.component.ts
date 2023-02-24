@@ -15,7 +15,5 @@ export class MusiqueComponent {
     return this.musiqueService.findAll();
   }
 
-  findAllCivilite(): Map<string, string> {
-    return this.musiqueService.findAllGenre();
-  }
+
 }

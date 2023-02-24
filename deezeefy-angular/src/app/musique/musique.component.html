@@ -1,2 +1,33 @@
-<p>liste-contenu works!</p>
-<p>ddd</p>
+<div class="container">
+
+    <div class="card">
+        <h3 class="card-header">Liste de musiques</h3>
+        <div class="card-body">
+            <table class="table table-bordered table-striped table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>Identifiant</th>
+                        <th>Version</th>
+                        <th>Titre</th>
+                        <th>Durée</th>
+                        <th>Genre</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let m of findAll()">
+                        <td> {{m.id}} </td>
+                        <td> {{m.version}} </td>
+                        <td> {{m.titre}} </td>
+                        <td> {{m.duree}} </td>
+                        <td> {{m.genre}} </td>
+                        <td class="text-center">
+                            <a class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger"><i class="bi bi-trash3"></i></a>
+                          </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
