@@ -39,27 +39,26 @@ export class Utilisateur extends Compte {
     }
 }
 
-export class Artiste extends Compte {
-     biographie: string;
-    nbAuditeur : number;
-
-    constructor(id?:number, version?: number, type?: string, nom?: string, prenom?: string, email? :string,login?:string,password?:string,pseudo?:string, biographie?:string, nbAuditeur?:number) {
-        super(id, version, type, nom, prenom, email,login,password,pseudo);
-        this.biographie=biographie;
-        this.nbAuditeur=nbAuditeur;
+export class Artiste extends Compte {     
+    biographie: string;    
+    nbAuditeur : number;    
+    
+    constructor(id?:number, version?: number, type?: string, nom?: string, prenom?: string, email? :string,login?:string,password?:string,pseudo?:string, biographie?:string, nbAuditeur?:number) {        
+    super(id, version, type, nom, prenom, email,login,password,pseudo);        
+    this.biographie=biographie;        
+    this.nbAuditeur=nbAuditeur;    
     }
 }
-
-
+    
 
 export abstract class Contenu {
     id:number;
     version:number;
     titre:string;
     duree:number;
-    auteur: string;
+    auteur: Artiste;
 
-    constructor(id?:number, version?:number, titre?:string, duree?:number, auteur?: string ){
+    constructor(id?:number, version?:number, titre?:string, duree?:number, auteur?: Artiste ){
         this.id=id;
         this.version=version;
         this.titre=titre;
