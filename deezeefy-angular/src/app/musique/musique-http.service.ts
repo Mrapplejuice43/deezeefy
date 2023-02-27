@@ -21,7 +21,7 @@ export class MusiqueHttpService {
   
 
   private load(): void {
-    this.http.get<Array<Musique>>("http://localhost:8080/musique").subscribe(resp => {
+    this.http.get<Array<Musique>>("http://localhost:9999/musique").subscribe(resp => {
       this.musiques = resp;
     });
   }

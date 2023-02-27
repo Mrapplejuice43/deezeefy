@@ -22,7 +22,7 @@ public class ArtisteService {
 		if(artiste.getId() != null) {
 			throw new CompteException("artiste existe déjà");
 		}
-		return artiste;	
+		return artisteRepository.save(artiste);	
 		
 	}
 	

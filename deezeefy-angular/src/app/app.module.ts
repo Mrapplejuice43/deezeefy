@@ -18,6 +18,7 @@ import { SeConnecterComponent } from './se-connecter/se-connecter.component';
 import { RechercheComponent } from './recherche/recherche.component';
 import { MusiqueComponent } from './musique/musique.component';
 import { EnregistrementMusiqueComponent } from './enregistrement-musique/enregistrement-musique.component';
+import { CompteComponent } from './compte/compte.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { EnregistrementMusiqueComponent } from './enregistrement-musique/enregis
     SeConnecterComponent,
     RechercheComponent,
     LectureMusiqueComponent,
+    CompteComponent,
     EnregistrementMusiqueComponent,
   ],
   imports: [

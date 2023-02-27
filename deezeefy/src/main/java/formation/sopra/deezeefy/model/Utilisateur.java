@@ -27,6 +27,11 @@ public class Utilisateur extends Compte {
         this.abonnement = abonnement;
         this.tempsEcoute = tempsEcoute;
     }
+    
+    public Utilisateur()
+    {
+    	super();
+    }
 
     public Abonnement getAbonnement() {
         return abonnement;

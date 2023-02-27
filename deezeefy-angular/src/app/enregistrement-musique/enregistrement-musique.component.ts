@@ -40,7 +40,7 @@ export class EnregistrementMusiqueComponent {
       music.titre = f.name.split(".")[0]
       music.piste = Array.from(res);
       music.duree = Math.round(f.size / 24000) // Les mp3 se lisent a 192kbits/s donc 24000 octets par seconde
-      this.http.post<Musique>("http://localhost:8080/musique", music).subscribe(() => {
+      this.http.post<Musique>("http://localhost:9999/musique", music).subscribe(() => {
         this.router.navigate(['/musique'])
       })
     };
