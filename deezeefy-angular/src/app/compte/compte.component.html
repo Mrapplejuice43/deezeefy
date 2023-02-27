@@ -1,0 +1,26 @@
+
+<h1>Création d'un nouveau compte </h1>
+<div class="container">
+
+   Quel type de compte souhaitez-vous créer :  <select [(ngModel)]="type">
+<option value="artiste"> Artiste</option>
+<option value="user"> Utilisateur</option>
+
+    </select>
+
+    <div  *ngIf="type == 'artiste'" >
+
+        <app-artist></app-artist>
+
+
+    </div>
+    <div *ngIf="type == 'user' ">
+        <app-utilisateur></app-utilisateur>
+
+    </div>
+
+  
+
+
+
+</div>

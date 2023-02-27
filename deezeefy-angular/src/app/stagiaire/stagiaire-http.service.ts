@@ -28,8 +28,8 @@ export class StagiaireHttpService {
     return this.http.get<Stagiaire>("http://localhost:8888/stagiaire/" + id);
   }
 
-  insert(stagiaire: Stagiaire): void {
-    this.http.post<Stagiaire>("http://localhost:8888/stagiaire", stagiaire).subscribe(resp => {
+  insert(lego: Stagiaire): void {
+    this.http.post<Stagiaire>("http://localhost:8888/stagiaire", lego).subscribe(resp => {
       this.load();
     });
   }

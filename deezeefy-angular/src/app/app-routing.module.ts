@@ -12,6 +12,7 @@ import { PodcastComponent } from './podcast/podcast.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { SeConnecterComponent } from './se-connecter/se-connecter.component';
 import { RechercheComponent } from './recherche/recherche.component';
+import { CompteComponent } from './compte/compte.component';
 import { EnregistrementMusiqueComponent } from './enregistrement-musique/enregistrement-musique.component';
 
 
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path:"podcast",component:PodcastComponent},
   {path:"playlist",component:PlaylistComponent},
   {path:"connection",component:SeConnecterComponent},
+  {path:"compte",component:CompteComponent},
 
 
   // Toujours en dernier
