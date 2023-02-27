@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-lecture-musique',
@@ -8,17 +8,21 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 })
 export class LectureMusiqueComponent {
   audioCtx: AudioContext = new AudioContext()
+
+  @Input()
+  musicId: number;
+
   constructor(
     private http: HttpClient
   ) {}
 
-  play (id: number) {
+  play () {
     let bufferSource = this.audioCtx.createBufferSource();
     let gainNode: GainNode = this.audioCtx.createGain()
     gainNode.gain.value = 1;
     let destination = this.audioCtx.destination;
 
-    this.http.get<Musique>("http://localhost:8080/musique/" + id).subscribe((resp) => {
+    this.http.get<Musique>("http://localhost:8080/musique/" + this.musicId).subscribe((resp) => {
       let m: Musique = resp
       let view = new Int8Array(m.piste);
 
