@@ -23,7 +23,7 @@ public class AdminService {
 		if(admin.getId() != null) {
 			throw new CompteException("admin existe déjà");
 		}
-		return admin;	
+		return adminRepository.save(admin);
 		
 	}
 	

@@ -74,3 +74,12 @@ export abstract class Contenu {
            this.genre=genre;
         }
     }
+    export class Artiste extends Compte {
+        biographie: string;
+        nbAuditeur : number;    
+        constructor(id?:number, version?: number, type?: string, nom?: string, prenom?: string, email? :string,login?:string,password?:string,pseudo?:string, biographie?:string, nbAuditeur?:number) {
+            super(id, version, type, nom, prenom, email,login,password,pseudo);        
+            this.biographie=biographie;        
+            this.nbAuditeur=nbAuditeur;    
+        }
+    }
