@@ -21,6 +21,11 @@ public class Artiste extends Compte {
     private List<Contenu> listeContenu;
 
     public Artiste() {}
+    
+    public Artiste(String nom, String prenom) {
+    	this.setNom(nom);
+    	this.setPrenom(prenom);
+    }
 
     public Artiste(String login,String password,String email,String nom,String prenom,String pseudo, Integer nbAuditeur, String biographie) {
         this.setLogin(login);

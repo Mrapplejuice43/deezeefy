@@ -10,15 +10,23 @@ import { RechercheService } from './recherche.service';
 export class RechercheComponent {
 
   titre: string="";
-
-  
+  auteur: string="";
+  genre: string="";
 
   selection: Array<Musique> = new Array<Musique>();
 
   constructor(private rServ : RechercheService){}
 
 
-valider(){
+validerT(){
   this.rServ.findAllByTitre(this.titre).subscribe(resp => { this.selection = resp;})
+}
+
+validerA(){
+  this.rServ.findAllByAuteur(this.auteur).subscribe(resp => { this.selection = resp;})
+}
+
+validerG(){
+  this.rServ.findAllByGenre(this.genre).subscribe(resp => { this.selection = resp;})
 }
 }

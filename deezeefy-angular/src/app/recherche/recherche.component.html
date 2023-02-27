@@ -1,11 +1,24 @@
-<p>Recherche par titre :</p> <input type="text" [(ngModel)]="titre" /><button (click)="valider()">Valider</button><br/>
-
+Recherche par titre : <input type="text" [(ngModel)]="titre" /><button (click)="validerT()">Valider</button>
+Recherche par nom d'auteur : <input type="text" [(ngModel)]="auteur" /><button (click)="validerA()">Valider</button>
+Recherche par genre : 
+<select [(ngModel)]="genre">
+    <option value="POP">Pop</option>
+    <option value="RAP">Rap</option>
+    <option value="VARIETE">Variété</option>
+    <option value="LATINO">Latino</option>
+    <option value="CLASSIQUE">Classique</option>
+    <option value="METAL">Metal</option>
+    <option value="ELECTRONIQUE">Electronique</option>
+</select>
+<button (click)="validerG()">Valider</button><br/>
 <table>
     <thead>
         <tr>
             <th>Identifiant</th>
             <th>Titre</th>
             <th>Duree</th>
+            <th>Artiste</th>
+            <th>Genre</th>
         </tr>
     </thead>
 
@@ -14,5 +27,7 @@
             <td>{{m.id }}</td>
             <td>{{m.titre }}</td>
             <td>{{m.duree}}</td>
+            <td>{{m.auteur}}</td>
+            <td>{{m.genre}}</td>
         </tr>
     </tbody>
