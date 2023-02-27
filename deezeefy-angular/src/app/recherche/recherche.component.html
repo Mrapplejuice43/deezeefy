@@ -1,33 +1,47 @@
-Recherche par titre : <input type="text" [(ngModel)]="titre" /><button (click)="validerT()">Valider</button>
-Recherche par nom d'auteur : <input type="text" [(ngModel)]="auteur" /><button (click)="validerA()">Valider</button>
-Recherche par genre : 
-<select [(ngModel)]="genre">
-    <option value="POP">Pop</option>
-    <option value="RAP">Rap</option>
-    <option value="VARIETE">Variété</option>
-    <option value="LATINO">Latino</option>
-    <option value="CLASSIQUE">Classique</option>
-    <option value="METAL">Metal</option>
-    <option value="ELECTRONIQUE">Electronique</option>
-</select>
-<button (click)="validerG()">Valider</button><br/>
-<table>
-    <thead>
-        <tr>
-            <th>Identifiant</th>
-            <th>Titre</th>
-            <th>Duree</th>
-            <th>Artiste</th>
-            <th>Genre</th>
-        </tr>
-    </thead>
+<div class="container">
 
-    <tbody>
-        <tr *ngFor="let m of selection">
-            <td>{{m.id }}</td>
-            <td>{{m.titre }}</td>
-            <td>{{m.duree}}</td>
-            <td>{{m.auteur?.nom}}</td>
-            <td>{{m.genre}}</td>
-        </tr>
-    </tbody>
+    <div class="card">
+        <h3 class="card-header">Faire une recherche</h3>
+       
+
+            <div class="card-header">
+    Recherche par titre : <input type="text" [(ngModel)]="titre" w-25/><button (click)="validerT()">Valider</button>
+    Recherche par nom d'auteur : <input type="text" [(ngModel)]="auteur" /><button (click)="validerA()">Valider</button>
+    Recherche par genre : 
+    <select [(ngModel)]="genre">
+        <option value="POP">Pop</option>
+        <option value="RAP">Rap</option>
+        <option value="VARIETE">Variété</option>
+        <option value="LATINO">Latino</option>
+        <option value="CLASSIQUE">Classique</option>
+        <option value="METAL">Metal</option>
+        <option value="ELECTRONIQUE">Electronique</option>
+    </select>
+    <button (click)="validerG()">Valider</button><br/>
+    </div>
+    <div class="card-body">
+    <table class="table table-bordered table-striped table-hover align-middle">
+        <thead>
+            <tr>
+                <th>Identifiant</th>
+                <th>Titre</th>
+                <th>Duree</th>
+                <th>Artiste</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let m of selection">
+                <td>{{m.id }}</td>
+                <td>{{m.titre }}</td>
+                <td>{{m.duree}}</td>
+                <td>{{m.auteur?.nom}}</td>
+                <td>{{m.genre}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+        </div>
+    </div>
+</div>
