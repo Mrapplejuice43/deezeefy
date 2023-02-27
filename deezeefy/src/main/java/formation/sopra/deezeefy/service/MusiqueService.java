@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import formation.sopra.deezeefy.exception.IdException;
 import formation.sopra.deezeefy.exception.MusiqueException;
+import formation.sopra.deezeefy.model.Genre;
 import formation.sopra.deezeefy.model.Musique;
 import formation.sopra.deezeefy.repository.MusiqueRepository;
 
@@ -66,6 +67,10 @@ public class MusiqueService {
 	
 	public List<Musique> findAllByAuteur(String auteur) {
 		return musiqueRepo.findByAuteurNomContaining(auteur);
+	}
+	
+	public List<Musique> findAllByGenre(Genre genre) {
+		return musiqueRepo.findByGenre(genre);
 	}
 }
 

@@ -21,4 +21,9 @@ export class RechercheService {
     return this.http.get<Array<Musique>>("http://localhost:8080/musique/rechercheAuteur/"+ auteur);
     
   }
+
+  findAllByGenre(genre: string): Observable<Array<Musique>>{
+    return this.http.get<Array<Musique>>("http://localhost:8080/musique/rechercheGenre/"+ genre);
+    
+  }
 }

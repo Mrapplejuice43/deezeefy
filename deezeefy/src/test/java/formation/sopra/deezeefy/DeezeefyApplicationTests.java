@@ -20,8 +20,6 @@ class DeezeefyApplicationTests {
 	@Autowired
 	private ArtistRepository artistRepository;
 	
-	@Autowired
-	private MusiqueService mServ;
 
 	@Test
 	void preloadBase() {

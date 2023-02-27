@@ -1,5 +1,6 @@
 package formation.sopra.deezeefy.repository;
 
+import formation.sopra.deezeefy.model.Genre;
 import formation.sopra.deezeefy.model.Musique;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface MusiqueRepository extends JpaRepository<Musique, Integer>{
 	List<Musique> findByTitreContaining(String titre);
 	
 	List<Musique> findByAuteurNomContaining(String auteur);
+	
+	List<Musique> findByGenre(Genre genre);
 }

@@ -11,7 +11,8 @@ export class RechercheComponent {
 
   titre: string="";
   auteur: string="";
-  
+  genre: string="";
+
   selection: Array<Musique> = new Array<Musique>();
 
   constructor(private rServ : RechercheService){}
@@ -23,5 +24,9 @@ validerT(){
 
 validerA(){
   this.rServ.findAllByAuteur(this.auteur).subscribe(resp => { this.selection = resp;})
+}
+
+validerG(){
+  this.rServ.findAllByGenre(this.genre).subscribe(resp => { this.selection = resp;})
 }
 }

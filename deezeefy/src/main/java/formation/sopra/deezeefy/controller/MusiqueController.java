@@ -1,6 +1,8 @@
 package formation.sopra.deezeefy.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
+
+import formation.sopra.deezeefy.model.Genre;
 import formation.sopra.deezeefy.model.Musique;
 import formation.sopra.deezeefy.model.Views;
 import formation.sopra.deezeefy.service.MusiqueService;
@@ -67,5 +69,11 @@ public class MusiqueController {
 		return musiqueService.findAllByAuteur(auteur);
 	}
 	
+	@GetMapping("/rechercheGenre/{genre}")
+	@JsonView(Views.ViewMusique.class)
+	public List<Musique> findAllByGenre(@PathVariable String genre){
+		Genre g = Genre.valueOf(genre);
+		return musiqueService.findAllByGenre(g);
+	}
 	
 }
