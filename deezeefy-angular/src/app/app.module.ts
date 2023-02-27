@@ -17,6 +17,7 @@ import { PlaylistComponent } from './playlist/playlist.component';
 import { SeConnecterComponent } from './se-connecter/se-connecter.component';
 import { RechercheComponent } from './recherche/recherche.component';
 import { MusiqueComponent } from './musique/musique.component';
+import { EnregistrementMusiqueComponent } from './enregistrement-musique/enregistrement-musique.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MusiqueComponent } from './musique/musique.component';
     SeConnecterComponent,
     RechercheComponent,
     LectureMusiqueComponent,
+    EnregistrementMusiqueComponent,
   ],
   imports: [
     BrowserModule,

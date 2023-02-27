@@ -1,0 +1,12 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header">
+      <span class="h2">Enregistrement de musique en base</span>
+    </div>
+    <div class="card-body">
+      <input style="display: none;" type="file" name="musicInp" id="musicInp" (change)="save($event)" #inputFile>
+      <span class="btn btn-success" (click)="inputFile.click()">Send to base</span>
+      <span class="text-success" *ngIf="fileName"> {{fileName + " uploaded"}} </span>
+    </div>
+  </div>
+</div>
