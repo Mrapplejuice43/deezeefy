@@ -36,10 +36,6 @@ class DeezeefyApplicationTests {
 		Musique m3 = new Musique("Take Me Back", 285, b, Genre.RAP);
 		m3 = musiqueRepository.save(m3);
 		
-		Artiste a1 = new Artiste("Jackson", "Michael");
-		a1 = artistRepository.save(a1);
-		m3.setAuteur(a1);
-		musiqueRepository.save(m3);
 		
 		
 		
