@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SeConnecterHttpServiceService } from './se-connecter/se-connecter-http-service.service';
+import { SeConnecterHttpServiceService } from './se-connecter-http-service.service';
 
 describe('SeConnecterHttpServiceService', () => {
   let service: SeConnecterHttpServiceService;
