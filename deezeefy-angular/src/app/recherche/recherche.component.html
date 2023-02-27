@@ -5,7 +5,7 @@
        
 
             <div class="card-header">
-    Recherche par titre : <input type="text" [(ngModel)]="titre" w-25/><button (click)="validerT()">Valider</button>
+    Recherche par titre : <input type="text" [(ngModel)]="titre" /><button (click)="validerT()">Valider</button>
     Recherche par nom d'auteur : <input type="text" [(ngModel)]="auteur" /><button (click)="validerA()">Valider</button>
     Recherche par genre : 
     <select [(ngModel)]="genre">
@@ -28,6 +28,7 @@
                 <th>Duree</th>
                 <th>Artiste</th>
                 <th>Genre</th>
+                <th></th>
             </tr>
         </thead>
 
@@ -38,6 +39,9 @@
                 <td>{{m.duree}}</td>
                 <td>{{m.auteur?.nom}}</td>
                 <td>{{m.genre}}</td>
+                <td class="text-center">
+                    <app-lecture-musique [musicId]="m.id"></app-lecture-musique>
+                  </td>
             </tr>
         </tbody>
 
