@@ -14,8 +14,9 @@
       <a [routerLink]="['/enregistrement-musique']" class="nav-link col-auto" [routerLinkActive]="'active'"><i  class="bi bi-music-note-list"></i> Enregistrement Musique</a>
     </div>
 
-    <a [routerLink]="['/connection']" class="nav-link ms-auto me-1" [routerLinkActive]="'active'"><i class="bi bi-person"></i> Se Connecter</a>
-
+    <a [routerLink]="['/connection']" class="nav-link ms-auto me-1" [routerLinkActive]="'active'"><i class="bi bi-person"></i> Se Connecter</a>|
+    <a [routerLink]="['/compte']" class="nav-link ms-auto me-1" [routerLinkActive]="'active'"><i class="bi bi-person"></i> S'inscrire</a>
+    
     <!-- <div class="row ms-auto me-1" *ngIf="currentUser" >
       <div class="col-auto">
         <select class="form-control" name="rolesOpt" id="rolesOpt" (change)="changeView()" [(ngModel)]="roleSelected">

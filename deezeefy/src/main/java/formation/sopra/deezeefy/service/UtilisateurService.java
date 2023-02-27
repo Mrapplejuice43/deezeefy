@@ -19,7 +19,7 @@ public class UtilisateurService {
 		if(utilisateur.getId() != null) {
 			throw new CompteException("utilisateur existe déjà");
 		}
-		return utilisateur;	
+		return utilisateurRepository.save(utilisateur);	
 		
 	}
 	

@@ -18,7 +18,7 @@ export class LectureMusiqueComponent {
   ) {}
 
   play () {
-    this.http.get<Musique>("http://localhost:8080/musique/" + this.musicId).subscribe((resp) => {
+    this.http.get<Musique>("http://localhost:9999/musique/" + this.musicId).subscribe((resp) => {
       let m: Musique = resp
       let view = new Int8Array(m.piste);
       this.audioService.sendToBufferAndPlay(view)
