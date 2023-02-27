@@ -32,12 +32,14 @@ export abstract class Contenu {
     version:number;
     titre:string;
     duree:number;
+    auteur: string;
 
-    constructor(id?:number, version?:number, titre?:string, duree?:number ){
+    constructor(id?:number, version?:number, titre?:string, duree?:number, auteur?: string ){
         this.id=id;
         this.version=version;
         this.titre=titre;
         this.duree=duree;
+        this.auteur=auteur;
     }
 }
     export class Musique extends Contenu {

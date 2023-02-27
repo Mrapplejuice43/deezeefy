@@ -55,10 +55,16 @@ public class MusiqueController {
 		musiqueService.deleteById(id);
 	}
 	
-	@GetMapping("/recherche/{titre}")
+	@GetMapping("/rechercheTitre/{titre}")
 	@JsonView(Views.ViewMusique.class)
 	public List<Musique> findAllByTitre(@PathVariable String titre){
 		return musiqueService.findAllByTitre(titre);
+	}
+	
+	@GetMapping("/rechercheAuteur/{auteur}")
+	@JsonView(Views.ViewMusique.class)
+	public List<Musique> findAllByAuteur(@PathVariable String auteur){
+		return musiqueService.findAllByAuteur(auteur);
 	}
 	
 	

@@ -1,4 +1,5 @@
-<p>Recherche par titre :</p> <input type="text" [(ngModel)]="titre" /><button (click)="valider()">Valider</button><br/>
+Recherche par titre : <input type="text" [(ngModel)]="titre" /><button (click)="validerT()">Valider</button>
+Recherche par auteur : <input type="text" [(ngModel)]="auteur" /><button (click)="validerA()">Valider</button><br/>
 
 <table>
     <thead>
@@ -6,6 +7,7 @@
             <th>Identifiant</th>
             <th>Titre</th>
             <th>Duree</th>
+            <th>Artiste</th>
         </tr>
     </thead>
 
@@ -14,5 +16,6 @@
             <td>{{m.id }}</td>
             <td>{{m.titre }}</td>
             <td>{{m.duree}}</td>
+            <td>{{m.auteur}}</td>
         </tr>
     </tbody>

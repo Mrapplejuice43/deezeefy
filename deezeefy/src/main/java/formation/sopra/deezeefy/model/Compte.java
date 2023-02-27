@@ -51,6 +51,11 @@ public abstract class Compte {
     private List<CompteFollower> listeFollowers;
 
     public Compte() {}
+    
+    public Compte(String nom, String prenom) {
+    	this.nom=nom;
+    	this.prenom=prenom;
+    }
 
     public Compte(String login,String password,String email,String nom,String prenom,String pseudo) {
         this.login = login;

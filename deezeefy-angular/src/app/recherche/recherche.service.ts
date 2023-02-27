@@ -13,7 +13,12 @@ export class RechercheService {
 
 
   findAllByTitre(titre: string): Observable<Array<Musique>>{
-    return this.http.get<Array<Musique>>("http://localhost:8080/musique/recherche/"+ titre);
+    return this.http.get<Array<Musique>>("http://localhost:8080/musique/rechercheTitre/"+ titre);
+    
+  }
+
+  findAllByAuteur(auteur: string): Observable<Array<Musique>>{
+    return this.http.get<Array<Musique>>("http://localhost:8080/musique/rechercheAuteur/"+ auteur);
     
   }
 }
