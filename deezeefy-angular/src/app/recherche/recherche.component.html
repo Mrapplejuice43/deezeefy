@@ -29,6 +29,7 @@
                 <th>Artiste</th>
                 <th>Genre</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
 
@@ -42,10 +43,15 @@
                 <td class="text-center">
                     <app-lecture-musique [musicId]="m.id"></app-lecture-musique>
                   </td>
+                <td>
+                    <span class="btn btn-warning" (click)="select(m.id)">Ajouter</span>
+                </td>
             </tr>
         </tbody>
 
     </table>
         </div>
+        <span class="btn btn-success" (click)="add()">Ajouter à la playlist <i class="bi bi-play"></i></span>
+        
     </div>
 </div>

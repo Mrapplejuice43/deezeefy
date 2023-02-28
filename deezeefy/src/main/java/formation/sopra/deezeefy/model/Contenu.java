@@ -51,6 +51,11 @@ public abstract class Contenu {
         this.duree = duree;
         this.piste = piste;
     }
+    
+    public Contenu(String titre, Integer duree) {
+        this.titre = titre;
+        this.duree = duree;
+    }
 
     public Integer getId() {
         return id;

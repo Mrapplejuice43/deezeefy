@@ -75,3 +75,47 @@ export abstract class Contenu {
            this.genre=genre;
         }
     }
+
+
+
+export class Playlist {
+    id: number;
+    version: number;
+    titre: string;
+    duree: number;
+    dateCreation: string;
+    nbContenu: number;
+    typePlaylist: string;
+    createur: Compte;
+
+    constructor(id?:number, version?:number, titre?: string, duree?: number, dateCreation?: string, nbContenu?: number, typePlaylist?: string, createur?: Compte){
+        this.id=id;
+        this.version=version;
+        this.titre=titre;
+        this.duree=duree;
+        this.dateCreation=dateCreation;
+        this.typePlaylist=typePlaylist;
+        this.createur=createur;
+    }
+
+}
+
+export class ContenuPlaylist{
+
+    id: number;
+    version: number;
+    dateAjout: string;
+    contenuAssocie: Musique;
+    playlistAssociee: Playlist;
+
+    constructor(id?:number, version?:number, dateAjout?: string, contenuAssocie?: Musique, playlistAssociee?: Playlist){
+        this.id=id;
+        this.version=version;
+        this.dateAjout=dateAjout;
+        this.contenuAssocie=contenuAssocie;
+        this.playlistAssociee=playlistAssociee;
+    }
+
+    
+
+}

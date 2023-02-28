@@ -41,5 +41,7 @@ public class ContenuPlaylistService {
 		return contenuPlaylistRepo.findById(id).orElseThrow(()->{throw new ContenuPlaylistException();});
 	}
 
-
+	public List<ContenuPlaylist>  findAllCPByIdP(Integer id) {
+		return contenuPlaylistRepo.findByPlaylistAssocieeId(id);
+	}
 }
