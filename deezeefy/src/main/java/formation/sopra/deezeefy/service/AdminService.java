@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -59,6 +60,18 @@ public class AdminService {
 			throw new CompteException("id est null");		
 		}	
 		adminRepository.deleteById(id);
+	}
+	
+	public Admin findByLoginAndPassword(String login, String password) {
+		
+		Optional<Admin>  newAdmin =  adminRepository.findByLoginAndPassword(login, password);
+		
+		if(newAdmin.isEmpty()) {
+			throw new CompteException("admin absent ");
+			
+		}
+		
+		return  newAdmin.get();
 	}
 	
 }

@@ -1,31 +1,45 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Admin } from '../model';
+import { AuthService } from '../auth.service';
+import { Admin, Artiste, AuthDTO, Utilisateur } from '../model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SeConnecterHttpServiceService {
 
-  admin: Array<Admin> = new Array<Admin>();
   
-  constructor(private http: HttpClient) { 
-      this.load();
+  constructor(private http: HttpClient,private authService : AuthService) { 
+    
     }
-  findById(id: number): Observable<Admin> {
-      return this.http.get<Admin>("http://localhost:9999/admin/" + id);    
-    }
+ 
+loginUser(dto : AuthDTO){
 
-
-findInDb(){
-
+  this.http.post<Utilisateur>("http://localhost:9999/utilisateur/auth",dto).subscribe(resp => { 
+    resp.type = "utilisateur";
+    this.authService.loginCompte(resp)
+   
+  });
 
 }
 
-  load() {
-    this.http.get<Array<Admin>>("http://localhost:9999/admin").subscribe(resp => {
-      this.admin = resp;
-    });
-  }
+loginAdmin(dto : AuthDTO){
+
+  this.http.post<Admin>("http://localhost:9999/admin/auth",dto).subscribe(resp => { 
+    resp.type = "admin";
+    this.authService.loginCompte(resp)
+  });
+
+}
+
+loginArtist(dto : AuthDTO){
+
+  this.http.post<Artiste>("http://localhost:9999/artiste/auth",dto).subscribe(resp => { 
+    resp.type = "artiste";
+    this.authService.loginCompte(resp)
+  });
+
+}
+
 }

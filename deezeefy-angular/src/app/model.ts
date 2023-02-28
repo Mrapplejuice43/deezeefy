@@ -49,7 +49,21 @@ export class Artiste extends Compte {
     this.nbAuditeur=nbAuditeur;
     }
 }
+export class AuthDTO {
+    login: string;
+    password: string;
+  
+    constructor(login?: string, password?: string) {
+      this.login = login;
+      this.password = password;
+    }
 
+    isValide():boolean{
+        return(Boolean(this.login) && Boolean(this.password));
+    }
+  }
+  
+    
 
 export abstract class Contenu {
     id: number

@@ -49,6 +49,8 @@ public abstract class Compte {
     @OneToMany(mappedBy = "compteSuivi")
     @JsonView(Views.ViewCompteWithListeFollowers.class)
     private List<CompteFollower> listeFollowers;
+    
+   
 
     public Compte() {}
     
