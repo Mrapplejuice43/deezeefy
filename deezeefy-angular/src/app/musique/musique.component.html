@@ -24,9 +24,50 @@
                         <td class="text-center">
                           <app-lecture-musique [musicId]="m.id"></app-lecture-musique>
                         </td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" (click)="edit(m.id)"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger" (click)="remove(m.id)"><i class="bi bi-trash3"></i></a>
+                          </td>
                     </tr>
                 </tbody>
             </table>
+
+            <div class="card-body" *ngIf="formMusique">
+
+                <div class="row">
+                    <hr>
+                  <label for="idInp" class="col-form-label col-auto">Identifiant :</label>
+                  <div class="col">
+                    
+                    <input type="number" name="idInp" id="idInp" class="form-control col" readonly [(ngModel)]="formMusique.id">
+                  </div>
+                  <label for="versionInp" class="col-form-label col-auto">Version :</label>
+                  <div class="col">
+                    <input type="number" name="versionInp" id="versionInp" class="form-control" readonly [(ngModel)]="formMusique.version">
+                  </div>
+                </div>
+                <div class="mb-3">
+                    <label for="titreInp" class="form-label">Titre</label>
+                    <input type="text" name="titreInp" id="titreInp" class="form-control" [(ngModel)]="formMusique.titre">
+                  </div>
+          
+                  <div class="mb-3">
+                    <label for="dureeInp" class="form-label">Durée</label>
+                    <input type="number" name="dureeInp" id="dureeInp" class="form-control" [(ngModel)]="formMusique.duree">
+                  </div>
+          
+                  <div class="mb-3">
+                    <label for="genreInp" class="form-label">Genre</label>
+                    <input type="text" name="genreInp" id="genreInp" class="form-control" [(ngModel)]="formMusique.genre">
+                  </div>
+
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-success" (click)="addMusique()"><i class="bi bi-plus-square"></i></a>
+                <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace"></i></a>
+              </div>
+              
+
         </div>
     </div>
 </div>

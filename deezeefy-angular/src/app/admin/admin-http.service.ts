@@ -18,29 +18,29 @@ export class AdminHttpService {
   }
 
   findById(id: number): Observable<Admin> {
-    return this.http.get<Admin>("http://localhost:8080/admin/" + id);
+    return this.http.get<Admin>("http://localhost:9999/admin/" + id);
   }
 
   insert(admin: Admin): void {
-    this.http.post<Admin>("http://localhost:8080/admin", admin).subscribe(resp => {
+    this.http.post<Admin>("http://localhost:9999/admin", admin).subscribe(resp => {
       this.load();
     });
   }
 
   update(admin: Admin): void {
-    this.http.put<Admin>("http://localhost:8080/admin/" + admin.id, admin).subscribe(resp => {
+    this.http.put<Admin>("http://localhost:9999/admin/" + admin.id, admin).subscribe(resp => {
       this.load();
     });
   }
 
   remove(id: number): void {
-    this.http.delete<void>("http://localhost:8080/admin/" + id).subscribe(resp => {
+    this.http.delete<void>("http://localhost:9999/admin/" + id).subscribe(resp => {
       this.load();
     });
   }
 
   private load(): void {
-    this.http.get<Array<Admin>>("http://localhost:8080/admin").subscribe(resp => {
+    this.http.get<Array<Admin>>("http://localhost:9999/admin").subscribe(resp => {
       this.admins = resp;
     });
   }

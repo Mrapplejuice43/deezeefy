@@ -11,8 +11,8 @@ import { ArtistHttpService } from './artist-http.service';
 })
 export class ArtistComponent {
 
-  formArtiste: Artiste = new Artiste();
-
+  //formArtiste: Artiste = new Artiste();
+  formArtiste:Artiste
 
   constructor(
     private artistHttpService: ArtistHttpService, private router : Router) {
@@ -20,8 +20,26 @@ export class ArtistComponent {
   }
 
   
+  //add() {
+  //  this.artistHttpService.insert(this.formArtiste);
+ // }
+
+
   add() {
-    this.artistHttpService.insert(this.formArtiste);
+    if(this.formArtiste) {
+      if(this.formArtiste.id) {
+        
+        this.artistHttpService.update(this.formArtiste)
+      } else {
+        
+        this.artistHttpService.insert(this.formArtiste)
+      }
+      
+      this.formArtiste = undefined
+    } else {
+      this.formArtiste = new Artiste()
+      
+    }
     this.router.navigate(['/']);
   }
 
@@ -29,4 +47,15 @@ export class ArtistComponent {
     this.formArtiste = undefined
   }
 
+  public findAll() {
+    return this.artistHttpService.findAll();
+  }
+
+  edit(id: number) {
+    this.artistHttpService.findById(id).subscribe((resp) => { this.formArtiste = resp })
+  }
+
+  remove(id: number) {
+    this.artistHttpService.remove(id)
+  }
 }

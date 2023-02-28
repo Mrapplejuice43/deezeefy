@@ -27,7 +27,6 @@ public abstract class Contenu {
 
     @Lob
     @Basic(fetch = FetchType.LAZY)
-    @Column(nullable = false)
     @JsonView(Views.ViewBase.class)
     private Byte[] piste;
 

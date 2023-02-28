@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Utilisateur } from '../model';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,18 +15,37 @@ export class UtilisateurHttpService {
     this.load();
   }
 
-  insert(utilisateur: Utilisateur): void {
-    this.http.post<Utilisateur>("http://localhost:9999/utilisateur", utilisateur).subscribe(response => {
-      this.load();
-      alert("Votre compte a bien été crée ! ");
-    })
+  findAll(): Array<Utilisateur> {
+    return this.utilisateurs;
   }
 
-  load(): void {
-    this.http.get<Array<Utilisateur>>("http://localhost:9999/utilisateur").subscribe(resp => {
-      this.utilisateurs = resp;
-    });
+  findById(id: number): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>("http://localhost:9999/utilisateur/" + id);
   }
+
+insert(utilisateur:Utilisateur):void{
+  this.http.post<Utilisateur>("http://localhost:9999/utilisateur", utilisateur).subscribe(response =>{
+    this.load();
+  })
+}
+
+update(utilisateur: Utilisateur): void {
+  this.http.put<Utilisateur>("http://localhost:9999/utilisateur/" + utilisateur.id, utilisateur).subscribe(resp => {
+    this.load();
+  });
+}
+
+remove(id: number): void {
+  this.http.delete<void>("http://localhost:9999/utilisateur/" + id).subscribe(resp => {
+    this.load();
+  });
+}
+
+private load(): void {
+  this.http.get<Array<Utilisateur>>("http://localhost:9999/utilisateur").subscribe(resp => {
+    this.utilisateurs = resp;
+  });
+}
 
   delete(id: number): void {
     this.http.delete<Utilisateur>("http://localhost:9999/utilisateur/" + id).subscribe(resp => {

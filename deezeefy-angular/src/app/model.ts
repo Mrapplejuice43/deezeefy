@@ -52,37 +52,51 @@ export class Artiste extends Compte {
 
 
 export abstract class Contenu {
-    id:number;
-    version:number;
-    titre:string;
-    duree:number;
+    id: number
+    version: number
+    titre: string
+    duree: number
     piste: Array<number>
-    auteur: Artiste;
+    artiste: any
+    auditeurs: Array<any>
+    listePlaylistAssociees: Array<any>
+  
+    constructor(id?: number,
+      version?: number,
+      titre?: string,
+      duree?: number,
+      piste?: Array<number>,
+      artiste?: any,
+      auditeurs?: Array<any>,
+      listePlaylistAssociees?: Array<any>)
+       {
+        this.id = id
+        this.version = version
+        this.titre = titre
+        this.duree = duree
+        this.piste = piste ? piste : [];
+        this.artiste = artiste
+        this.auditeurs = auditeurs
+        this.listePlaylistAssociees = listePlaylistAssociees
+      }
+  }
 
-    constructor(id?:number, version?:number, titre?:string, duree?:number, piste?: Array<number>, auteur?: Artiste ){
-        this.id=id;
-        this.version=version;
-        this.titre=titre;
-        this.duree=duree;
-        this.piste=piste;
-        this.auteur=auteur;
-    }
-}
     export class Musique extends Contenu {
 
         genre:string;
+        auteur: Compte;
 
-        constructor(id?:number, version?:number, titre?:string, duree?:number, genre?:string ){
-            super(id, version,titre,duree);
+        constructor(id?: number,
+            version?: number,
+            titre?: string,
+            duree?: number,
+            piste?: Array<number>,
+            artiste?: any,
+            auditeurs?: Array<any>,
+            listePlaylistAssociees?: Array<any>, genre?:string, auteur?:Compte){
+            super(id, version,titre,duree, piste, artiste, auditeurs, listePlaylistAssociees);
            this.genre=genre;
+           this.auteur=auteur;
         }
     }
-    export class Artiste extends Compte {
-        biographie: string;
-        nbAuditeur : number;    
-        constructor(id?:number, version?: number, type?: string, nom?: string, prenom?: string, email? :string,login?:string,password?:string,pseudo?:string, biographie?:string, nbAuditeur?:number) {
-            super(id, version, type, nom, prenom, email,login,password,pseudo);        
-            this.biographie=biographie;        
-            this.nbAuditeur=nbAuditeur;    
-        }
-    }
+

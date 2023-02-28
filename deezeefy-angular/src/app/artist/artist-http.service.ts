@@ -34,4 +34,19 @@ export class ArtistHttpService {
     });
   }
 
+  findAll(): Array<Artiste> {
+    return this.artistes;
+  }
+
+  remove(id: number): void {
+    this.http.delete<void>("http://localhost:9999/artiste/" + id).subscribe(resp => {
+      this.load();
+    });
+  }
+
+  update(artist: Artiste): void {
+    this.http.put<Artiste>("http://localhost:9999/artiste/" + artist.id, artist).subscribe(resp => {
+      this.load();
+    });
+  }
 }

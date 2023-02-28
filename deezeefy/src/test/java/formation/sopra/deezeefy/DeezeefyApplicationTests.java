@@ -44,11 +44,12 @@ class DeezeefyApplicationTests {
 		a3 = artistRepository.save(a3);
 		m3.setAuteur(a3);
 		musiqueRepository.save(m3);
-		adminRepository.save(a1);
-		Admin a2 = new Admin("DS","beatles","ds@deezeefy.com","Smith","Dave","Sdev");
-		adminRepository.save(a2);
-		Admin a3 = new Admin("SC","robot","sc@deezeefy.com","Connor","Sarah","Sarah31");
-		adminRepository.save(a3);
+		Admin ad1 = new Admin("JD1","easy","jd@deezeefy.com","Doe","John","Jdoe");
+		adminRepository.save(ad1);
+		Admin ad2 = new Admin("DS","beatles","ds@deezeefy.com","Smith","Dave","Sdev");
+		adminRepository.save(ad2);
+		Admin ad3 = new Admin("SC","robot","sc@deezeefy.com","Connor","Sarah","Sarah31");
+		adminRepository.save(ad3);
 		
 		
 		
@@ -62,7 +63,6 @@ class DeezeefyApplicationTests {
 		Utilisateur u1 = new Utilisateur("didi","didi","didi@gmail.fr","Didier","Deschamps","didi",Abonnement.ETUDIANT,23);
 		u1=  utilisateurRepository.save(u1);
 		
-		Admin a1 = new Admin("JD1","easy","jd@deezeefy.com","Doe","John","Jdoe");
 	}
 	
 	
