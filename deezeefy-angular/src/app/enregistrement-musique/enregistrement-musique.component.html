@@ -5,8 +5,14 @@
     </div>
     <div class="card-body">
       <input style="display: none;" type="file" name="musicInp" id="musicInp" (change)="save($event)" #inputFile>
-      <span class="btn btn-success" (click)="inputFile.click()">Send to base</span>
-      <span class="text-success" *ngIf="fileName"> {{fileName + " uploaded"}} </span>
+      <div class="row align-items-center" >
+        <span class="btn btn-success col-2" (click)="inputFile.click()">Send to base</span>
+        <div class="progress col-8 no-padding ms-3" *ngIf="getUploadProgress()">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" [style.width.%]="getUploadProgress()"
+                aria-valuemin="0" aria-valuemax="100">Upload Progress</div>
+        </div>
+      </div>
+      <span class="text-success ms-3" *ngIf="getUploadProgress() >= 99"> {{fileName + " uploaded"}} </span>
     </div>
   </div>
 </div>
