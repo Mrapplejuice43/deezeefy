@@ -22,7 +22,9 @@ export class ArtistHttpService {
 
   insert(artist: Artiste): void {
     this.http.post<Artiste>("http://localhost:9999/artiste/",artist).subscribe(resp => { 
-      this.load();});
+      this.load();
+      alert("Votre compte Artiste a bien été crée ! ");
+    });
 
 }
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Artiste } from '../model';
 import { ArtistHttpService } from './artist-http.service';
@@ -14,13 +15,14 @@ export class ArtistComponent {
 
 
   constructor(
-    private artistHttpService: ArtistHttpService) {
+    private artistHttpService: ArtistHttpService, private router : Router) {
 
   }
 
   
   add() {
     this.artistHttpService.insert(this.formArtiste);
+    this.router.navigate(['/']);
   }
 
   cancel() {
