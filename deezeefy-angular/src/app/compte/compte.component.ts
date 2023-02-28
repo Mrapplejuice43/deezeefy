@@ -18,15 +18,6 @@ formUser: Utilisateur = null;
   
   }
 
-  categorise(){
-    if(this.type == "artiste"){
-      this.formArtist = new Artiste();
-
-    }else if(this.type == "user"){
-      this.formUser = new Utilisateur();
-    }
-
-    
-  }
+ 
 
 }

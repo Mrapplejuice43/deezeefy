@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import formation.sopra.deezeefy.exception.IdException;
 import formation.sopra.deezeefy.exception.MusiqueException;
+import formation.sopra.deezeefy.model.Genre;
 import formation.sopra.deezeefy.model.Musique;
 import formation.sopra.deezeefy.repository.MusiqueRepository;
 
@@ -37,8 +38,7 @@ public class MusiqueService {
 	public Musique update(Musique musique) {
 		
 		Musique musiqueEnBase = findById(musique.getId());
-		musiqueEnBase
-				.setGenre(musique.getGenre() == null ? musiqueEnBase.getGenre() : musique.getGenre());
+		musiqueEnBase.setGenre(musique.getGenre() == null ? musiqueEnBase.getGenre() : musique.getGenre());
 		musiqueEnBase.setTitre(musique.getTitre());
 		musiqueEnBase.setDuree(musique.getDuree());
 		musiqueEnBase.setPiste(musique.getPiste());
@@ -60,7 +60,17 @@ public class MusiqueService {
 		delete(findById(id));
 	}
 	
+	
 	public List<Musique> findAllByTitre(String titre) {
 		return musiqueRepo.findByTitreContaining(titre);
 	}
+	
+	public List<Musique> findAllByAuteur(String auteur) {
+		return musiqueRepo.findByAuteurNomContaining(auteur);
+	}
+	
+	public List<Musique> findAllByGenre(Genre genre) {
+		return musiqueRepo.findByGenre(genre);
+	}
 }
+

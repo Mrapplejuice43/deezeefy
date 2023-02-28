@@ -38,6 +38,11 @@ class DeezeefyApplicationTests {
 		Musique m2 = new Musique("Beyond", 345, b, Genre.ELECTRONIQUE);
 		musiqueRepository.save(m2);
 		Musique m3 = new Musique("Take Me Back", 285, b, Genre.RAP);
+		m3 = musiqueRepository.save(m3);
+		
+		Artiste a3 = new Artiste("Jackson", "Michael");
+		a3 = artistRepository.save(a3);
+		m3.setAuteur(a3);
 		musiqueRepository.save(m3);
 		adminRepository.save(a1);
 		Admin a2 = new Admin("DS","beatles","ds@deezeefy.com","Smith","Dave","Sdev");
