@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { Admin } from '../model';
 import { AdminHttpService } from './admin-http.service';
 
@@ -9,8 +10,9 @@ import { AdminHttpService } from './admin-http.service';
 })
 export class AdminComponent {
   formAdmin: Admin;
+  admin : boolean = true;
 
-  constructor(private adminService: AdminHttpService) {}
+  constructor(private adminService: AdminHttpService,private authService : AuthService) {}
 
   public findAll() {
     return this.adminService.findAll();
@@ -29,7 +31,11 @@ export class AdminComponent {
       this.formAdmin = new Admin();
     }
   }
-
+  
+  typeCompte():string{
+    return this.authService.getTypeCompte() ;
+  
+  }
   cancel() {
     this.formAdmin = undefined;
   }

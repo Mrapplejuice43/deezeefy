@@ -1,101 +1,111 @@
-<div class="container">
+<p>{{typeCompte()}}</p>
+<div class="container" *ngIf="(typeCompte()) == 'admin' ">
 
-    <div class="card">
-        <h3 class="card-header">Liste des administrateurs</h3>
-        <div class="card-body">
-            <table class="table table-bordered table-striped table-hover align-middle">
-                <thead>
-                    <tr>
-                        <th>Identifiant</th>
-                        <th>Version</th>
-                        <th>Login</th>
-                        <th>Mot de passe</th>
-                        <th>E-mail</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Pseudo</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let a of findAll()">
-                        <td> {{a.id}} </td>
-                        <td> {{a.version}} </td>
-                        <td> {{a.login}} </td>
-                        <td> {{a.password}} </td>
-                        <td> {{a.email}} </td>
-                        <td> {{a.nom}} </td>
-                        <td> {{a.prenom}} </td>
-                        <td> {{a.pseudo}} </td>
-                        <td class="text-center">
-                            <a class="btn btn-primary" (click)="edit(a.id)"><i class="bi bi-pencil-square"></i></a>
-                            <a class="btn btn-danger" (click)="remove(a.id)"><i class="bi bi-trash3"></i></a>
-                          </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="card-body" *ngIf="formAdmin">
+  <div class="card">
+    <h3 class="card-header">Liste des administrateurs</h3>
+    <div class="card-body">
+      <table class="table table-bordered table-striped table-hover align-middle">
+        <thead>
+          <tr>
+            <th>Identifiant</th>
+            <th>Version</th>
+            <th>Login</th>
+            <th>Mot de passe</th>
+            <th>E-mail</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Pseudo</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let a of findAll()">
+            <td> {{a.id}} </td>
+            <td> {{a.version}} </td>
+            <td> {{a.login}} </td>
+            <td> {{a.password}} </td>
+            <td> {{a.email}} </td>
+            <td> {{a.nom}} </td>
+            <td> {{a.prenom}} </td>
+            <td> {{a.pseudo}} </td>
+            <td class="text-center">
+              <a class="btn btn-primary" (click)="edit(a.id)"><i class="bi bi-pencil-square"></i></a>
+              <a class="btn btn-danger" (click)="remove(a.id)"><i class="bi bi-trash3"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="card-body" *ngIf="formAdmin">
 
-                <div class="row">
-                    <hr>
-                  <label for="idInp" class="col-form-label col-auto">Identifiant :</label>
-                  <div class="col">
-                    
-                    <input type="number" name="idInp" id="idInp" class="form-control col" readonly [(ngModel)]="formAdmin.id">
-                  </div>
-                  <label for="versionInp" class="col-form-label col-auto">Version :</label>
-                  <div class="col">
-                    <input type="number" name="versionInp" id="versionInp" class="form-control" readonly [(ngModel)]="formAdmin.version">
-                  </div>
-                </div>
+        <div class="row">
+          <hr>
+          <label for="idInp" class="col-form-label col-auto">Identifiant :</label>
+          <div class="col">
 
-                <div class="mb-3">
-                    <label for="loginInp" class="form-label">Login</label>
-                    <input type="text" name="loginInp" id="loginInp" class="form-control" [(ngModel)]="formAdmin.login">
-                  </div>
-          
-                  <div class="mb-3">
-                    <label for="passwordInp" class="form-label">Mot de passe</label>
-                    <input type="text" name="passwordInp" id="passwordInp" class="form-control" [(ngModel)]="formAdmin.password">
-                  </div>
-          
-                  <div class="mb-3">
-                    <label for="emailInp" class="form-label">Email</label>
-                    <input type="text" name="emailInp" id="emailInp" class="form-control" [(ngModel)]="formAdmin.email">
-                  </div>
-
-                <div class="mb-3">
-                    <label for="nomInp" class="form-label">Nom</label>
-                    <input type="text" name="nomInp" id="nomInp" class="form-control" [(ngModel)]="formAdmin.nom">
-                  </div>
-          
-                  <div class="mb-3">
-                    <label for="prenomInp" class="form-label">Prenom</label>
-                    <input type="text" name="prenomInp" id="prenomInp" class="form-control" [(ngModel)]="formAdmin.prenom">
-                  </div>
-          
-                  <div class="mb-3">
-                    <label for="pseudoInp" class="form-label">Pseudo</label>
-                    <input type="text" name="pseudoInp" id="pseudoInp" class="form-control" [(ngModel)]="formAdmin.pseudo">
-                  </div>
-
-            </div>
-                  <div class="card-footer">
-                      <a class="btn btn-success" (click)="addAdmin()"><i class="bi bi-plus-square"></i></a>
-                      <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace"></i></a>
-                    </div>
-                 
+            <input type="number" name="idInp" id="idInp" class="form-control col" readonly [(ngModel)]="formAdmin.id">
+          </div>
+          <label for="versionInp" class="col-form-label col-auto">Version :</label>
+          <div class="col">
+            <input type="number" name="versionInp" id="versionInp" class="form-control" readonly
+              [(ngModel)]="formAdmin.version">
+          </div>
         </div>
+
+        <div class="mb-3">
+          <label for="loginInp" class="form-label">Login</label>
+          <input type="text" name="loginInp" id="loginInp" class="form-control" [(ngModel)]="formAdmin.login">
+        </div>
+
+        <div class="mb-3">
+          <label for="passwordInp" class="form-label">Mot de passe</label>
+          <input type="text" name="passwordInp" id="passwordInp" class="form-control" [(ngModel)]="formAdmin.password">
+        </div>
+
+        <div class="mb-3">
+          <label for="emailInp" class="form-label">Email</label>
+          <input type="text" name="emailInp" id="emailInp" class="form-control" [(ngModel)]="formAdmin.email">
+        </div>
+
+        <div class="mb-3">
+          <label for="nomInp" class="form-label">Nom</label>
+          <input type="text" name="nomInp" id="nomInp" class="form-control" [(ngModel)]="formAdmin.nom">
+        </div>
+
+        <div class="mb-3">
+          <label for="prenomInp" class="form-label">Prenom</label>
+          <input type="text" name="prenomInp" id="prenomInp" class="form-control" [(ngModel)]="formAdmin.prenom">
+        </div>
+
+        <div class="mb-3">
+          <label for="pseudoInp" class="form-label">Pseudo</label>
+          <input type="text" name="pseudoInp" id="pseudoInp" class="form-control" [(ngModel)]="formAdmin.pseudo">
+        </div>
+
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-success" (click)="addAdmin()"><i class="bi bi-plus-square"></i></a>
+        <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace"></i></a>
+      </div>
+
     </div>
-  
-    <br>
+  </div>
+
+  <br>
+  <div class="mb-3" >
     <app-artist></app-artist>
-    <br>
-<app-musique></app-musique>
-<br>
-<app-utilisateur></app-utilisateur>
+  </div>
 
+  <br>
+  <div class="mb-3" >
+    <app-musique></app-musique>
 
+  </div>
+  <br>
+  <div class="mb-3" >
+
+    <app-utilisateur></app-utilisateur>
+
+  </div>
 
 
 

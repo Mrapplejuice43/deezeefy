@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Musique } from '../model';
+import { AuthService } from '../auth.service';
+import { Admin, Musique } from '../model';
 import { MusiqueHttpService } from './musique-http.service';
 
 @Component({
@@ -8,10 +9,12 @@ import { MusiqueHttpService } from './musique-http.service';
   styleUrls: ['./musique.component.scss']
 })
 export class MusiqueComponent {
-  formMusique: Musique
+  formMusique: Musique;
+  formAdmin : Admin;
 
   constructor(
-    private musiqueService: MusiqueHttpService
+    private musiqueService: MusiqueHttpService,
+    private authService : AuthService
   ) {}
 
   public findAll() {
@@ -33,6 +36,9 @@ export class MusiqueComponent {
       this.formMusique = new Musique()
       
     }
+  }
+  typeCompte():string{
+  return this.authService.getTypeCompte();
   }
   
   cancel() {
