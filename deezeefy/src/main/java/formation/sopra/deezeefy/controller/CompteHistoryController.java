@@ -24,6 +24,18 @@ public class CompteHistoryController {
         return compteHistoryService.findById(id);
     }
 
+    @GetMapping("/{compteId}/{contenuId}")
+    @JsonView(Views.ViewCompteHistory.class)
+    public CompteHistory getByCompteIdAndContenuId(@PathVariable("compteId") Integer compteId, @PathVariable("contenuId") Integer contenuId) {
+        return compteHistoryService.findByCompteIdAndContenuId(compteId, contenuId);
+    }
+
+    @GetMapping("/compte/{compteId}")
+    @JsonView(Views.ViewCompteHistory.class)
+    public List<CompteHistory> getAllByCompteId(@PathVariable("compteId") Integer compteId) {
+        return compteHistoryService.findAllByCompteId(compteId);
+    }
+
     @GetMapping("")
     @JsonView(Views.ViewCompteHistory.class)
     public List<CompteHistory> getAll() {

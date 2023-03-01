@@ -67,7 +67,29 @@ export class AuthDTO {
     }
   }
 
+export class CompteHistory {
+  id: number
+  version: number
+  dateDerniereEcoute: string
+  nombreEcoutes: number
+  compte: Compte
+  contenu: Contenu
 
+  constructor(
+    id?: number,
+    version?: number,
+    dateDerniereEcoute?: string,
+    nombreEcoutes?: number,
+    compte?: Compte,
+    contenu?: Contenu) {
+      this.id = id
+      this.version = version
+      this.dateDerniereEcoute = dateDerniereEcoute
+      this.nombreEcoutes = nombreEcoutes
+      this.compte = compte
+      this.contenu = contenu
+    }
+}
 
 export abstract class Contenu {
     id: number
@@ -75,7 +97,7 @@ export abstract class Contenu {
     titre: string
     duree: number
     piste: Array<number>
-    artiste: any
+    auteur: any
     auditeurs: Array<any>
     listePlaylistAssociees: Array<any>
 
@@ -84,7 +106,7 @@ export abstract class Contenu {
       titre?: string,
       duree?: number,
       piste?: Array<number>,
-      artiste?: any,
+      auteur?: any,
       auditeurs?: Array<any>,
       listePlaylistAssociees?: Array<any>)
        {
@@ -93,7 +115,7 @@ export abstract class Contenu {
         this.titre = titre
         this.duree = duree
         this.piste = piste ? piste : [];
-        this.artiste = artiste
+        this.auteur = auteur
         this.auditeurs = auditeurs
         this.listePlaylistAssociees = listePlaylistAssociees
       }
@@ -102,17 +124,16 @@ export abstract class Contenu {
     export class Musique extends Contenu {
 
         genre:string;
-        auteur: Compte;
 
         constructor(id?: number,
             version?: number,
             titre?: string,
             duree?: number,
             piste?: Array<number>,
-            artiste?: any,
+            auteur?: Compte,
             auditeurs?: Array<any>,
-            listePlaylistAssociees?: Array<any>, genre?:string, auteur?:Compte){
-            super(id, version,titre,duree, piste, artiste, auditeurs, listePlaylistAssociees);
+            listePlaylistAssociees?: Array<any>, genre?:string){
+            super(id, version,titre,duree, piste, auteur, auditeurs, listePlaylistAssociees);
            this.genre=genre;
            this.auteur=auteur;
         }

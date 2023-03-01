@@ -1,5 +1,6 @@
 package formation.sopra.deezeefy.model;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.DiscriminatorValue;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Entity
 @DiscriminatorValue(value = "artist")
+@JsonTypeName("artiste")
 public class Artiste extends Compte {
 
     @JsonView(Views.ViewBase.class)
