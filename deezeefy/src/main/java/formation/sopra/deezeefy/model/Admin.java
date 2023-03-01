@@ -13,7 +13,7 @@ public class Admin extends Compte {
         this.setLogin(login);
         this.setPassword(password);
         this.setEmail(email);
-        this.setNom(prenom);
+        this.setNom(nom);
         this.setPrenom(prenom);
         this.setPseudo(pseudo);
     }

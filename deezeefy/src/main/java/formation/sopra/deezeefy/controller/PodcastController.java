@@ -30,6 +30,10 @@ public class PodcastController {
 	public Podcast findById(@PathVariable Integer id) {
 	return podcastService.findById(id);
 	}
+
+	@GetMapping("/{id}/piste")
+	@JsonView(Views.ViewPodcastWithPiste.class)
+	public Podcast findByIdWithPiste(@PathVariable Integer id) { return podcastService.findById(id); }
 	
 	@PostMapping("")
 	@JsonView(Views.ViewPodcast.class)

@@ -17,37 +17,44 @@ import java.util.List;
 @RequestMapping("/contenuPlaylist")
 public class ContenuPlaylistController {
 
-	@Autowired private ContenuPlaylistService contenuContenuPlaylistService;
+	@Autowired private ContenuPlaylistService contenuPlaylistService;
 
 	@GetMapping("")
 	@JsonView(Views.ViewContenuPlaylist.class)
 	public List<ContenuPlaylist> findAll() {
-		return contenuContenuPlaylistService.findAll();
+		return contenuPlaylistService.findAll();
 	}
 
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewContenuPlaylist.class)
 	public ContenuPlaylist findById(@PathVariable Integer id) {
-		return contenuContenuPlaylistService.findById(id);
+		return contenuPlaylistService.findById(id);
 	}
 
 	@PostMapping("")
 	@JsonView(Views.ViewContenuPlaylist.class)
-	public ContenuPlaylist create(@RequestBody ContenuPlaylist contenuContenuPlaylist) {
-		return contenuContenuPlaylistService.create(contenuContenuPlaylist);
+	public ContenuPlaylist create(@RequestBody ContenuPlaylist contenuPlaylist) {
+		return contenuPlaylistService.create(contenuPlaylist);
 	}
 
 	@PutMapping("/{id}")
 	@JsonView(Views.ViewContenuPlaylist.class)
-	public ContenuPlaylist update(@RequestBody ContenuPlaylist contenuContenuPlaylist, @PathVariable Integer id) {
-		if (!id.equals(contenuContenuPlaylist.getId())) {
+	public ContenuPlaylist update(@RequestBody ContenuPlaylist contenuPlaylist, @PathVariable Integer id) {
+		if (!id.equals(contenuPlaylist.getId())) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
-		return contenuContenuPlaylistService.update(contenuContenuPlaylist);
+		return contenuPlaylistService.update(contenuPlaylist);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
-		contenuContenuPlaylistService.deleteById(id);
+		contenuPlaylistService.deleteById(id);
 	}
+	
+	@GetMapping("/playlistId/{id}")
+	public List<ContenuPlaylist> findAllCPByIdP(@PathVariable Integer id){
+		return contenuPlaylistService.findAllCPByIdP(id);
+	} 
+	
+	
 }

@@ -6,8 +6,8 @@
 
             <div class="card-header">
     Recherche par titre : <input type="text" [(ngModel)]="titre" /><button (click)="validerT()">Valider</button>
-    Recherche par nom d'auteur : <input type="text" [(ngModel)]="auteur" /><button (click)="validerA()">Valider</button>
-    Recherche par genre : 
+    Recherche par artiste : <input type="text" [(ngModel)]="auteur" /><button (click)="validerA()">Valider</button>
+    <br/>Recherche par genre : 
     <select [(ngModel)]="genre">
         <option value="POP">Pop</option>
         <option value="RAP">Rap</option>
@@ -29,6 +29,7 @@
                 <th>Artiste</th>
                 <th>Genre</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
 
@@ -37,15 +38,20 @@
                 <td>{{m.id }}</td>
                 <td>{{m.titre }}</td>
                 <td>{{m.duree}}</td>
-                <td>{{m.auteur?.nom}}</td>
+                <td>{{m.auteur?.pseudo}}</td>
                 <td>{{m.genre}}</td>
                 <td class="text-center">
                     <app-lecture-musique [musicId]="m.id"></app-lecture-musique>
                   </td>
+                <td>
+                    <span class="btn btn-warning" (click)="select(m.id)">Ajouter</span>
+                </td>
             </tr>
         </tbody>
 
     </table>
         </div>
+        <span class="btn btn-success" (click)="add()">Ajouter à la playlist <i class="bi bi-play"></i></span>
+        
     </div>
 </div>

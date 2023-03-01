@@ -14,6 +14,7 @@ export class StagiaireHttpService {
   constructor(private http: HttpClient) {
     this.load();
     this.loadCivilites();
+    
   }
 
   findAllCivilite(): Map<string, string> {

@@ -1,6 +1,8 @@
 package formation.sopra.deezeefy.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
+
+import formation.sopra.deezeefy.controller.dto.AuthDTO;
 import formation.sopra.deezeefy.model.Admin;
 import formation.sopra.deezeefy.model.Views;
 import formation.sopra.deezeefy.service.AdminService;
@@ -50,4 +52,14 @@ public class AdminController {
 	public void delete(@PathVariable Integer id) {
 		adminService.deleteById(id);
 	}
+	
+	
+	@PostMapping("/auth")
+	@JsonView(Views.ViewAdmin.class)
+	public Admin auth(@RequestBody AuthDTO authentification) {
+		
+		return adminService.findByLoginAndPassword(authentification.getLogin(), authentification.getPassword());
+		
+	}
+	
 }

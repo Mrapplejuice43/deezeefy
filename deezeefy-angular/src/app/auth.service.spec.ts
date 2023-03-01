@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ArtistHttpService } from './artist/artist-http.service';
+import { AuthService } from './auth.service';
 
-describe('ArtistHttpService', () => {
-  let service: ArtistHttpService;
+describe('AuthService', () => {
+  let service: AuthService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ArtistHttpService);
+    service = TestBed.inject(AuthService);
   });
 
   it('should be created', () => {

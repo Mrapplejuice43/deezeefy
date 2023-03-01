@@ -2,6 +2,7 @@ package formation.sopra.deezeefy.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import formation.sopra.deezeefy.model.Playlist;
+import formation.sopra.deezeefy.model.TypePlaylist;
 import formation.sopra.deezeefy.model.Views;
 import formation.sopra.deezeefy.service.PlaylistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,7 @@ public class PlaylistController {
 	@PostMapping("")
 	@JsonView(Views.ViewPlaylist.class)
 	public Playlist create(@RequestBody Playlist playlist) {
+		
 		return playlistService.create(playlist);
 	}
 

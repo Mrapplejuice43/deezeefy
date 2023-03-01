@@ -66,7 +66,7 @@ public class MusiqueService {
 	}
 	
 	public List<Musique> findAllByAuteur(String auteur) {
-		return musiqueRepo.findByAuteurNomContaining(auteur);
+		return musiqueRepo.findByAuteurPseudoContaining(auteur);
 	}
 	
 	public List<Musique> findAllByGenre(Genre genre) {
