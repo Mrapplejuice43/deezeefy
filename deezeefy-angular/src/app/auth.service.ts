@@ -1,50 +1,48 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Compte, Utilisateur } from './model';
-
-
+import {
+  Compte,
+  COMPTE_ADMIN,
+  COMPTE_ARTISTE,
+  COMPTE_UTILISATEUR,
+} from './model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  private compteConnecte: Compte = undefined;
 
-  private compteConnecte : Compte = undefined;
+  constructor(private router: Router) {}
 
-  constructor( private router: Router) { 
- 
-
+  loginCompte(compteToConnect: Compte) {
+    if (compteToConnect) {
+      if (compteToConnect.type) {
+        this.compteConnecte = compteToConnect;
+        if (compteToConnect.type == COMPTE_UTILISATEUR) {
+          this.router.navigate(['/utilisateur']);
+        } else if (compteToConnect.type == COMPTE_ADMIN) {
+          this.router.navigate(['/admin']);
+        } else if (compteToConnect.type == COMPTE_ARTISTE) {
+          this.router.navigate(['/artiste']);
+        }
+      }
+    }
   }
 
-loginCompte(compteToConnect : Compte){
+  getCompte(): Compte {
+    return this.compteConnecte;
+  }
 
-  if(compteToConnect){
-
-    if(compteToConnect.type){
-
-      this.compteConnecte = compteToConnect;
-      if(compteToConnect.type == "utilisateur"){
-        this.router.navigate(["/utilisateur"]);
-      }else
-      if(compteToConnect.type == "admin"){
-        this.router.navigate(["/admin"])
-      }else
-      if(compteToConnect.type == "artiste"){
-        this.router.navigate(["/artiste"]);
-      }
-     
+  getTypeCompte(): string {
+    if (this.compteConnecte) {
+      return this.compteConnecte.type;
     }
-  } 
-}
+    return undefined;
+  }
 
-getCompte():Compte{
-  return this.compteConnecte;
-}
-
-disconnectCompte(){
-
-  this.compteConnecte = undefined;
-  this.router.navigate(["/home"]);
-}
-
+  disconnectCompte() {
+    this.compteConnecte = undefined;
+    this.router.navigate(['/home']);
+  }
 }

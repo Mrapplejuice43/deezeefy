@@ -31,6 +31,12 @@ public class MusiqueController {
 	public Musique findById(@PathVariable Integer id) {
 	return musiqueService.findById(id);
 	}
+
+	@GetMapping("/{id}/piste")
+	@JsonView(Views.ViewMusiqueWithPiste.class)
+	public Musique findByIdWithPiste(@PathVariable Integer id) {
+		return musiqueService.findById(id);
+	}
 	
 	@PostMapping("")
 	@JsonView(Views.ViewMusique.class)

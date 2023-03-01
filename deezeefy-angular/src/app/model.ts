@@ -1,3 +1,7 @@
+export const COMPTE_ADMIN = "admin"
+export const COMPTE_UTILISATEUR = "user"
+export const COMPTE_ARTISTE = "artiste"
+
 export abstract class Compte {
 
     id: number;
@@ -52,7 +56,7 @@ export class Artiste extends Compte {
 export class AuthDTO {
     login: string;
     password: string;
-  
+
     constructor(login?: string, password?: string) {
       this.login = login;
       this.password = password;
@@ -62,8 +66,8 @@ export class AuthDTO {
         return(Boolean(this.login) && Boolean(this.password));
     }
   }
-  
-    
+
+
 
 export abstract class Contenu {
     id: number
@@ -74,7 +78,7 @@ export abstract class Contenu {
     artiste: any
     auditeurs: Array<any>
     listePlaylistAssociees: Array<any>
-  
+
     constructor(id?: number,
       version?: number,
       titre?: string,

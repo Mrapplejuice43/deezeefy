@@ -10,6 +10,10 @@ public class Views {
 
 	public static class ViewMusique extends ViewContenu {}
 
+	public static class ViewMusiqueWithPiste extends ViewMusique {}
+
+	public static class ViewPodcastWithPiste extends ViewContenu {}
+
 	public static class ViewPodcast extends ViewContenu {}
 
 	public static class ViewContenuDetailed extends ViewBase {}
@@ -81,6 +85,8 @@ public class Views {
 	public static class ViewPlaylistWithListeFollowers extends ViewPlaylistDetailed{}
 
 	public static class ViewPlaylistWithListeContenuAssocie extends ViewPlaylistDetailed {}
+
+
 	// =========================================
 
 }
