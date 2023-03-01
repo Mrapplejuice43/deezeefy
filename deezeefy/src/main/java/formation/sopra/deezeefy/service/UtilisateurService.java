@@ -1,6 +1,7 @@
 package formation.sopra.deezeefy.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,5 +56,15 @@ public class UtilisateurService {
 			throw new CompteException("id est null");		
 		}	
 		utilisateurRepository.deleteById(id);;
+	}
+
+	public Utilisateur findByLoginAndPassword(String login, String password) {
+		
+		Optional<Utilisateur> newUser = utilisateurRepository.findByLoginAndPassword(login,password);
+		
+		if(newUser.isEmpty()) {
+			throw new CompteException("Utilisateur est absent");
+		}
+		return newUser.get();
 	}
 }

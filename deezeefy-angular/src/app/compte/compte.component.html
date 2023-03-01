@@ -3,6 +3,7 @@
 <div class="container">
 
    Quel type de compte souhaitez-vous créer :  <select [(ngModel)]="type">
+    <option value="">Veuillez choisir votre status :</option>
 <option value="artiste"> Artiste</option>
 <option value="user"> Utilisateur</option>
 
@@ -10,12 +11,12 @@
 
     <div  *ngIf="type == 'artiste'" >
 
-        <app-artist></app-artist>
+        <!-- <app-artist></app-artist> mettre formu à la place-->
 
 
     </div>
     <div *ngIf="type == 'user' ">
-        <app-utilisateur></app-utilisateur>
+        <!-- <app-utilisateur></app-utilisateur> mettre le formulaire à la place directement -->
 
     </div>
 

@@ -27,8 +27,7 @@ public abstract class Contenu {
 
     @Lob
     @Basic(fetch = FetchType.LAZY)
-    @Column(nullable = false)
-    @JsonView(Views.ViewBase.class)
+    @JsonView(Views.ViewMusiqueWithPiste.class)
     private Byte[] piste;
 
     @ManyToOne

@@ -1,6 +1,9 @@
 package formation.sopra.deezeefy.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
+
+import formation.sopra.deezeefy.controller.dto.AuthDTO;
+import formation.sopra.deezeefy.model.Admin;
 import formation.sopra.deezeefy.model.Artiste;
 import formation.sopra.deezeefy.model.Views;
 import formation.sopra.deezeefy.service.ArtisteService;
@@ -12,12 +15,13 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = {"*"})
+@CrossOrigin(origins = { "*" })
 @RequestMapping("/artiste")
 public class ArtisteController {
-	
-	@Autowired private ArtisteService artisteService;
-	
+
+	@Autowired
+	private ArtisteService artisteService;
+
 	@GetMapping("")
 	@JsonView(Views.ViewArtiste.class)
 	public List<Artiste> findAll() {
@@ -29,25 +33,34 @@ public class ArtisteController {
 	public Artiste findById(@PathVariable Integer id) {
 		return artisteService.findById(id);
 	}
-	
+
 	@PostMapping("")
 	@JsonView(Views.ViewArtiste.class)
 	public Artiste create(@RequestBody Artiste artiste) {
 		return artisteService.create(artiste);
 	}
-	
+
 	@PutMapping("/{id}")
 	@JsonView(Views.ViewArtiste.class)
 	public Artiste update(@RequestBody Artiste artiste, @PathVariable Integer id) {
-		if(!id.equals(artiste.getId())) {
+		if (!id.equals(artiste.getId())) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
-		
+
 		return artisteService.create(artiste);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
 		artisteService.deleteById(id);
+	}
+
+	@PostMapping("/auth")
+	@JsonView(Views.ViewArtiste.class)
+	public Artiste auth(@RequestBody AuthDTO authentification) {
+		
+
+		return artisteService.findByLoginAndPassword(authentification.getLogin(), authentification.getPassword());
+
 	}
 }

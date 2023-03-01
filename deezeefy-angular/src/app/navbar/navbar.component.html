@@ -2,7 +2,8 @@
   <div class="nav nav-pills text-center col">
     <span class="navbar-brand ms-3 me-3">Deezeefy</span>
     <a [routerLink]="['/home']" class="nav-link" [routerLinkActive]="'active'"><i class="bi bi-house"></i> Home</a>
-    <div class="row ms-1">
+    <div class="row ms-1" *ngIf="getCompteType() =='admin' ">
+
       <a [routerLink]="['/stagiaire']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-book"></i> Stagiaires</a>
       <a [routerLink]="['/recherche']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-box"></i>Recherche</a>
       <a [routerLink]="['/artiste']"class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-person-badge"></i>Artiste</a>
@@ -14,8 +15,37 @@
       <a [routerLink]="['/enregistrement-musique']" class="nav-link col-auto" [routerLinkActive]="'active'"><i  class="bi bi-music-note-list"></i> Enregistrement Musique</a>
     </div>
 
-    <a [routerLink]="['/connection']" class="nav-link ms-auto me-1" [routerLinkActive]="'active'"><i class="bi bi-person"></i> Se Connecter</a>|
-    <a [routerLink]="['/compte']" class="nav-link ms-auto me-1" [routerLinkActive]="'active'"><i class="bi bi-person"></i> S'inscrire</a>
+    <div class="row ms-1" *ngIf="getCompteType() =='utilisateur' ">
+
+      <a [routerLink]="['/utilisateur']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-person-fill"></i> Utilisateur</a>
+      <a [routerLink]="['/recherche']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-box"></i>Recherche</a>
+     <a [routerLink]="['/musique']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-music-note-beamed"></i> Musique</a>
+      <a [routerLink]="['/podcast']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-mic"></i> Podcast</a>
+      <a [routerLink]="['/playlist']" class="nav-link col-auto" [routerLinkActive]="'active'"><i  class="bi bi-music-note-list"></i> Playlist</a>
+    </div>
+    <div class="row ms-1" *ngIf="getCompteType() =='artiste' ">
+
+      <a [routerLink]="['/artiste']"class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-person-badge"></i>Artiste</a>
+      <a [routerLink]="['/recherche']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-box"></i>Recherche</a>
+     <a [routerLink]="['/musique']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-music-note-beamed"></i> Musique</a>
+      <a [routerLink]="['/podcast']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-mic"></i> Podcast</a>
+      <a [routerLink]="['/playlist']" class="nav-link col-auto" [routerLinkActive]="'active'"><i  class="bi bi-music-note-list"></i> Playlist</a>
+      <a [routerLink]="['/enregistrement-musique']" class="nav-link col-auto" [routerLinkActive]="'active'"><i  class="bi bi-music-note-list"></i> Enregistrement Musique</a>
+    </div>
+
+    <div class="row ms-1" *ngIf="!getAuthCompte()">
+
+   
+      <a [routerLink]="['/recherche']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-box"></i>Recherche</a>
+     <a [routerLink]="['/musique']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-music-note-beamed"></i> Musique</a>
+      <a [routerLink]="['/podcast']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-mic"></i> Podcast</a>
+    </div>
+
+    <div class="row ms-auto">
+      <a *ngIf="!getAuthCompte()" [routerLink]="['/connection']" class="nav-link ms-auto me-1 col-auto" [routerLinkActive]="'active'"><i class="bi bi-person"></i> Se Connecter</a>
+      <a *ngIf="getAuthCompte()" class="btn btn-danger ms-auto me-1 col-auto " (click)="logout()"><i class="bi bi-person"></i> Se Déconnecter</a>|
+      <a [routerLink]="['/compte']" class="nav-link ms-auto me-1 col-auto" [routerLinkActive]="'active'"><i class="bi bi-person"></i> S'inscrire</a>
+    </div>
     
     <!-- <div class="row ms-auto me-1" *ngIf="currentUser" >
       <div class="col-auto">

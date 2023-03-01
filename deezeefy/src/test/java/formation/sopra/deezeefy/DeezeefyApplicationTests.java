@@ -1,9 +1,11 @@
 package formation.sopra.deezeefy;
 
+import formation.sopra.deezeefy.model.Admin;
 import formation.sopra.deezeefy.model.Abonnement;
 import formation.sopra.deezeefy.model.Artiste;
 import formation.sopra.deezeefy.model.Genre;
 import formation.sopra.deezeefy.model.Musique;
+import formation.sopra.deezeefy.repository.AdminRepository;
 import formation.sopra.deezeefy.model.Utilisateur;
 import formation.sopra.deezeefy.repository.ArtistRepository;
 import formation.sopra.deezeefy.repository.MusiqueRepository;
@@ -18,6 +20,8 @@ class DeezeefyApplicationTests {
 
 	@Autowired
 	private MusiqueRepository musiqueRepository;
+	@Autowired
+	private AdminRepository adminRepository;
 
 	@Autowired 
 	private ArtistRepository artistRepository;
@@ -40,6 +44,12 @@ class DeezeefyApplicationTests {
 		a3 = artistRepository.save(a3);
 		m3.setAuteur(a3);
 		musiqueRepository.save(m3);
+		Admin ad1 = new Admin("JD1","easy","jd@deezeefy.com","Doe","John","Jdoe");
+		adminRepository.save(ad1);
+		Admin ad2 = new Admin("DS","beatles","ds@deezeefy.com","Smith","Dave","Sdev");
+		adminRepository.save(ad2);
+		Admin ad3 = new Admin("SC","robot","sc@deezeefy.com","Connor","Sarah","Sarah31");
+		adminRepository.save(ad3);
 		
 		
 		
@@ -54,6 +64,8 @@ class DeezeefyApplicationTests {
 		u1=  utilisateurRepository.save(u1);
 		
 	}
+	
+	
 
 
 	@Test
