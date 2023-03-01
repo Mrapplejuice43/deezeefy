@@ -7,9 +7,9 @@
       <div class="form-group">
         <label for="" class="form-label"> Type de compte :</label>
         <select name="" id="" class="form-control" [(ngModel)]="typeCompte">
-          <option value="utilisateur">Utilisateur</option>
-          <option value="admin">Admin</option>
-          <option value="artiste">Artiste</option>
+          <option [value]="userType">Utilisateur</option>
+          <option [value]="adminType">Admin</option>
+          <option [value]="artisteType">Artiste</option>
         </select>
       </div>
       <div class="mb-3">
@@ -23,7 +23,7 @@
         <label for="nomInp" class="form-label">Password</label>
         <input type="text" name="nomInp" id="nomInp" class="form-control" [(ngModel)]="authentification.password" />
         <p *ngIf="erreur && !authentification.password" class="text-danger">Problème sur le login</p>
-        
+
       </div>
 
 
