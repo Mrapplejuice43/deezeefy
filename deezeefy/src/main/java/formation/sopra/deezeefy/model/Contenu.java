@@ -1,5 +1,8 @@
 package formation.sopra.deezeefy.model;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
@@ -8,6 +11,11 @@ import java.util.List;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "content_type")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Musique.class, name = "musique"),
+        @JsonSubTypes.Type(value = Podcast.class, name = "podcast")
+})
 public abstract class Contenu {
     
     @Id
