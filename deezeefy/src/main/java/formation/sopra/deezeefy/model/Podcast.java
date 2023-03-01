@@ -1,5 +1,6 @@
 package formation.sopra.deezeefy.model;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.DiscriminatorValue;
@@ -9,6 +10,7 @@ import javax.persistence.Enumerated;
 
 @Entity
 @DiscriminatorValue(value = "podcast")
+@JsonTypeName("podcast")
 public class Podcast extends Contenu{
     
     @Enumerated(EnumType.STRING)
