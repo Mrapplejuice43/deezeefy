@@ -14,7 +14,10 @@ import { SeConnecterHttpServiceService } from './se-connecter-http-service.servi
   styleUrls: ['./se-connecter.component.scss'],
 })
 export class SeConnecterComponent {
-  typeCompte: string;
+  adminType: string = COMPTE_ADMIN
+  userType: string = COMPTE_UTILISATEUR
+  artisteType: string = COMPTE_ARTISTE
+  typeCompte: string = this.userType;
   authentification: AuthDTO = new AuthDTO();
   erreur: boolean = false;
 
