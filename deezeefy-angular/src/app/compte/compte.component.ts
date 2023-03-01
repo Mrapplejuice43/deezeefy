@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ArtistHttpService } from '../artist/artist-http.service';
 import { Artiste, Compte, Utilisateur } from '../model';
 
 @Component({
@@ -10,14 +11,16 @@ export class CompteComponent {
 
   type: string;
   
-formArtist: Artiste = null;
+formArtiste: Artiste = null;
 formUser: Utilisateur = null;
 
 
-  constructor(){
+  constructor(private artistHttpService:ArtistHttpService){
   
   }
 
  
-
+add() {
+  this.artistHttpService.insert(this.formArtiste);
+  }
 }

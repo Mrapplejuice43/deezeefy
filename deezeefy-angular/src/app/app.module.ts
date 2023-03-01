@@ -19,6 +19,7 @@ import { RechercheComponent } from './recherche/recherche.component';
 import { MusiqueComponent } from './musique/musique.component';
 import { EnregistrementMusiqueComponent } from './enregistrement-musique/enregistrement-musique.component';
 import { CompteComponent } from './compte/compte.component';
+import { CreationCompteComponent } from './creation-compte/creation-compte.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { CompteComponent } from './compte/compte.component';
     LectureMusiqueComponent,
     CompteComponent,
     EnregistrementMusiqueComponent,
+    CreationCompteComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,7 @@ import { SeConnecterComponent } from './se-connecter/se-connecter.component';
 import { RechercheComponent } from './recherche/recherche.component';
 import { CompteComponent } from './compte/compte.component';
 import { EnregistrementMusiqueComponent } from './enregistrement-musique/enregistrement-musique.component';
+import { CreationCompteComponent } from './creation-compte/creation-compte.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path:"playlist",component:PlaylistComponent},
   {path:"connection",component:SeConnecterComponent},
   {path:"compte",component:CompteComponent},
+  {path:"creationCompte",component:CreationCompteComponent},
 
 
   // Toujours en dernier
