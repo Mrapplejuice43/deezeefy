@@ -42,6 +42,7 @@ public class ContenuPlaylistService {
 	}
 
 	public List<ContenuPlaylist>  findAllCPByIdP(Integer id) {
+		System.out.println("test service");
 		return contenuPlaylistRepo.findByPlaylistAssocieeId(id);
 	}
 }

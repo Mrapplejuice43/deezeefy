@@ -168,10 +168,10 @@ export class ContenuPlaylist{
     id: number;
     version: number;
     dateAjout: string;
-    contenuAssocie: number;
-    playlistAssociee: number;
+    contenuAssocie: Contenu;
+    playlistAssociee: Playlist;
 
-    constructor(id?:number, version?:number, dateAjout?: string, contenuAssocie?: number, playlistAssociee?: number){
+    constructor(id?:number, version?:number, dateAjout?: string, contenuAssocie?: Contenu, playlistAssociee?: Playlist){
         this.id=id;
         this.version=version;
         this.dateAjout=dateAjout;

@@ -51,6 +51,7 @@ public class ContenuPlaylistController {
 		contenuPlaylistService.deleteById(id);
 	}
 	
+	@JsonView(Views.ViewContenuPlaylist.class)
 	@GetMapping("/playlistId/{id}")
 	public List<ContenuPlaylist> findAllCPByIdP(@PathVariable Integer id){
 		return contenuPlaylistService.findAllCPByIdP(id);
