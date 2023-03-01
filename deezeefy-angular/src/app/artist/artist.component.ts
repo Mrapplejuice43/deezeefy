@@ -1,7 +1,9 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
-import { Artiste } from '../model';
+import { Admin, Artiste } from '../model';
 import { ArtistHttpService } from './artist-http.service';
 
 @Component({
@@ -9,12 +11,14 @@ import { ArtistHttpService } from './artist-http.service';
   templateUrl: './artist.component.html',
   styleUrls: ['./artist.component.scss'],
 })
+
 export class ArtistComponent {
   formArtiste: Artiste;
 
   constructor(
     private artistHttpService: ArtistHttpService,
-    private router: Router
+    private router: Router,
+    private authservice : AuthService
   ) {}
 
   add() {
@@ -30,6 +34,10 @@ export class ArtistComponent {
       this.formArtiste = new Artiste();
     }
   }
+
+  typeCompte():string{
+  return this.authservice.getTypeCompte() ;
+}
 
   cancel() {
     this.formArtiste = undefined;

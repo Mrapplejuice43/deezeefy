@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Utilisateur } from '../model';
+import { Admin, Utilisateur } from '../model';
 import { UtilisateurHttpService } from './utilisateur-http.service';
 
 @Component({
@@ -10,7 +10,9 @@ import { UtilisateurHttpService } from './utilisateur-http.service';
 })
 export class UtilisateurComponent {
 
-  formUtilisateur: Utilisateur
+  formUtilisateur: Utilisateur;
+  formAdmin:Admin;
+  
 
   constructor(
     private utilisateurService: UtilisateurHttpService, private router: Router
@@ -41,7 +43,7 @@ export class UtilisateurComponent {
       
     }
   }
-  
+
   
   cancel():void{
    
