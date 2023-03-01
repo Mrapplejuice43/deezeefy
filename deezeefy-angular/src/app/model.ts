@@ -147,10 +147,10 @@ export class ContenuPlaylist{
     id: number;
     version: number;
     dateAjout: string;
-    contenuAssocie: Musique;
-    playlistAssociee: Playlist;
+    contenuAssocie: number;
+    playlistAssociee: number;
 
-    constructor(id?:number, version?:number, dateAjout?: string, contenuAssocie?: Musique, playlistAssociee?: Playlist){
+    constructor(id?:number, version?:number, dateAjout?: string, contenuAssocie?: number, playlistAssociee?: number){
         this.id=id;
         this.version=version;
         this.dateAjout=dateAjout;

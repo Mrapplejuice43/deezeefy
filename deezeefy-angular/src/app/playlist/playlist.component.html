@@ -89,7 +89,7 @@
           </div>
           <div class="card-body" *ngIf="playlistMod?.titre">
         <h4 class="card-header">Rechercher du contenu pour compléter votre playlist {{playlistMod?.titre}}</h4>
-        <app-recherche></app-recherche>
+        <app-recherche [playlistId]="playlistMod.id"></app-recherche>
         <h4 class="card-header">Votre playlist</h4>
         <div class="card-body">
           <table class="table table-bordered table-striped table-hover align-middle">

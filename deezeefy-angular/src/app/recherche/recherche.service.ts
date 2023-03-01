@@ -34,7 +34,7 @@ export class RechercheService {
   }
 
   createCP(cp: ContenuPlaylist){
-    return this.http.post<ContenuPlaylist>("http://localhost:9999/contenuPlaylist/", cp);
+    return this.http.post<ContenuPlaylist>("http://localhost:9999/contenuPlaylist/", cp).subscribe();
   }
 
  

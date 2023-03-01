@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { ContenuPlaylist, Musique, Playlist } from '../model';
 import { RechercheService } from './recherche.service';
 
@@ -14,6 +14,7 @@ export class RechercheComponent {
   genre: string="";
 
   selection: Array<Musique> = new Array<Musique>();
+
 
   constructor(private rServ : RechercheService){}
 
@@ -31,22 +32,23 @@ validerG(){
 }
 
 //Partie ajoutter à une playliste
-
-playlist: Array<Musique> = new Array<Musique>();
-
+@Input("playlistId")
+playlistId: number;
+listMus: Array<Musique> = new Array<Musique>();
 
 select(id: number){
   this.rServ.findById(id).subscribe(resp =>{
     let m: Musique = resp;
-    this.playlist.push(m);
-    console.log(this.playlist)
+    this.listMus.push(m);
+    console.log(this.listMus)
   })
 }
 
 add(){
-  for (let m of this.playlist) {
+  for (let m of this.listMus) {
     let cp : ContenuPlaylist = new ContenuPlaylist();
-    cp.contenuAssocie = m;
+    cp.contenuAssocie = m.id;
+    cp.playlistAssociee= this.playlistId;
     console.log("test1")
     this.rServ.createCP(cp);
     console.log(cp)
