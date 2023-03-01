@@ -1,5 +1,6 @@
 package formation.sopra.deezeefy.model;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.DiscriminatorValue;
@@ -9,6 +10,7 @@ import javax.persistence.Enumerated;
 
 @Entity
 @DiscriminatorValue(value = "user")
+@JsonTypeName("user")
 public class Utilisateur extends Compte {
 
     @Enumerated(EnumType.STRING)

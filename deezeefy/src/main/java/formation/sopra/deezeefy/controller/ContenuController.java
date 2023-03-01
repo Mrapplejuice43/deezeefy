@@ -5,10 +5,7 @@ import formation.sopra.deezeefy.model.Contenu;
 import formation.sopra.deezeefy.model.Views;
 import formation.sopra.deezeefy.repository.ContenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +21,11 @@ public class ContenuController {
     @JsonView(Views.ViewBase.class)
     public List<Contenu> findAll() {
         return contenuRepository.findAll();
+    }
+
+    @PostMapping("")
+    @JsonView(Views.ViewBase.class)
+    public Contenu save(@RequestBody Contenu c) {
+        return contenuRepository.save(c);
     }
 }

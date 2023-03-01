@@ -1,26 +1,16 @@
+<div class="container mt-5">
+  <h1>Page accueil compte</h1>
 
-<h1>Création d'un nouveau compte </h1>
-<div class="container">
+  <div class="container">
+    <app-infos-admin [id]="user?.id" *ngIf="user?.type == adminType"></app-infos-admin>
+    <app-infos-artiste [id]="user?.id" *ngIf="user?.type == artisteType"></app-infos-artiste>
+    <app-infos-utilisateur [id]="user?.id" *ngIf="user?.type == userType"></app-infos-utilisateur>
+  </div>
 
-   Quel type de compte souhaitez-vous créer :  <select [(ngModel)]="type">
-    <option value="">Veuillez choisir votre status :</option>
-<option value="artiste"> Artiste</option>
-<option value="user"> Utilisateur</option>
+  <div class="container mt-5">
+    <app-historique-compte [id]="user?.id"></app-historique-compte>
+  </div>
 
-    </select>
-
-    <div  *ngIf="type == 'artiste'" >
-
-        <!-- <app-artist></app-artist> mettre formu à la place-->
-
-
-    </div>
-    <div *ngIf="type == 'user' ">
-        <!-- <app-utilisateur></app-utilisateur> mettre le formulaire à la place directement -->
-
-    </div>
-
-  
 
 
 
