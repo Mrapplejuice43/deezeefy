@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { ContenuPlaylist, Musique, Playlist } from '../model';
 import { RechercheService } from './recherche.service';
 
@@ -32,9 +32,13 @@ validerG(){
 }
 
 //Partie ajoutter à une playliste
-@Input("playlistId")
-playlistId: number;
+@Input("playlist")
+playlist: Playlist;
+
+
 listMus: Array<Musique> = new Array<Musique>();
+
+@Output() newItemEvent = new EventEmitter<Array<Musique>>();
 
 select(id: number){
   this.rServ.findById(id).subscribe(resp =>{
@@ -47,11 +51,11 @@ select(id: number){
 add(){
   for (let m of this.listMus) {
     let cp : ContenuPlaylist = new ContenuPlaylist();
-    cp.contenuAssocie = m.id;
-    cp.playlistAssociee= this.playlistId;
-    console.log("test1")
+    cp.contenuAssocie = m;
+    cp.playlistAssociee= this.playlist ;
     this.rServ.createCP(cp);
-    console.log(cp)
 }
+this.newItemEvent.emit(this.listMus);
+this.listMus= new Array<Musique>();
 }
 }

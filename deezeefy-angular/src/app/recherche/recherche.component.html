@@ -43,7 +43,7 @@
                 <td class="text-center">
                     <app-lecture-musique [musicId]="m.id"></app-lecture-musique>
                   </td>
-                <td>
+                <td *ngIf="playlist">
                     <span class="btn btn-warning" (click)="select(m.id)">Ajouter</span>
                 </td>
             </tr>
@@ -51,7 +51,8 @@
 
     </table>
         </div>
+        <div *ngIf="playlist">
         <span class="btn btn-success" (click)="add()">Ajouter à la playlist <i class="bi bi-play"></i></span>
-        
+        </div>
     </div>
 </div>

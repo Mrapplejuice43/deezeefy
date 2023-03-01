@@ -1,10 +1,13 @@
 package formation.sopra.deezeefy.model;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue(value = "admin")
+@JsonTypeName("admin")
 public class Admin extends Compte {
 
     public Admin() {super();}

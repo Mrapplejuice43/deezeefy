@@ -20,6 +20,10 @@ import { MusiqueComponent } from './musique/musique.component';
 import { EnregistrementMusiqueComponent } from './enregistrement-musique/enregistrement-musique.component';
 import { CompteComponent } from './compte/compte.component';
 import { CreationCompteComponent } from './creation-compte/creation-compte.component';
+import { InfosAdminComponent } from './compte/infos-admin/infos-admin.component';
+import { InfosUtilisateurComponent } from './compte/infos-utilisateur/infos-utilisateur.component';
+import { InfosArtisteComponent } from './compte/infos-artiste/infos-artiste.component';
+import { HistoriqueCompteComponent } from './compte/historique-compte/historique-compte.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,10 @@ import { CreationCompteComponent } from './creation-compte/creation-compte.compo
     CompteComponent,
     EnregistrementMusiqueComponent,
     CreationCompteComponent,
+    InfosAdminComponent,
+    InfosUtilisateurComponent,
+    InfosArtisteComponent,
+    HistoriqueCompteComponent,
   ],
   imports: [
     BrowserModule,

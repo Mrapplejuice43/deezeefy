@@ -89,7 +89,7 @@
           </div>
           <div class="card-body" *ngIf="playlistMod?.titre">
         <h4 class="card-header">Rechercher du contenu pour compléter votre playlist {{playlistMod?.titre}}</h4>
-        <app-recherche [playlistId]="playlistMod.id"></app-recherche>
+        <app-recherche [playlist]="playlistMod"></app-recherche>
         <h4 class="card-header">Votre playlist</h4>
         <div class="card-body">
           <table class="table table-bordered table-striped table-hover align-middle">
@@ -99,7 +99,8 @@
                       <th>Version</th>
                       <th>Titre</th>
                       <th>Durée</th>
-                      <th>Genre</th>
+                      <!-- <th>Genre</th> -->
+                      <th></th>
                       <th></th>
                   </tr>
               </thead>
@@ -109,9 +110,12 @@
                       <td> {{m.version}} </td>
                       <td> {{m.titre}} </td>
                       <td> {{m.duree}} </td>
-                      <td> {{m.genre}} </td>
+                      <!-- <td> {{m.genre}} </td> -->
                       <td class="text-center">
                         <app-lecture-musique [musicId]="m.id"></app-lecture-musique>
+                      </td>
+                      <td class="text-center">
+                        <a class="btn btn-danger" (click)="removeContenu(m.id)"><i class="bi bi-trash3"></i></a>
                       </td>
                   </tr>
               </tbody>

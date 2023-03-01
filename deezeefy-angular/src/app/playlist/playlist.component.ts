@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ContenuPlaylist, Musique } from '../model';
+import { Contenu, ContenuPlaylist, Musique } from '../model';
 import { Playlist } from '../model';
 import { PlaylistService } from './playlist.service';
 
@@ -22,7 +22,7 @@ export class PlaylistComponent {
 
   contenuP : Array<ContenuPlaylist>;
 
-  musiqueP: Array<Musique>;
+  musiqueP: Array<Contenu> = new Array<Contenu>();
 
   constructor(
     private playlistService: PlaylistService
@@ -63,19 +63,19 @@ export class PlaylistComponent {
   //b. récupérer la playliste par son id
   //c. récupérer la liste de contenuPlaylist avec l'id de la playlist
   //d. récupérer la liste de musiques correspondant à la liste de contenuPlaylist
-  //e. afficher cette liste
   completer(id: number){
     this.playlistService.findById(id).subscribe((resp)=> {
       this.playlistMod= resp;
-
       this.playlistService.findAllCPByIdP(this.playlistMod.id).subscribe((resp)=>{
         this.contenuP=resp;
-
-        // for (let cp of this.contenuP) {
-        //   this.musiqueP.push(cp.contenuAssocie);
-        // };
+        for (let cp of this.contenuP) {
+            this.musiqueP.push(cp.contenuAssocie);
+        };
       });
     })
+  }
+
+  removeContenu(id: number){
     
   }
 }

@@ -1,6 +1,8 @@
+import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth.service';
 import { ContenuPlaylist, Playlist } from '../model';
 
 @Injectable({
@@ -10,7 +12,7 @@ export class PlaylistService {
 
   playlists : Array<Playlist>;
   
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private authServ: AuthService) {
     this.load();
   }
 
@@ -23,7 +25,19 @@ export class PlaylistService {
     return this.http.get<Playlist>("http://localhost:9999/playlist/" + id);
   }
 
+  createDate(){
+    let now: Date = new Date();
+    now.setTime(Date.now())
+    let day = now.getDay() < 10 ? "0" + now.getDay() : now.getDay()
+    let month = now.getMonth() < 10 ? "0" + now.getMonth() : now.getMonth()
+    return now.getFullYear() + '-' + month + '-' + day
+  }
+
   insert(playlist: Playlist): void {
+    playlist.nbContenu = 0;
+    playlist.dateCreation  = this.createDate();
+    //playlist.createur = this.authServ.getCompte();
+    playlist.duree=0;
     this.http.post<Playlist>("http://localhost:9999/playlist", playlist ).subscribe(resp => {
       this.load();
     });
@@ -48,7 +62,7 @@ export class PlaylistService {
   }
 
   findAllCPByIdP(id: number){
-    return this.http.get<Array<ContenuPlaylist>>("http://localhost:9999/contenuPlaylist/playlistId"+id)
+    return this.http.get<Array<ContenuPlaylist>>("http://localhost:9999/contenuPlaylist/playlistId/"+id)
   }
 
 }
