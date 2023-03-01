@@ -44,7 +44,7 @@
     <div class="row ms-auto">
       <a *ngIf="!getAuthCompte()" [routerLink]="['/connection']" class="nav-link ms-auto me-1 col-auto" [routerLinkActive]="'active'"><i class="bi bi-person"></i> Se Connecter</a>
       <a *ngIf="getAuthCompte()" class="btn btn-danger ms-auto me-1 col-auto " (click)="logout()"><i class="bi bi-person"></i> Se Déconnecter</a>|
-      <a [routerLink]="['/compte']" class="nav-link ms-auto me-1 col-auto" [routerLinkActive]="'active'"><i class="bi bi-person"></i> S'inscrire</a>
+      <a [routerLink]="['/creationCompte']" class="nav-link ms-auto me-1 col-auto" [routerLinkActive]="'active'"><i class="bi bi-person"></i> S'inscrire</a>
     </div>
     
     <!-- <div class="row ms-auto me-1" *ngIf="currentUser" >

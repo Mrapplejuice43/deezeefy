@@ -29,7 +29,6 @@ export class ArtistComponent {
     } else {
       this.formArtiste = new Artiste();
     }
-    this.router.navigate(['/']);
   }
 
   cancel() {

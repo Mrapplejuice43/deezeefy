@@ -4,24 +4,90 @@
 
    Quel type de compte souhaitez-vous créer :  <select [(ngModel)]="type">
     <option value="">Veuillez choisir votre status :</option>
-<option value="artiste"> Artiste</option>
+<option value="formArtiste"> Artiste</option>
 <option value="user"> Utilisateur</option>
 
     </select>
 
-    <div  *ngIf="type == 'artiste'" >
+    <div  *ngIf="type == 'formArtiste'">
 
-        <!-- <app-artist></app-artist> mettre formu à la place-->
+        
 
+
+
+
+        <div class="card-body" *ngIf="formArtiste"> 
+       
+            <div class="form-group">
+                <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formArtiste.id" readonly/>
+            </div>
+            <div class="form-group">
+                <label for="version">Version:</label> <input type="number" class="form-control" id="version" name="version" [(ngModel)]="formArtiste.version" readonly />
+            </div>
+            
+            <div class="form-group">
+                <label for="nom">Nom:</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formArtiste.nom" />
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prénom:</label> <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="formArtiste.prenom" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label> <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formArtiste.email" />
+            </div>
+            <div class="form-group">
+                <label for="login">Login:</label> <input type="text" class="form-control" id="login" name="login" [(ngModel)]="formArtiste.login" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label> <input type="text" class="form-control" id="password" name="password" [(ngModel)]="formArtiste.password" />
+            </div>
+            <div class="form-group">
+                <label for="pseudo">Pseudo:</label> <input type="text" class="form-control" id="pseudo" name="pseudo" [(ngModel)]="formArtiste.pseudo" />
+            </div>
+    
+            <div class="form-group">
+                <label for="biographie">Biographie:</label> <input type="text" class="form-control" id="biographie" name="biographie" [(ngModel)]="formArtiste.biographie" />
+            </div>
+           
+    
+        </div>
+        <div class="card-footer">
+            
+                <a class="btn btn-success" (click)="add()"><i class="bi bi-plus-square"></i></a>
+                <!-- <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace-fill"></i></a> -->
+            
+        </div>
 
     </div>
-    <div *ngIf="type == 'user' ">
-        <!-- <app-utilisateur></app-utilisateur> mettre le formulaire à la place directement -->
 
+
+
+
+
+
+
+
+
+    
     </div>
+    <!-- <div *ngIf="type == 'user' ">
+        <app-utilisateur></app-utilisateur> mettre le formulaire à la place directement
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div> -->
 
   
 
 
 
-</div>
