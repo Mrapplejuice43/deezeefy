@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Admin, Musique } from '../model';
 import { MusiqueHttpService } from './musique-http.service';

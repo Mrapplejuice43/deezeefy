@@ -1,18 +1,63 @@
-<div class="container mt-5">
-  <div class="card">
-    <div class="card-header">
-      <span class="h2">Enregistrement de musique en base</span>
+
+<div class="card-body">
+  <input style="display: none;" type="file" name="musicInp" id="musicInp" (change)="save($event)" #inputFile>
+  <div class="align-items-center">
+    <div class="row align-items-center">
+      <span class="btn btn-success ms-1 col-2" (click)="inputFile.click()">Fichier à envoyer</span>
+      <span class="text-success col-auto ms-1" *ngIf="fileName">{{fileName}} chargé</span>
     </div>
-    <div class="card-body">
-      <input style="display: none;" type="file" name="musicInp" id="musicInp" (change)="save($event)" #inputFile>
-      <div class="row align-items-center" >
-        <span class="btn btn-success col-2" (click)="inputFile.click()">Send to base</span>
-        <div class="progress col-8 no-padding ms-3" *ngIf="getUploadProgress()">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" [style.width.%]="getUploadProgress()"
-                aria-valuemin="0" aria-valuemax="100">Upload Progress</div>
+
+    <div class="card-body" *ngIf="fileName">
+
+      <div class="mb-3">
+        <label for="titre" class="form-label">Titre</label>
+        <input type="text" name="titre" id="titre" class="form-control" [(ngModel)]="formMusique.titre">
+      </div>
+
+      <div class="mb-3" *ngIf="!uploadFromAdmin">
+        <label for="auteur" class="form-label">Auteur</label>
+        <span name="auteur" id="auteur" class="form-control">{{formMusique.auteur?.pseudo}}</span>
+      </div>
+
+      <div class="mb-3" *ngIf="uploadFromAdmin">
+        <label for="auteur" class="form-label">Auteur</label>
+        <select name="auteur" id="auteur" class="form-control" [(ngModel)]="formMusique.auteur">
+          <option *ngFor="let artiste of artistes" [ngValue]="artiste">{{artiste.pseudo}}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="duree" class="form-label">Durée</label>
+        <span name="duree" id="duree" class="form-control">{{formMusique.duree}}</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="genre" class="form-label">Genre</label>
+        <select class="form-control" name="genre" id="genre" [(ngModel)]="formMusique.genre">
+          <option value="" selected>Sélectionner un genre</option>
+          <option value="POP">Pop</option>
+          <option value="RAP">Rap</option>
+          <option value="VARIETE">Variété</option>
+          <option value="LATINO">Latino</option>
+          <option value="CLASSIQUE">Classique</option>
+          <option value="METAL">Métal</option>
+          <option value="ELECTRONIQUE">Electro</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <div class="row align-items-center">
+          <span class="btn btn-success ms-1 col-1" (click)="upload()">Upload</span>
+          <span class="btn btn-warning ms-1 col-auto" (click)="cancel()">Cancel</span>
         </div>
       </div>
-      <span class="text-success ms-3" *ngIf="getUploadProgress() >= 99"> {{fileName + " uploaded"}} </span>
+
+    </div>
+    <div class="progress no-padding ms-3" *ngIf="getUploadProgress()">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" [style.width.%]="getUploadProgress()"
+            aria-valuemin="0" aria-valuemax="100">Upload Progress</div>
     </div>
   </div>
+  <span class="text-success ms-3" *ngIf="getUploadProgress() >= 99"> {{fileName + " uploaded"}} </span>
 </div>
+

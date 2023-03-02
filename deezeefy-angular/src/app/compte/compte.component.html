@@ -8,6 +8,11 @@
     <app-infos-utilisateur *ngIf="user?.type == userType"></app-infos-utilisateur>
   </div>
 
+  <div class="card mt-3" *ngIf="user?.type == artisteType || user?.type == adminType">
+    <h3 class="card-header">Upload de musique</h3>
+    <app-enregistrement-musique></app-enregistrement-musique>
+  </div>
+
   <div class="container mt-5">
     <app-historique-compte [id]="user?.id"></app-historique-compte>
   </div>

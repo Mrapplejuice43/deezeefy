@@ -1,8 +1,10 @@
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { finalize, Subscription } from 'rxjs';
-import { Musique } from '../model';
+import { finalize, Observable, Subscription } from 'rxjs';
+import { AuthService } from '../auth.service';
+import { Artiste, Musique } from '../model';
+import { MusiqueHttpService } from '../musique/musique-http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +16,24 @@ export class EnregistrementMusiqueService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private authService: AuthService,
+    private musiqueService: MusiqueHttpService
   ) { }
 
-  save (file: File) {
+  getAuthUser() {
+    return this.authService.getCompte();
+  }
+
+  getAuthUserType() {
+    return this.authService.getTypeCompte();
+  }
+
+  findAllArtistes(): Observable<Array<Artiste>> {
+    return this.http.get<Array<Artiste>>("http://localhost:9999/artiste")
+  }
+
+  save (file: File, musique: Musique) {
     var fr = new FileReader();
 
     fr.onloadend = () => {
@@ -33,16 +49,14 @@ export class EnregistrementMusiqueService {
         res = new Int8Array(buffer)
       }
 
-      let music: Musique = new Musique();
-      music.titre = file.name.split(".")[0]
-      music.piste = Array.from(res);
-      music.duree = Math.round(file.size / 24000) // Les mp3 se lisent a 192kbits/s donc 24000 octets par seconde
-      const upload = this.http.post<Musique>("http://localhost:9999/musique", music, {
+      musique.piste = Array.from(res);
+      const upload = this.http.post<Musique>("http://localhost:9999/musique", musique, {
         reportProgress: true,
         observe: 'events'
       }).pipe(finalize(() => {
         this.reset()
-        this.router.navigate(['/musique'])
+        this.musiqueService.load()
+        this.router.navigate(['/compte'])
       }))
 
       this.uploadSubscribedMethod = upload.subscribe((event) => {

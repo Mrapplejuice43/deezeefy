@@ -100,6 +100,7 @@ export abstract class Contenu {
     auteur: any
     auditeurs: Array<any>
     listePlaylistAssociees: Array<any>
+    type: string
 
     constructor(id?: number,
       version?: number,
@@ -108,7 +109,8 @@ export abstract class Contenu {
       piste?: Array<number>,
       auteur?: any,
       auditeurs?: Array<any>,
-      listePlaylistAssociees?: Array<any>)
+      listePlaylistAssociees?: Array<any>,
+      type?: string)
        {
         this.id = id
         this.version = version
@@ -118,6 +120,7 @@ export abstract class Contenu {
         this.auteur = auteur
         this.auditeurs = auditeurs
         this.listePlaylistAssociees = listePlaylistAssociees
+        this.type = type
       }
   }
 
@@ -179,6 +182,6 @@ export class ContenuPlaylist{
         this.playlistAssociee=playlistAssociee;
     }
 
-    
+
 
 }
