@@ -25,9 +25,11 @@ export class InfosAdminService {
   }
 
   deleteUser(user: Admin) {
-    this.http.delete<Admin>("http://localhost:9999/admin/" + user.id).subscribe(() => {
+    this.http.delete("http://localhost:9999/compteHistory/compte/" + user.id).subscribe(() => {
+      this.http.delete<Admin>("http://localhost:9999/admin/" + user.id).subscribe(() => {
       this.router.navigate(['/home'])
-      this.compteService.logoutUser()
+        this.compteService.logoutUser()
+      })
     })
   }
 }

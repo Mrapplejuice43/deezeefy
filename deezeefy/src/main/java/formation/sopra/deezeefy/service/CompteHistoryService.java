@@ -76,4 +76,12 @@ public class CompteHistoryService {
     public List<CompteHistory> findAllByCompteId(Integer compteId) {
         return compteHistoryRepository.findAllByCompteId(compteId);
     }
+
+    public void deleteAllByContenuId(Integer id) {
+        compteHistoryRepository.deleteByContenuId(id);
+    }
+
+    public void deleteAllByCompteId(Integer id) {
+        compteHistoryRepository.deleteByCompteId(id);
+    }
 }

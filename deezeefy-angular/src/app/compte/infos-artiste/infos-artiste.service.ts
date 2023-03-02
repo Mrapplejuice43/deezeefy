@@ -25,9 +25,11 @@ export class InfosArtisteService {
   }
 
   deleteUser(user: Artiste) {
-    this.http.delete<Artiste>("http://localhost:9999/artiste/" + user.id).subscribe(() => {
+    this.http.delete("http://localhost:9999/compteHistory/compte/" + user.id).subscribe(() => {
+      this.http.delete<Artiste>("http://localhost:9999/artiste/" + user.id).subscribe(() => {
       this.router.navigate(['/home'])
-      this.compteService.logoutUser()
+        this.compteService.logoutUser()
+      })
     })
   }
 }

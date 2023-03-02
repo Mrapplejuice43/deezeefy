@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { Admin } from '../model';
@@ -12,12 +13,16 @@ export class AdminHttpService {
 
   constructor(
     private http: HttpClient,
-    private authService : AuthService
+    private authService : AuthService,
+    private router: Router
     ) {
     this.load();
   }
 
   getCurrentUserType(): string {
+    if(this.authService.getTypeCompte() != "admin") {
+      this.router.navigate(["/home"])
+    }
     return this.authService.getTypeCompte()
   }
 

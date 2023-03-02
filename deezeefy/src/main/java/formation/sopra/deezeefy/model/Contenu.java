@@ -39,7 +39,7 @@ public abstract class Contenu {
 
     @ManyToOne
     @JoinColumn(name = "artiste_id")
-    @JsonView(Views.ViewContenu.class)
+    @JsonView(Views.ViewBase.class)
     private Artiste auteur;
 
     @OneToMany(mappedBy = "contenu")

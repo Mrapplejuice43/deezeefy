@@ -1,5 +1,5 @@
 export const COMPTE_ADMIN = "admin"
-export const COMPTE_UTILISATEUR = "utilisateur"
+export const COMPTE_UTILISATEUR = "user"
 export const COMPTE_ARTISTE = "artiste"
 
 export abstract class Compte {

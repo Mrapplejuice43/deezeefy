@@ -25,9 +25,11 @@ export class InfosUtilisateurService {
   }
 
   deleteUser(user: Utilisateur) {
-    this.http.delete<Utilisateur>("http://localhost:9999/utilisateur/" + user.id).subscribe(() => {
+    this.http.delete("http://localhost:9999/compteHistory/compte/" + user.id).subscribe(() => {
+      this.http.delete<Utilisateur>("http://localhost:9999/utilisateur/" + user.id).subscribe(() => {
       this.router.navigate(['/home'])
-      this.compteService.logoutUser()
+        this.compteService.logoutUser()
+      })
     })
   }
 }

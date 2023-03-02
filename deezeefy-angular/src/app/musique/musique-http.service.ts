@@ -46,9 +46,11 @@ export class MusiqueHttpService {
   }
 
   remove(id: number): void {
-    this.http.delete<void>("http://localhost:9999/musique/" + id).subscribe(resp => {
-      this.load();
-    });
+    this.http.delete<void>("http://localhost:9999/compteHistory/musique/" + id).subscribe(() => {
+      this.http.delete<void>("http://localhost:9999/musique/" + id).subscribe(resp => {
+        this.load();
+      });
+    })
   }
 
   load(): void {

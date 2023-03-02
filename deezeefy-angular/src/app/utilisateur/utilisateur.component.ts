@@ -12,15 +12,14 @@ import { UtilisateurHttpService } from './utilisateur-http.service';
 export class UtilisateurComponent {
 
   formUtilisateur: Utilisateur;
-
+  formAdmin:Admin;
 
 
   constructor(
-    private utilisateurService: UtilisateurHttpService, private router: Router,
-    private authService: AuthService
-  ) { }
+    private utilisateurService: UtilisateurHttpService, private router: Router
+  ) {}
 
-  save() {
+  save(){
     this.utilisateurService.insert(this.formUtilisateur);
     this.router.navigate(['/']);
   }
@@ -30,8 +29,9 @@ export class UtilisateurComponent {
   }
 
   addUtilisateur() {
-    if (this.formUtilisateur) {
-      if (this.formUtilisateur.id) {
+    if(this.formUtilisateur) {
+      this.formUtilisateur.type = "user"
+      if(this.formUtilisateur.id) {
 
         this.utilisateurService.update(this.formUtilisateur)
       } else {
@@ -46,16 +46,13 @@ export class UtilisateurComponent {
     }
   }
 
-  typeCompte(): string {
-    return this.authService.getTypeCompte();
-  }
 
-  cancel(): void {
+  cancel():void{
 
-    if (confirm("Etes-vous sur de ne pas vouloir créer un compte ?")) {
+    if(confirm("Etes-vous sur de ne pas vouloir créer un compte ?")){
       this.formUtilisateur = undefined;
     };
-    // redirect home 
+    // redirect home
   }
 
   edit(id: number) {

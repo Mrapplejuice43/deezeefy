@@ -23,7 +23,6 @@ export class PlaylistService {
     return this.authServ.getTypeCompte();
   }
 
-
   findAll(): Array<Playlist> {
     return this.playlists;
   }

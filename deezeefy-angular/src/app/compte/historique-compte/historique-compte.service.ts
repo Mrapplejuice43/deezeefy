@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AuthService } from 'src/app/auth.service';
 import { CompteHistory } from 'src/app/model';
 
 @Injectable({

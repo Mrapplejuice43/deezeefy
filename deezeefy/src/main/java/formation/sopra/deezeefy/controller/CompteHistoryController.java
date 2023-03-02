@@ -60,4 +60,14 @@ public class CompteHistoryController {
         if(!compteHistoryService.existById(id)) throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         compteHistoryService.deleteById(id);
     }
+
+    @DeleteMapping("/musique/{id}")
+    public void deleteAllByContenuId(@PathVariable Integer id) {
+        compteHistoryService.deleteAllByContenuId(id);
+    }
+
+    @DeleteMapping("/compte/{id}")
+    public void deleteAllByCompteId(@PathVariable Integer id) {
+        compteHistoryService.deleteAllByCompteId(id);
+    }
 }

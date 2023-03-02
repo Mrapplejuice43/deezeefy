@@ -18,6 +18,7 @@ export class ArtistComponent {
 
   add() {
     if (this.formArtiste) {
+      this.formArtiste.type = "artiste"
       if (this.formArtiste.id) {
         this.artistHttpService.update(this.formArtiste);
       } else {

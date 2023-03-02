@@ -20,6 +20,7 @@ export class AdminComponent {
 
   addAdmin() {
     if (this.formAdmin) {
+      this.formAdmin.type = "admin"
       if (this.formAdmin.id) {
         this.adminService.update(this.formAdmin);
       } else {
