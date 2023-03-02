@@ -1,0 +1,21 @@
+.carousel{
+    background-color: purple;
+    border: solid 1px black;
+    height: 400px;
+    width: 100%;
+    }
+    
+    .aligner{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    height: 100px;
+    width: 100%;
+    
+    }
+    
+    #carouselExample{
+        width: 100%;
+    }
+    

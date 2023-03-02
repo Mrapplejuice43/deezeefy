@@ -24,6 +24,8 @@ import { InfosAdminComponent } from './compte/infos-admin/infos-admin.component'
 import { InfosUtilisateurComponent } from './compte/infos-utilisateur/infos-utilisateur.component';
 import { InfosArtisteComponent } from './compte/infos-artiste/infos-artiste.component';
 import { HistoriqueCompteComponent } from './compte/historique-compte/historique-compte.component';
+import { CarouselComponent } from './home/carousel/carousel.component';
+import { CardsComponent } from './home/cards/cards.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { HistoriqueCompteComponent } from './compte/historique-compte/historique
     InfosUtilisateurComponent,
     InfosArtisteComponent,
     HistoriqueCompteComponent,
+    CarouselComponent,
+    CardsComponent,
   ],
   imports: [
     BrowserModule,

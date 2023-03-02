@@ -1,6 +1,5 @@
-<div class="container" *ngIf="formAdmin">
-
-    <div class="card">
+<div class="container" *ngIf="typeCompte() == 'admin'">
+ <div class="card">
         <h3 class="card-header">Liste des utilisateurs</h3>
         <div class="card-body">
             <table class="table table-bordered table-striped table-hover align-middle">

@@ -1,43 +1,8 @@
 body {
-    background-color: rgb(250, 250, 250);
+
     width: 100%; 
-
-}
-
-.carousel{
-
-background-color: #cce0c3;
-border: solid 1px black;
-height: 400px;
-width: 100%;
-}
-
-.cards-container{
-
-background-color: #e4bfd8;
-border: solid 1px black;
-height: 600px;
-width: 100%;
-
-
-
-}
-.aligner{
-display: flex;
-flex-direction: row;
-justify-content: center;
-margin-top: 20px;
-height: 100px;
-width: 100%;
-
-}
-
-
-#carouselExample{
-    width: 100%;
-}
-#cardSize{
-    width: 25%;
-    height: 25%;
+    padding: 20px;
+    background-color: gray;
+   // background-image: url("src/assets/1260080.jpg");
 
 }

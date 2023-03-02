@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 import { Admin, Utilisateur } from '../model';
 import { UtilisateurHttpService } from './utilisateur-http.service';
 
@@ -11,14 +12,15 @@ import { UtilisateurHttpService } from './utilisateur-http.service';
 export class UtilisateurComponent {
 
   formUtilisateur: Utilisateur;
-  formAdmin:Admin;
-  
+
+
 
   constructor(
-    private utilisateurService: UtilisateurHttpService, private router: Router
-  ) {}
-  
-  save(){
+    private utilisateurService: UtilisateurHttpService, private router: Router,
+    private authService: AuthService
+  ) { }
+
+  save() {
     this.utilisateurService.insert(this.formUtilisateur);
     this.router.navigate(['/']);
   }
@@ -28,26 +30,29 @@ export class UtilisateurComponent {
   }
 
   addUtilisateur() {
-    if(this.formUtilisateur) {
-      if(this.formUtilisateur.id) {
-        
+    if (this.formUtilisateur) {
+      if (this.formUtilisateur.id) {
+
         this.utilisateurService.update(this.formUtilisateur)
       } else {
-        
+
         this.utilisateurService.insert(this.formUtilisateur)
       }
-      
+
       this.formUtilisateur = undefined
     } else {
       this.formUtilisateur = new Utilisateur()
-      
+
     }
   }
 
-  
-  cancel():void{
-   
-    if(confirm("Etes-vous sur de ne pas vouloir créer un compte ?")){
+  typeCompte(): string {
+    return this.authService.getTypeCompte();
+  }
+
+  cancel(): void {
+
+    if (confirm("Etes-vous sur de ne pas vouloir créer un compte ?")) {
       this.formUtilisateur = undefined;
     };
     // redirect home 
