@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  Compte,
-  COMPTE_ADMIN,
-  COMPTE_ARTISTE,
-  COMPTE_UTILISATEUR,
-} from './model';
+import { Compte } from './model';
 
 @Injectable({
   providedIn: 'root',
@@ -19,13 +14,7 @@ export class AuthService {
     if (compteToConnect) {
       if (compteToConnect.type) {
         this.compteConnecte = compteToConnect;
-        if (compteToConnect.type == COMPTE_UTILISATEUR) {
-          this.router.navigate(['/utilisateur']);
-        } else if (compteToConnect.type == COMPTE_ADMIN) {
-          this.router.navigate(['/admin']);
-        } else if (compteToConnect.type == COMPTE_ARTISTE) {
-          this.router.navigate(['/artiste']);
-        }
+        this.router.navigate(['/home']);
       }
     }
   }

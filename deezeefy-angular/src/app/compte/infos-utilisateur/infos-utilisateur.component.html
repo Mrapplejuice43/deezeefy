@@ -1,41 +1,132 @@
-<div class="container">
-  <div class="row">
-    <span class="col-1">Pseudo :</span>
-    <span class="col-auto">{{user?.pseudo}}</span>
+<div class="card-body" *ngIf="!editMode">
+
+  <div class="row mb-1">
+    <label for="pseudo" class="col-form-label col-2">Pseudo :</label>
+    <div class="col">
+      <input type="text" name="pseudo" id="pseudo" class="form-control col" readonly [(ngModel)]="user.pseudo">
+    </div>
   </div>
 
-  <div class="row">
-    <span class="col-1">Email :</span>
-    <span class="col-auto">{{user?.email}}</span>
+  <div class="row mb-1">
+    <label for="login" class="col-form-label col-2">Login :</label>
+    <div class="col">
+      <input type="text" name="login" id="login" class="form-control" readonly [(ngModel)]="user.login">
+    </div>
   </div>
 
-  <div class="row">
-    <span class="col-1">Login :</span>
-    <span class="col-auto">{{user?.login}}</span>
+  <div class="row mb-1">
+    <label for="nom" class="col-form-label col-2">Nom :</label>
+    <div class="col">
+      <input type="text" name="nom" id="nom" class="form-control" readonly [(ngModel)]="user.nom">
+    </div>
   </div>
 
-  <div class="row">
-    <span class="col-1">password :</span>
-    <span class="col-auto">**************************</span>
+  <div class="row mb-1">
+    <label for="prenom" class="col-form-label col-2">Prenom :</label>
+    <div class="col">
+      <input type="text" name="prenom" id="prenom" class="form-control" readonly [(ngModel)]="user.prenom">
+    </div>
   </div>
 
-  <div class="row">
-    <span class="col-1">Nom :</span>
-    <span class="col-auto">{{user?.nom}}</span>
+  <div class="row mb-1">
+    <label for="email" class="col-form-label col-2">Email :</label>
+    <div class="col">
+      <input type="text" name="email" id="email" class="form-control" readonly [(ngModel)]="user.email">
+    </div>
   </div>
 
-  <div class="row">
-    <span class="col-1">Prenom :</span>
-    <span class="col-auto">{{user?.prenom}}</span>
+  <div class="row mb-1">
+    <label for="abo" class="col-form-label col-2">Abonnement :</label>
+    <div class="col">
+      <select class="form-control" name="abo" id="abo" disabled [(ngModel)]="user.abonnement">
+        <option value="GRATUIT">Gratuit</option>
+        <option value="ETUDIANT">Etudiant</option>
+        <option value="PREMIUM">Premium</option>
+      </select>
+    </div>
   </div>
 
-  <div class="row">
-    <span class="col-1">Type d'abonnement :</span>
-    <span class="col-auto">{{user?.abonnement}}</span>
+  <div class="row mb-1">
+    <label for="tpsEcoute" class="col-form-label col-2">Temps d'écoute :</label>
+    <div class="col">
+      <input type="number" name="tpsEcoute" id="tpsEcoute" class="form-control" readonly [(ngModel)]="user.tempsEcoute">
+    </div>
   </div>
 
+</div>
+
+<div class="card-body" *ngIf="editMode">
+
   <div class="row">
-    <span class="col-1">Temps d'écoute :</span>
-    <span class="col-auto">{{user?.tempsEcoute}}</span>
+    <hr>
+    <label for="idInp" class="col-form-label col-auto">Identifiant :</label>
+    <div class="col">
+      <input type="number" name="idInp" id="idInp" class="form-control col" readonly [(ngModel)]="user.id">
+    </div>
+    <label for="versionInp" class="col-form-label col-auto">Version :</label>
+    <div class="col">
+      <input type="number" name="versionInp" id="versionInp" class="form-control" readonly [(ngModel)]="user.version">
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="pseudoInp" class="form-label">Pseudo</label>
+    <input type="text" name="pseudoInp" id="pseudoInp" class="form-control" [(ngModel)]="user.pseudo">
+  </div>
+
+  <div class="mb-3">
+    <label for="loginInp" class="form-label">Login</label>
+    <input type="text" name="loginInp" id="loginInp" class="form-control" [(ngModel)]="user.login">
+  </div>
+
+  <div class="mb-3">
+    <label for="nomInp" class="form-label">Nom</label>
+    <input type="text" name="nomInp" id="nomInp" class="form-control" [(ngModel)]="user.nom">
+  </div>
+
+  <div class="mb-3">
+    <label for="prenomInp" class="form-label">Prenom</label>
+    <input type="text" name="prenomInp" id="prenomInp" class="form-control" [(ngModel)]="user.prenom">
+  </div>
+
+  <div class="mb-3">
+    <label for="emailInp" class="form-label">Email</label>
+    <input type="text" name="emailInp" id="emailInp" class="form-control" [(ngModel)]="user.email">
+  </div>
+
+  <div class="mb-3">
+    <label for="passwordInp" class="form-label">Mot de passe</label>
+    <input type="password" name="passwordInp" id="passwordInp" class="form-control" [(ngModel)]="user.password">
+  </div>
+
+  <div class="mb-3">
+    <label for="abonnementInp" class="form-label">Abonnement</label>
+    <select class="form-control" id="abonnementInp" name="abonnementInp" [(ngModel)]="user.abonnement" >
+      <option value="" selected>Veuillez sélectionner un abonnement</option>
+      <option  value="GRATUIT"> GRATUIT</option>
+      <option  value="ETUDIANT"> ETUDIANT</option>
+      <option  value="PREMIUM"> PREMIUM</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="tempsEcouteInp" class="form-label">Temps d'écoute</label>
+    <input type="number" name="tempsEcouteInp" id="tempsEcouteInp" class="form-control" [(ngModel)]="user.tempsEcoute">
+  </div>
+</div>
+
+<div class="card-footer" *ngIf="editMode">
+  <a class="btn btn-success" (click)="editUser()"><i class="bi bi-plus-square"></i></a>
+  <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace"></i></a>
+</div>
+
+<div class="card-footer" *ngIf="!editMode">
+  <div class="row">
+    <div class="col ms-1">
+      <a class="btn btn-primary" (click)="edit()">Editer le compte</a>
+    </div>
+    <div class="col ms-auto">
+      <a class="btn btn-danger" (click)="deleteUser()">Supprimer le compte</a>
+    </div>
   </div>
 </div>

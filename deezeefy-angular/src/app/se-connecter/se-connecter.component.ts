@@ -21,21 +21,21 @@ export class SeConnecterComponent {
   authentification: AuthDTO = new AuthDTO();
   erreur: boolean = false;
 
-  constructor(private connectionService: SeConnecterHttpServiceService) {}
+  constructor(
+    private connectionService: SeConnecterHttpServiceService
+  ) {}
 
-  login() {
-    if (this.typeCompte && this.authentification.isValide()) {
+  getCompteNotFoundError(): boolean {
+    return this.connectionService.getCompteNotFoundError()
+  }
 
-      if (this.typeCompte == COMPTE_UTILISATEUR) {
-        this.connectionService.loginUser(this.authentification);
-      } else if (this.typeCompte == COMPTE_ADMIN) {
-        this.connectionService.loginAdmin(this.authentification);
-      } else if (this.typeCompte == COMPTE_ARTISTE) {
-        this.connectionService.loginArtist(this.authentification);
+  login(event: any) {
+    if(event instanceof PointerEvent || (event instanceof KeyboardEvent && event.key == "Enter")) {
+      if (this.typeCompte && this.authentification.isValide()) {
+        this.connectionService.loginCompte(this.authentification);
+      } else {
+        this.erreur = true;
       }
-
-    } else {
-      this.erreur = true;
     }
   }
 }

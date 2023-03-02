@@ -1,41 +1,50 @@
-<h1>Connection</h1>
 <div class="container">
+  <h1>Connexion</h1>
   <div class="card">
-    <fieldset>
-
-
-      <div class="form-group">
-        <label for="" class="form-label"> Type de compte :</label>
-        <select name="" id="" class="form-control" [(ngModel)]="typeCompte">
-          <option [value]="userType">Utilisateur</option>
-          <option [value]="adminType">Admin</option>
-          <option [value]="artisteType">Artiste</option>
-        </select>
-      </div>
-      <div class="mb-3">
-
-        <label for="civInp" class="form-label">Login</label>
-      </div>
-      <input type="text" name="label" id="clabel" class="form-control" [(ngModel)]="authentification.login" />
-      <p *ngIf="erreur && !authentification.login" class="text-danger">Problème sur le login</p>
+    <div class="card-body">
 
       <div class="mb-3">
-        <label for="nomInp" class="form-label">Password</label>
-        <input type="text" name="nomInp" id="nomInp" class="form-control" [(ngModel)]="authentification.password" />
-        <p *ngIf="erreur && !authentification.password" class="text-danger">Problème sur le login</p>
-
+        <label for="login" class="form-label">Login</label>
+        <input
+          type="text"
+          name="login"
+          id="login"
+          class="form-control"
+          [(ngModel)]="authentification.login"
+        />
+        <p *ngIf="erreur && !authentification.login" class="text-danger">
+          Problème sur le login
+        </p>
       </div>
 
+      <div class="mb-3">
+        <label for="mdp" class="form-label">Password</label>
+        <input
+          type="password"
+          name="mdp"
+          id="mdp"
+          class="form-control"
+          [(ngModel)]="authentification.password"
+          (keypress)="login($event)"
+        />
+        <p *ngIf="erreur && !authentification.password" class="text-danger">
+          Problème sur le mot de passe
+        </p>
+      </div>
 
-
-      <button class="btn btn-success" (click)="login()">se connecter</button>
-
-
-
-    </fieldset>
-    <div>
-      <br>
-      <p>Vous n'avez pas de compte ? <a href="/creationCompte">Inscrivez-vous !</a></p>
+      <div class="row ms-1">
+        <button class="btn btn-success col-auto" (click)="login($event)">Se connecter</button>
+        <div class="col align-middle">
+          <span class="text-danger" *ngIf="getCompteNotFoundError()">Le compte spécifié n'existe pas</span>
+        </div>
+      </div>
+      <div>
+        <br />
+        <p>
+          Vous n'avez pas de compte ?
+          <a href="/creationCompte">Inscrivez-vous !</a>
+        </p>
+      </div>
     </div>
 
   </div>

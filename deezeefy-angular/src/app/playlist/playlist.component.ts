@@ -25,8 +25,12 @@ export class PlaylistComponent {
   musiqueP: Array<Contenu> = new Array<Contenu>();
 
   constructor(
-    private playlistService: PlaylistService
+    private playlistService: PlaylistService,
   ) {}
+
+  getAuthUserType() {
+    return this.playlistService.getAuthUserType()
+  }
 
   public findAll() {
     return this.playlistService.findAll();
@@ -76,6 +80,6 @@ export class PlaylistComponent {
   }
 
   removeContenu(id: number){
-    
+
   }
 }

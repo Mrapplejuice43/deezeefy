@@ -1,15 +1,17 @@
-<div class="container mt-5">
-  <h1>Page accueil compte</h1>
+<div class="container mt-3">
+  <h1>Bienvenue {{user?.pseudo}}</h1>
 
-  <div class="container">
-    <app-infos-admin [id]="user?.id" *ngIf="user?.type == adminType"></app-infos-admin>
-    <app-infos-artiste [id]="user?.id" *ngIf="user?.type == artisteType"></app-infos-artiste>
-    <app-infos-utilisateur [id]="user?.id" *ngIf="user?.type == userType"></app-infos-utilisateur>
+  <div class="card mt-3">
+    <h3 class="card-header">Informations du compte</h3>
+    <app-infos-admin *ngIf="user?.type == adminType"></app-infos-admin>
+    <app-infos-artiste *ngIf="user?.type == artisteType"></app-infos-artiste>
+    <app-infos-utilisateur *ngIf="user?.type == userType"></app-infos-utilisateur>
   </div>
 
   <div class="container mt-5">
     <app-historique-compte [id]="user?.id"></app-historique-compte>
   </div>
+</div>
 
 
 

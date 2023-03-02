@@ -1,31 +1,100 @@
-<div class="container">
-  <div class="row">
-    <span class="col-1">Pseudo :</span>
-    <span class="col-auto">{{admin?.pseudo}}</span>
+<div class="card-body" *ngIf="!editMode">
+
+  <div class="row mb-1">
+    <label for="pseudo" class="col-form-label col-2">Pseudo :</label>
+    <div class="col">
+      <input type="text" name="pseudo" id="pseudo" class="form-control col" readonly [(ngModel)]="admin.pseudo">
+    </div>
   </div>
 
-  <div class="row">
-    <span class="col-1">Email :</span>
-    <span class="col-auto">{{admin?.email}}</span>
+  <div class="row mb-1">
+    <label for="login" class="col-form-label col-2">Login :</label>
+    <div class="col">
+      <input type="text" name="login" id="login" class="form-control" readonly [(ngModel)]="admin.login">
+    </div>
   </div>
 
-  <div class="row">
-    <span class="col-1">Login :</span>
-    <span class="col-auto">{{admin?.login}}</span>
+  <div class="row mb-1">
+    <label for="nom" class="col-form-label col-2">Nom :</label>
+    <div class="col">
+      <input type="text" name="nom" id="nom" class="form-control" readonly [(ngModel)]="admin.nom">
+    </div>
   </div>
 
-  <div class="row">
-    <span class="col-1">password :</span>
-    <span class="col-auto">**************************</span>
+  <div class="row mb-1">
+    <label for="prenom" class="col-form-label col-2">Prenom :</label>
+    <div class="col">
+      <input type="text" name="prenom" id="prenom" class="form-control" readonly [(ngModel)]="admin.prenom">
+    </div>
   </div>
 
-  <div class="row">
-    <span class="col-1">Nom :</span>
-    <span class="col-auto">{{admin?.nom}}</span>
+  <div class="row mb-1">
+    <label for="email" class="col-form-label col-2">Email :</label>
+    <div class="col">
+      <input type="text" name="email" id="email" class="form-control" readonly [(ngModel)]="admin.email">
+    </div>
   </div>
 
+</div>
+
+<div class="card-body" *ngIf="editMode">
+
   <div class="row">
-    <span class="col-1">Prenom :</span>
-    <span class="col-auto">{{admin?.prenom}}</span>
+    <hr>
+    <label for="idInp" class="col-form-label col-auto">Identifiant :</label>
+    <div class="col">
+      <input type="number" name="idInp" id="idInp" class="form-control col" readonly [(ngModel)]="admin.id">
+    </div>
+    <label for="versionInp" class="col-form-label col-auto">Version :</label>
+    <div class="col">
+      <input type="number" name="versionInp" id="versionInp" class="form-control" readonly [(ngModel)]="admin.version">
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="pseudoInp" class="form-label">Pseudo</label>
+    <input type="text" name="pseudoInp" id="pseudoInp" class="form-control" [(ngModel)]="admin.pseudo">
+  </div>
+
+  <div class="mb-3">
+    <label for="loginInp" class="form-label">Login</label>
+    <input type="text" name="loginInp" id="loginInp" class="form-control" [(ngModel)]="admin.login">
+  </div>
+
+  <div class="mb-3">
+    <label for="nomInp" class="form-label">Nom</label>
+    <input type="text" name="nomInp" id="nomInp" class="form-control" [(ngModel)]="admin.nom">
+  </div>
+
+  <div class="mb-3">
+    <label for="prenomInp" class="form-label">Prenom</label>
+    <input type="text" name="prenomInp" id="prenomInp" class="form-control" [(ngModel)]="admin.prenom">
+  </div>
+
+  <div class="mb-3">
+    <label for="emailInp" class="form-label">Email</label>
+    <input type="text" name="emailInp" id="emailInp" class="form-control" [(ngModel)]="admin.email">
+  </div>
+
+  <div class="mb-3">
+    <label for="passwordInp" class="form-label">Mot de passe</label>
+    <input type="password" name="passwordInp" id="passwordInp" class="form-control" [(ngModel)]="admin.password">
+  </div>
+
+</div>
+
+<div class="card-footer" *ngIf="editMode">
+  <a class="btn btn-success" (click)="editUser()"><i class="bi bi-plus-square"></i></a>
+  <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace"></i></a>
+</div>
+
+<div class="card-footer" *ngIf="!editMode">
+  <div class="row">
+    <div class="col ms-1">
+      <a class="btn btn-primary" (click)="edit()">Editer le compte</a>
+    </div>
+    <div class="col ms-auto">
+      <a class="btn btn-danger" (click)="deleteUser()">Supprimer le compte</a>
+    </div>
   </div>
 </div>

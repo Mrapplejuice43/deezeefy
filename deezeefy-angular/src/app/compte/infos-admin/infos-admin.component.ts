@@ -8,23 +8,33 @@ import { InfosAdminService } from './infos-admin.service';
   styleUrls: ['./infos-admin.component.scss']
 })
 export class InfosAdminComponent implements OnInit {
-  @Input("id")
-  id: number
-
   admin: Admin
+  editMode: boolean = false
 
   constructor(
     private infosAdminService: InfosAdminService
   ) {}
 
   ngOnInit(): void {
-    this.getAdmin()
+    this.admin = this.infosAdminService.getConnectedUser()
   }
 
-  getAdmin(): void {
-    this.infosAdminService.getAdmin(this.id).subscribe(resp => {
+  edit() {
+    this.editMode = true
+  }
+
+  editUser() {
+    this.infosAdminService.updateUser(this.admin).subscribe(resp => {
       this.admin = resp
+      this.editMode = false
     })
   }
 
+  cancel() {
+    this.editMode = false
+  }
+
+  deleteUser() {
+    this.infosAdminService.deleteUser(this.admin)
+  }
 }

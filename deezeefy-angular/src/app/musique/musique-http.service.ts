@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth.service';
 import { Musique } from '../model';
 
 @Injectable({
@@ -8,17 +9,22 @@ import { Musique } from '../model';
 })
 export class MusiqueHttpService {
   musiques: Array<Musique> = new Array<Musique>();
-  
-  constructor(private http: HttpClient) {
+
+  constructor(
+    private http: HttpClient,
+    private authService : AuthService
+    ) {
     this.load();
   }
 
-
+  getTypeCompte(): string {
+    return this.authService.getTypeCompte()
+  }
 
   findAll(): Array<Musique> {
     return this.musiques;
   }
-  
+
   findById(id: number): Observable<Musique> {
     return this.http.get<Musique>("http://localhost:9999/musique/" + id);
   }

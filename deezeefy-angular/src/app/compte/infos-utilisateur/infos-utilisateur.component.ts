@@ -8,23 +8,33 @@ import { InfosUtilisateurService } from './infos-utilisateur.service';
   styleUrls: ['./infos-utilisateur.component.scss']
 })
 export class InfosUtilisateurComponent implements OnInit {
-  @Input("id")
-  id: number
-
   user: Utilisateur
+  editMode: boolean = false
 
   constructor(
     private infosUtilisateurService: InfosUtilisateurService
   ) {}
 
-
   ngOnInit(): void {
-    this.getUser()
+    this.user = (this.infosUtilisateurService.getConnectedUser() as Utilisateur)
   }
 
-  getUser(): void {
-    this.infosUtilisateurService.getUser(this.id).subscribe(resp => {
+  edit() {
+    this.editMode = true
+  }
+
+  editUser() {
+    this.infosUtilisateurService.updateUser(this.user).subscribe(resp => {
       this.user = resp
+      this.editMode = false
     })
+  }
+
+  cancel() {
+    this.editMode = false
+  }
+
+  deleteUser() {
+    this.infosUtilisateurService.deleteUser(this.user)
   }
 }

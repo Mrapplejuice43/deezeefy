@@ -1,31 +1,29 @@
-<div class="container">
-  <div class="card">
-    <h3 class="card-header">Historique du compte</h3>
-    <div class="card-body">
-      <table class="table table-bordered table-striped table-hover align-middle">
-        <thead>
-          <tr>
-            <th>Titre</th>
-            <th>Auteur</th>
-            <th>Durée</th>
-            <th>Date de la derniere écoute</th>
-            <th>Nombre d'écoutes</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let ch of findAll()">
-            <td>{{ ch.contenu.titre }}</td>
-            <td>{{ ch.contenu.auteur?.nom }}</td>
-            <td>{{ ch.contenu.duree }}</td>
-            <td>{{ ch.dateDerniereEcoute | date:"dd/MM/yyyy" }}</td>
-            <td>{{ ch.nombreEcoutes }}</td>
-            <td class="text-center">
-              <app-lecture-musique [musicId]="ch.contenu.id"></app-lecture-musique>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<div class="card">
+  <h3 class="card-header">Historique du compte</h3>
+  <div class="card-body">
+    <table class="table table-bordered table-striped table-hover align-middle">
+      <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Auteur</th>
+          <th>Durée</th>
+          <th>Date de la derniere écoute</th>
+          <th>Nombre d'écoutes</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ch of findAll()">
+          <td>{{ ch.contenu.titre }}</td>
+          <td>{{ ch.contenu.auteur?.nom }}</td>
+          <td>{{ ch.contenu.duree }}</td>
+          <td>{{ ch.dateDerniereEcoute | date:"dd/MM/yyyy" }}</td>
+          <td>{{ ch.nombreEcoutes }}</td>
+          <td class="text-center">
+            <app-lecture-musique [musicId]="ch.contenu.id"></app-lecture-musique>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

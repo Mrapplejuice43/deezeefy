@@ -1,118 +1,120 @@
-<h1>Création d'un nouveau compte </h1>
-<div class="container">
+<div class="container mt-3">
 
-  Quel type de compte souhaitez-vous créer : <select [(ngModel)]="type">
-    <option value="">Veuillez choisir votre status :</option>
-    <option value="artiste"> Artiste</option>
-    <option value="user"> User</option>
-  </select>
-
-  <div *ngIf="type == 'artiste'">
+  <div class="card">
+    <h3 class="card-header">Création d'un nouveau compte </h3>
 
     <div class="card-body">
-      <hr>
-      <div class="form-group">
-        <label for="id">Identifiant :</label> <input type="number" class="form-control" id="id" name="id"
-          [(ngModel)]="formArtiste.id" readonly />
-      </div>
-      <div class="form-group">
-        <label for="version">Version :</label> <input type="number" class="form-control" id="version" name="version"
-          [(ngModel)]="formArtiste.version" readonly />
-      </div>
-
-      <div class="form-group">
-        <label for="nom">Nom :</label> <input type="text" class="form-control" id="nom" name="nom"
-          [(ngModel)]="formArtiste.nom" />
-      </div>
-      <div class="form-group">
-        <label for="prenom">Prénom :</label> <input type="text" class="form-control" id="prenom" name="prenom"
-          [(ngModel)]="formArtiste.prenom" />
-      </div>
-      <div class="form-group">
-        <label for="email">Email :</label> <input type="email" class="form-control" id="email" name="email"
-          [(ngModel)]="formArtiste.email" />
-      </div>
-      <div class="form-group">
-        <label for="login">Login :</label> <input type="text" class="form-control" id="login" name="login"
-          [(ngModel)]="formArtiste.login" />
-      </div>
-      <div class="form-group">
-        <label for="password">Password :</label> <input type="text" class="form-control" id="password" name="password"
-          [(ngModel)]="formArtiste.password" />
-      </div>
-      <div class="form-group">
-        <label for="pseudo">Pseudo :</label> <input type="text" class="form-control" id="pseudo" name="pseudo"
-          [(ngModel)]="formArtiste.pseudo" />
+      <div class="row">
+        <label for="typeCompte" class="col-form-label col-4">Quel type de compte souhaitez-vous créer :</label>
+        <div class="col-auto align-items-middle">
+          <select class="form-control col-6" (change)="onSelectChange()" [(ngModel)]="type">
+            <option value="">Choisir une option</option>
+            <option value="artiste">Artiste</option>
+            <option value="user">Utilisateur</option>
+          </select>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="biographie">Biographie :</label> <input type="text" class="form-control" id="biographie"
-          name="biographie" [(ngModel)]="formArtiste.biographie" />
+      <div *ngIf="type == 'artiste'">
+        <div class="card-body">
+
+          <div class="row me-3 visually-hidden">
+            <hr>
+            <label for="idInp" class="col-form-label col-auto">Identifiant :</label>
+            <div class="col">
+              <input type="number" name="idInp" id="idInp" class="form-control col" readonly [(ngModel)]="formArtiste.id">
+            </div>
+            <label for="versionInp" class="col-form-label col-auto">Version :</label>
+            <div class="col">
+              <input type="number" name="versionInp" id="versionInp" class="form-control" readonly [(ngModel)]="formArtiste.version">
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="nom">Nom :</label> <input type="text" class="form-control" id="nom" name="nom"
+              [(ngModel)]="formArtiste.nom" />
+          </div>
+          <div class="form-group mb-3">
+            <label for="prenom">Prénom :</label> <input type="text" class="form-control" id="prenom" name="prenom"
+              [(ngModel)]="formArtiste.prenom" />
+          </div>
+          <div class="form-group mb-3">
+            <label for="email">Email :</label> <input type="email" class="form-control" id="email" name="email"
+              [(ngModel)]="formArtiste.email" />
+          </div>
+          <div class="form-group mb-3">
+            <label for="login">Login :</label> <input type="text" class="form-control" id="login" name="login"
+              [(ngModel)]="formArtiste.login" />
+          </div>
+          <div class="form-group mb-3">
+            <label for="password">Password :</label> <input type="text" class="form-control" id="password" name="password"
+              [(ngModel)]="formArtiste.password" />
+          </div>
+          <div class="form-group mb-3">
+            <label for="pseudo">Pseudo :</label> <input type="text" class="form-control" id="pseudo" name="pseudo"
+              [(ngModel)]="formArtiste.pseudo" />
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="biographie">Biographie :</label> <input type="text" class="form-control" id="biographie"
+              name="biographie" [(ngModel)]="formArtiste.biographie" />
+          </div>
+        </div>
+        <br>
+        <div class="card-footer">
+                <a class="btn btn-success" (click)="addArtiste()"><i class="bi bi-plus-square"></i></a>
+          <a class="btn btn-warning" (click)="cancelArtiste()"><i class="bi bi-backspace-fill"></i></a>
+        </div>
       </div>
-    </div>
-    <br>
-    <div class="card-footer">
-            <a class="btn btn-success" (click)="addArtiste()"><i class="bi bi-plus-square"></i></a>
-      <a class="btn btn-warning" (click)="cancelArtiste()"><i class="bi bi-backspace-fill"></i></a>
+
+      <div *ngIf="type == 'user' ">
+        <div class="card-body">
+          <div class="form-group mb-3">
+            <label for="nomInp" class="form-label">Nom :</label>
+            <input type="text" name="nomInp" id="nomInp" class="form-control" [(ngModel)]="formUser.nom">
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="prenomInp" class="form-label">Prenom :</label>
+            <input type="text" name="prenomInp" id="prenomInp" class="form-control" [(ngModel)]="formUser.prenom">
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="emailInp" class="form-label">Email :</label>
+            <input type="text" name="emailInp" id="emailInp" class="form-control" [(ngModel)]="formUser.email">
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="loginInp" class="form-label">Login :</label>
+            <input type="text" name="loginInp" id="loginInp" class="form-control" [(ngModel)]="formUser.login">
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="passwordInp" class="form-label">Mot de passe :</label>
+            <input type="text" name="passwordInp" id="passwordInp" class="form-control" [(ngModel)]="formUser.password">
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="pseudoInp" class="form-label">Pseudo :</label>
+            <input type="text" name="pseudoInp" id="pseudoInp" class="form-control" [(ngModel)]="formUser.pseudo">
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="abonnementInp" class="form-label">Abonnement :</label>
+            <select class="form-control" id="abonnementInp" name="abonnementInp" [(ngModel)]="formUser.abonnement">
+              <option value="" selected>Veuillez sélectionner un abonnement</option>
+              <option value="GRATUIT"> GRATUIT</option>
+              <option value="ETUDIANT"> ETUDIANT</option>
+              <option value="PREMIUM"> PREMIUM</option>
+            </select>
+          </div>
+        </div>
+        <br>
+        <div class="card-footer">
+          <a class="btn btn-success" (click)="addUser()"><i class="bi bi-plus-square"></i></a>
+          <a class="btn btn-warning" (click)="cancelUser()"><i class="bi bi-backspace"></i></a>
+        </div>
+      </div>
     </div>
   </div>
-
-
-</div>
-<div class="container">
-<div *ngIf="type == 'user' ">
-  <div class="card-body">
-    <hr>
-    <div>
-      <div class="form-group">
-      <label for="idInp">Identifiant :</label><input type="number" name="idInp" id="idInp" class="form-control col" readonly [(ngModel)]="formUser.id">
-      </div>
-      <label for="versionInp">Version :</label>
-      <div class="form-group">
-        <input type="number" name="versionInp" id="versionInp" class="form-control" readonly
-          [(ngModel)]="formUser.version">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="nomInp" class="form-label">Nom :</label>
-      <input type="text" name="nomInp" id="nomInp" class="form-control" [(ngModel)]="formUser.nom">
-    </div>
-
-    <div class="form-group">
-      <label for="prenomInp" class="form-label">Prenom :</label>
-      <input type="text" name="prenomInp" id="prenomInp" class="form-control" [(ngModel)]="formUser.prenom">
-    </div>
-    <div class="form-group">
-      <label for="emailInp" class="form-label">Email :</label>
-      <input type="text" name="emailInp" id="emailInp" class="form-control" [(ngModel)]="formUser.email">
-    </div>
-    <div class="form-group">
-      <label for="loginInp" class="form-label">Login :</label>
-      <input type="text" name="loginInp" id="loginInp" class="form-control" [(ngModel)]="formUser.login">
-    </div>
-
-    <div class="form-group">
-      <label for="passwordInp" class="form-label">Mot de passe :</label>
-      <input type="text" name="passwordInp" id="passwordInp" class="form-control" [(ngModel)]="formUser.password">
-    </div>
-    <div class="form-group">
-      <label for="pseudoInp" class="form-label">Pseudo :</label>
-      <input type="text" name="pseudoInp" id="pseudoInp" class="form-control" [(ngModel)]="formUser.pseudo">
-    </div>
-    <div class="form-group">
-      <label for="abonnementInp" class="form-label">Abonnement :</label>
-      <select class="form-control" id="abonnementInp" name="abonnementInp" [(ngModel)]="formUser.abonnement">
-        <option value="">Veuillez sélectionner un abonnement</option>
-        <option value="GRATUIT"> GRATUIT</option>
-        <option value="ETUDIANT"> ETUDIANT</option>
-        <option value="PREMIUM"> PREMIUM</option>
-      </select>
-    </div>
-  </div>
-  <br>
-  <div class="card-footer">
-    <a class="btn btn-success" (click)="addUser()"><i class="bi bi-plus-square"></i></a>
-    <a class="btn btn-warning" (click)="cancelUser()"><i class="bi bi-backspace"></i></a>
-  </div>
-</div>
 </div>

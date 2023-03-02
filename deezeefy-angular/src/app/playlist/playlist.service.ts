@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
-import { ContenuPlaylist, Playlist } from '../model';
+import { Compte, ContenuPlaylist, Playlist } from '../model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +11,16 @@ import { ContenuPlaylist, Playlist } from '../model';
 export class PlaylistService {
 
   playlists : Array<Playlist>;
-  
-  constructor(private http: HttpClient, private authServ: AuthService) {
+
+  constructor(
+    private http: HttpClient,
+    private authServ: AuthService
+  ) {
     this.load();
+  }
+
+  getAuthUserType(): string {
+    return this.authServ.getTypeCompte();
   }
 
 

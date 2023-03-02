@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Optional;
+
 @Service
 public class CompteService {
 
@@ -15,5 +17,14 @@ public class CompteService {
         return compteRepository.findById(compteId).orElseThrow(() -> {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         });
+    }
+
+    public Compte findByLoginAndPassword(String login, String password) {
+        Optional<Compte> optionalCompte = compteRepository.findByLoginAndPassword(login, password);
+
+        if(optionalCompte.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return optionalCompte.get();
     }
 }

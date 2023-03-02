@@ -25,7 +25,7 @@ const routes: Routes = [
   {path:"musique",component:MusiqueComponent},
   {path:"podcast",component:PodcastComponent},
   {path:"playlist",component:PlaylistComponent},
-  {path:"connection",component:SeConnecterComponent},
+  {path:"connexion",component:SeConnecterComponent},
   {path:"compte",component:CompteComponent},
   {path:"creationCompte",component:CreationCompteComponent},
 

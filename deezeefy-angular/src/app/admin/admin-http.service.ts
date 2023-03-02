@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth.service';
 import { Admin } from '../model';
 
 @Injectable({
@@ -9,8 +10,15 @@ import { Admin } from '../model';
 export class AdminHttpService {
   admins: Array<Admin> = new Array<Admin>();
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private authService : AuthService
+    ) {
     this.load();
+  }
+
+  getCurrentUserType(): string {
+    return this.authService.getTypeCompte()
   }
 
   findAll(): Array<Admin> {

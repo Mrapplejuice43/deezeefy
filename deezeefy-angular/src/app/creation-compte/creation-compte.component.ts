@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ArtistHttpService } from '../artist/artist-http.service';
-import { Artiste, Compte, Utilisateur } from '../model';
-import { UtilisateurHttpService } from '../utilisateur/utilisateur-http.service';
+import { Artiste, Utilisateur } from '../model';
+import { CreationCompteHttpService } from './creation-compte-http.service';
 
 
 @Component({
@@ -11,33 +10,47 @@ import { UtilisateurHttpService } from '../utilisateur/utilisateur-http.service'
   styleUrls: ['./creation-compte.component.scss']
 })
 export class CreationCompteComponent {
-  type: string;
-  
-formArtiste: Artiste = new Artiste();
-formUser: Utilisateur= new Utilisateur();
+  type: string = "";
 
-constructor(private artistHttpService:ArtistHttpService, private utilisateurHttpService: UtilisateurHttpService, private router:Router){
-  
+  formArtiste: Artiste = new Artiste();
+  formUser: Utilisateur= new Utilisateur();
+
+constructor(
+  private creationCompteService: CreationCompteHttpService,
+  private router:Router
+  ) {}
+
+onSelectChange() {
+  if(this.type == "artiste") {
+    this.formArtiste = new Artiste();
+  } else if (this.type == "user") {
+    this.formUser = new Utilisateur()
+    this.formUser.abonnement = "";
+  } else {
+    this.formArtiste = undefined
+    this.formUser = undefined
+  }
 }
 
-
 addArtiste() {
-this.artistHttpService.insert(this.formArtiste);
-this.router.navigate(["/connection"]);
+  this.formArtiste.type = this.type
+  this.creationCompteService.creationArtiste(this.formArtiste);
+  this.router.navigate(["/connexion"]);
 }
 
 cancelArtiste () {
-this.formArtiste=undefined;
-this.type=null;
+  this.formArtiste=undefined;
+  this.type="";
 }
 
 addUser() {
-  this.utilisateurHttpService.insert(this.formUser);
-  this.router.navigate(["/connection"]);
-  }
+  this.formUser.type = this.type
+  this.creationCompteService.creationUser(this.formUser);
+  this.router.navigate(["/connexion"]);
+}
 
 cancelUser () {
     this.formUser=undefined;
-    this.type=null;
+    this.type="";
   }
 }

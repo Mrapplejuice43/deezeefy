@@ -1,6 +1,7 @@
 package formation.sopra.deezeefy.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import formation.sopra.deezeefy.controller.dto.AuthDTO;
 import formation.sopra.deezeefy.model.Compte;
 import formation.sopra.deezeefy.model.Views;
 import formation.sopra.deezeefy.service.CompteService;
@@ -19,5 +20,11 @@ public class CompteController {
     @JsonView(Views.ViewCompte.class)
     public Compte getById(@PathVariable("id") Integer id) {
         return compteService.findById(id);
+    }
+
+    @PostMapping("/auth")
+    @JsonView(Views.ViewCompte.class)
+    public Compte loginCompte(@RequestBody AuthDTO dto) {
+        return compteService.findByLoginAndPassword(dto.getLogin(), dto.getPassword());
     }
 }

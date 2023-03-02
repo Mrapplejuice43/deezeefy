@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Compte } from '../model';
+import { NavbarService } from './navbar.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,17 +9,19 @@ import { Compte } from '../model';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private navbarService: NavbarService
+  ) {}
 
   getCompteType(): string {
-    return this.authService.getTypeCompte();
+    return this.navbarService.getCompteType();
   }
 
   getAuthCompte(): Compte {
-    return this.authService.getCompte();
+    return this.navbarService.getAuthCompte();
   }
 
   logout() {
-    this.authService.disconnectCompte();
+    this.navbarService.logout();
   }
 }

@@ -46,7 +46,7 @@ public class UtilisateurController {
 		if (!id.equals(utilisateur.getId())) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
-		return utilisateurService.create(utilisateur);
+		return utilisateurService.update(utilisateur);
 	}
 
 	@DeleteMapping("/{id}")

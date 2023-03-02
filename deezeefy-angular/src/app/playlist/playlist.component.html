@@ -6,33 +6,33 @@
             <table class="table table-bordered table-striped table-hover align-middle">
               <thead>
                 <tr>
-                  <th>Identifiant</th>
-                  <th>Version</th>
+                  <th *ngIf="getAuthUserType() == 'admin'">Identifiant</th>
+                  <th *ngIf="getAuthUserType() == 'admin'">Version</th>
                   <th>Titre</th>
                   <th>Duree</th>
                   <th>Date de creation</th>
                   <th>Nombre de pistes</th>
                   <th>Type de playlist</th>
                   <th>Créateur</th>
-                  <th></th>
-                  <th></th>
+                  <th *ngIf="getAuthUserType() == 'admin'"></th>
+                  <th *ngIf="getAuthUserType()"></th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let p of findAll()">
-                  <td> {{p.id}} </td>
-                  <td> {{p.version}} </td>
+                  <td *ngIf="getAuthUserType() == 'admin'"> {{p.id}} </td>
+                  <td *ngIf="getAuthUserType() == 'admin'"> {{p.version}} </td>
                   <td> {{p.titre}} </td>
                   <td> {{p.duree}} </td>
                   <td> {{p.dateCreation| date: "dd/MM/yyyy"}} </td>
                   <td> {{p.nbContenu}} </td>
                   <td> {{p.typePlaylist}} </td>
                   <td> {{p.createur?.pseudo}} </td>
-                  <td class="text-center">
+                  <td class="text-center" *ngIf="getAuthUserType() == 'admin'">
                     <a class="btn btn-primary" (click)="edit(p.id)"><i class="bi bi-pencil-square"></i></a>
                     <a class="btn btn-danger" (click)="remove(p.id)"><i class="bi bi-trash3"></i></a>
                   </td>
-                  <td> <span class="btn btn-warning" (click)="completer(p.id)">Completer</span></td>
+                  <td class="text-center" *ngIf="getAuthUserType()"><span class="btn btn-warning" (click)="completer(p.id)">Completer</span></td>
                 </tr>
               </tbody>
             </table>
@@ -55,17 +55,17 @@
                   <label for="dureeInp" class="form-label">Duree</label>
                   <input type="number" name="dureeInp" id="dureeInp" class="form-control" readonly [(ngModel)]="formPlaylist.duree">
                 </div>
-        
+
                 <div class="mb-3">
                   <label for="dateInp" class="form-label">Date de creation</label>
                   <input type="date" name="dateInp" id="dateInp" class="form-control" readonly value="{{currentDate|date:'yyyy-MM-dd'}}">
                 </div>
-        
+
                 <div class="mb-3">
                   <label for="nbContInp" class="form-label">Nombre de pistes</label>
                   <input type="number" name="nbContInp" id="nbContInp" class="form-control" readonly [(ngModel)]="formPlaylist.nbContenu">
                 </div>
-        
+
                 <div class="mb-3">
                   <label for="typeInp" class="form-label">Type de playlist</label>
                   <select [(ngModel)]="formPlaylist.typePlaylist">
@@ -76,7 +76,7 @@
                         <option value="PLAYLIST">Playlist</option>
                   </select>
                 </div>
-        
+
                 <div class="mb-3">
                   <label for="crInp" class="form-label">Createur</label>
                   <input type="text" name="crInp" id="crInp" class="form-control" readonly value= "{{formPlaylist.createur?.pseudo}}">

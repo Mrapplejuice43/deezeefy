@@ -1,46 +1,40 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, throwError } from 'rxjs';
 import { AuthService } from '../auth.service';
 import {
-  Admin,
-  Artiste,
   AuthDTO,
-  COMPTE_ADMIN,
-  COMPTE_ARTISTE,
-  COMPTE_UTILISATEUR,
-  Utilisateur,
+  Compte,
 } from '../model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SeConnecterHttpServiceService {
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  compteNotFoundError: boolean = false
 
-  loginUser(dto: AuthDTO) {
-    this.http
-      .post<Utilisateur>('http://localhost:9999/utilisateur/auth', dto)
-      .subscribe((resp) => {
-        resp.type = COMPTE_UTILISATEUR;
-        this.authService.loginCompte(resp);
-      });
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService
+  ) {}
+
+  getCompteNotFoundError(): boolean {
+    return this.compteNotFoundError;
   }
 
-  loginAdmin(dto: AuthDTO) {
+  loginCompte(dto: AuthDTO) {
     this.http
-      .post<Admin>('http://localhost:9999/admin/auth', dto)
+      .post<Compte>('http://localhost:9999/compte/auth', dto)
+      .pipe(
+        catchError((err) => {
+          if(err.status === 404) {
+            this.compteNotFoundError = true
+            return throwError(() => console.error("Le compte n'existe pas"))
+          }
+          return throwError(() => console.error(err.status))
+        })
+      )
       .subscribe((resp) => {
-        resp.type = COMPTE_ADMIN;
-        this.authService.loginCompte(resp);
-      });
-  }
-
-  loginArtist(dto: AuthDTO) {
-    this.http
-      .post<Artiste>('http://localhost:9999/artiste/auth', dto)
-      .subscribe((resp) => {
-        resp.type = COMPTE_ARTISTE;
         this.authService.loginCompte(resp);
       });
   }

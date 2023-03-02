@@ -47,7 +47,7 @@ public class ArtisteController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 
-		return artisteService.create(artiste);
+		return artisteService.update(artiste);
 	}
 
 	@DeleteMapping("/{id}")

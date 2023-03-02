@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Admin } from 'src/app/model';
+import { Admin, Compte } from 'src/app/model';
+import { CompteService } from '../compte.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +11,23 @@ import { Admin } from 'src/app/model';
 export class InfosAdminService {
 
   constructor(
-    private http: HttpClient
+    private compteService: CompteService,
+    private http: HttpClient,
+    private router: Router
   ) { }
 
-  getAdmin(id: number): Observable<Admin> {
-    return this.http.get<Admin>("http://localhost:9999/admin/" + id)
+  getConnectedUser(): Compte {
+    return this.compteService.getConnectedUser()
+  }
+
+  updateUser(user: Admin): Observable<Admin> {
+    return this.http.put<Admin>("http://localhost:9999/admin/" + user.id, user)
+  }
+
+  deleteUser(user: Admin) {
+    this.http.delete<Admin>("http://localhost:9999/admin/" + user.id).subscribe(() => {
+      this.router.navigate(['/home'])
+      this.compteService.logoutUser()
+    })
   }
 }

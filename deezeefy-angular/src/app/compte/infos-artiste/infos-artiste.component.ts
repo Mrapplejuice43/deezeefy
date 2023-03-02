@@ -8,22 +8,33 @@ import { InfosArtisteService } from './infos-artiste.service';
   styleUrls: ['./infos-artiste.component.scss']
 })
 export class InfosArtisteComponent implements OnInit {
-  @Input("id")
-  id: number
-
   artiste: Artiste
+  editMode: boolean = false
 
   constructor(
     private infosArtisteService: InfosArtisteService
   ) {}
 
   ngOnInit(): void {
-    this.getArtiste()
+    this.artiste = (this.infosArtisteService.getConnectedUser() as Artiste)
   }
 
-  getArtiste(): void {
-    this.infosArtisteService.getArtiste(this.id).subscribe(resp => {
+  edit() {
+    this.editMode = true
+  }
+
+  editUser() {
+    this.infosArtisteService.updateUser(this.artiste).subscribe(resp => {
       this.artiste = resp
+      this.editMode = false
     })
+  }
+
+  cancel() {
+    this.editMode = false
+  }
+
+  deleteUser() {
+    this.infosArtisteService.deleteUser(this.artiste)
   }
 }

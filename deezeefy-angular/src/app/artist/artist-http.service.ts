@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Artiste } from '../model';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +11,15 @@ import { Router } from '@angular/router';
 export class ArtistHttpService {
   artistes: Array<Artiste> = new Array<Artiste>();
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService
+    ) {
     this.load();
+  }
+
+  getTypeCompte(): string {
+    return this.authService.getTypeCompte()
   }
 
   findById(id: number): Observable<Artiste> {
