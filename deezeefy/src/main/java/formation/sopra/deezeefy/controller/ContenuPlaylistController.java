@@ -55,7 +55,12 @@ public class ContenuPlaylistController {
 	@GetMapping("/playlistId/{id}")
 	public List<ContenuPlaylist> findAllCPByIdP(@PathVariable Integer id){
 		return contenuPlaylistService.findAllCPByIdP(id);
-	} 
+	}
+
+	@DeleteMapping("/artiste/{id}")
+	public void deleteAllByContentId(@PathVariable Integer id) {
+		contenuPlaylistService.deleteAllByContentId(id);
+	}
 	
 	
 }

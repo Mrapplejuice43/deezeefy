@@ -28,4 +28,9 @@ public class ContenuController {
     public Contenu save(@RequestBody Contenu c) {
         return contenuRepository.save(c);
     }
+
+    @DeleteMapping("/artiste/{id}")
+    public void deleteAllByAuteurId(@PathVariable Integer id) {
+        contenuRepository.deleteAllByAuteurId(id);
+    }
 }

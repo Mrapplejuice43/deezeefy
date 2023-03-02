@@ -47,9 +47,11 @@ export class AdminHttpService {
   }
 
   remove(id: number): void {
-    this.http.delete<void>("http://localhost:9999/admin/" + id).subscribe(resp => {
-      this.load();
-    });
+    this.http.delete("http://localhost:9999/compteHistory/compte/" + id).subscribe(() => {
+      this.http.delete<void>("http://localhost:9999/admin/" + id).subscribe(resp => {
+        this.load();
+      });
+    })
   }
 
   private load(): void {

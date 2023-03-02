@@ -84,4 +84,8 @@ public class CompteHistoryService {
     public void deleteAllByCompteId(Integer id) {
         compteHistoryRepository.deleteByCompteId(id);
     }
+
+    public void deleteAllByContenuArtisteId(Integer id) {
+        compteHistoryRepository.deleteAllByContenuAuteurId(id);
+    }
 }

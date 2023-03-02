@@ -26,4 +26,8 @@ public interface CompteHistoryRepository extends JpaRepository<CompteHistory, In
     @Transactional
     @Modifying
     void deleteByCompteId(Integer id);
+
+    @Transactional
+    @Modifying
+    void deleteAllByContenuAuteurId(Integer id);
 }

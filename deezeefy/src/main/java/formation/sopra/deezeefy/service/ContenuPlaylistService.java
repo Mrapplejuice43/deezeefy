@@ -45,4 +45,8 @@ public class ContenuPlaylistService {
 		System.out.println("test service");
 		return contenuPlaylistRepo.findByPlaylistAssocieeId(id);
 	}
+
+	public void deleteAllByContentId(Integer id) {
+		contenuPlaylistRepo.deleteAllByContenuAssocieAuteurId(id);
+	}
 }

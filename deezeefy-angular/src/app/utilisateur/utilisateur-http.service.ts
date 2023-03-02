@@ -36,9 +36,11 @@ update(utilisateur: Utilisateur): void {
 }
 
 remove(id: number): void {
-  this.http.delete<void>("http://localhost:9999/utilisateur/" + id).subscribe(resp => {
-    this.load();
-  });
+  this.http.delete('http://localhost:9999/compteHistory/compte/' + id).subscribe(() => {
+    this.http.delete<void>("http://localhost:9999/utilisateur/" + id).subscribe(resp => {
+      this.load();
+    });
+  })
 }
 
 private load(): void {

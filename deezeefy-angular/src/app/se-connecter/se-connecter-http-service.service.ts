@@ -35,6 +35,7 @@ export class SeConnecterHttpServiceService {
         })
       )
       .subscribe((resp) => {
+        this.compteNotFoundError = false
         this.authService.loginCompte(resp);
       });
   }

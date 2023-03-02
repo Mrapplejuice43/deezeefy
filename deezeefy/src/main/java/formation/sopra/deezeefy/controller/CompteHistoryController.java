@@ -70,4 +70,9 @@ public class CompteHistoryController {
     public void deleteAllByCompteId(@PathVariable Integer id) {
         compteHistoryService.deleteAllByCompteId(id);
     }
+
+    @DeleteMapping("/artiste/{id}")
+    public void deleteAllByContenuArtisteId(@PathVariable Integer id) {
+        compteHistoryService.deleteAllByContenuArtisteId(id);
+    }
 }

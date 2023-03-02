@@ -4,6 +4,7 @@ import { Artiste } from '../model';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { MusiqueHttpService } from '../musique/musique-http.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,8 @@ export class ArtistHttpService {
 
   constructor(
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private musiqueService: MusiqueHttpService
     ) {
     this.load();
   }
@@ -47,11 +49,18 @@ export class ArtistHttpService {
   }
 
   remove(id: number): void {
-    this.http
-      .delete<void>('http://localhost:9999/artiste/' + id)
-      .subscribe((resp) => {
-        this.load();
-      });
+    this.http.delete('http://localhost:9999/compteHistory/compte/' + id).subscribe(() => {
+      this.http.delete("http://localhost:9999/contenuPlaylist/artiste/" + id).subscribe(() => {
+        this.http.delete("http://localhost:9999/compteHistory/artiste/" + id).subscribe(() => {
+          this.http.delete("http://localhost:9999/contenu/artiste/" + id).subscribe(() => {
+            this.http.delete<void>('http://localhost:9999/artiste/' + id).subscribe((resp) => {
+              this.load();
+              this.musiqueService.load()
+            });
+          })
+        })
+      })
+    })
   }
 
   update(artist: Artiste): void {
