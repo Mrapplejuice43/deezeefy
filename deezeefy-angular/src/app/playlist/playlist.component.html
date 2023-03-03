@@ -44,7 +44,7 @@
     </div>
     <div class="card-body" *ngIf="formPlaylist">
 
-      <div class="mb-3">
+      <!-- <div class="mb-3">
         <label for="idInp" class="col-form-label col-auto">Identifiant :</label>
         <input type="number" name="idInp" id="idInp" class="form-control col" readonly [(ngModel)]="formPlaylist.id">
       </div>
@@ -52,28 +52,28 @@
         <label for="versionInp" class="col-form-label col-auto">Version :</label>
         <input type="number" name="versionInp" id="versionInp" class="form-control" readonly
           [(ngModel)]="formPlaylist.version">
-      </div>
+      </div> -->
       <div class="mb-3">
         <label for="titreInp" class="form-label">Titre</label>
         <input type="text" name="titreInp" id="titreInp" class="form-control" [(ngModel)]="formPlaylist.titre">
       </div>
-      <div class="mb-3">
+      <!-- <div class="mb-3">
         <label for="dureeInp" class="form-label">Duree</label>
         <input type="number" name="dureeInp" id="dureeInp" class="form-control" readonly
           [(ngModel)]="formPlaylist.duree">
-      </div>
+      </div> -->
 
-      <div class="mb-3">
+      <!-- <div class="mb-3">
         <label for="dateInp" class="form-label">Date de creation</label>
         <input type="date" name="dateInp" id="dateInp" class="form-control" readonly
           value="{{currentDate|date:'yyyy-MM-dd'}}">
-      </div>
+      </div> -->
 
-      <div class="mb-3">
+      <!-- <div class="mb-3">
         <label for="nbContInp" class="form-label">Nombre de pistes</label>
         <input type="number" name="nbContInp" id="nbContInp" class="form-control" readonly
           [(ngModel)]="formPlaylist.nbContenu">
-      </div>
+      </div> -->
 
       <div class="mb-3">
         <label for="typeInp" class="form-label">Type de playlist</label>
@@ -113,7 +113,7 @@
                 <th>Durée</th>
                 <!-- <th>Genre</th> -->
                 <th></th>
-                <th></th>
+                <!-- <th></th> -->
               </tr>
             </thead>
             <tbody>
@@ -126,9 +126,9 @@
                 <td class="text-center">
                   <app-lecture-musique [musicId]="m.id"></app-lecture-musique>
                 </td>
-                <td class="text-center">
+                <!-- <td class="text-center">
                   <a class="btn btn-danger" (click)="removeContenu(m.id)"><i class="bi bi-trash3"></i></a>
-                </td>
+                </td> -->
               </tr>
             </tbody>
           </table>

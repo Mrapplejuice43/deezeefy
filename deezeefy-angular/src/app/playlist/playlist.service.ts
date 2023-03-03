@@ -34,8 +34,8 @@ export class PlaylistService {
   createDate(){
     let now: Date = new Date();
     now.setTime(Date.now())
-    let day = now.getDay() < 10 ? "0" + now.getDay() : now.getDay()
-    let month = now.getMonth() < 10 ? "0" + now.getMonth() : now.getMonth()
+    let day = now.getDay() < 10 ? "0" + (now.getDay() - 1) : (now.getDay() - 1)
+    let month = now.getMonth() < 10 ? "0" + (now.getMonth() + 1) : (now.getMonth() + 1)
     return now.getFullYear() + '-' + month + '-' + day
   }
 

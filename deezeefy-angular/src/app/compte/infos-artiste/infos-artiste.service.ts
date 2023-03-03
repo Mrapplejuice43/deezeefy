@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/auth.service';
 import { Artiste, Compte } from 'src/app/model';
+import { MusiqueHttpService } from 'src/app/musique/musique-http.service';
 import { CompteService } from '../compte.service';
 
 @Injectable({
@@ -13,7 +15,8 @@ export class InfosArtisteService {
   constructor(
     private compteService: CompteService,
     private http: HttpClient,
-    private router: Router
+    private musiqueService: MusiqueHttpService,
+    private auth: AuthService
   ) { }
 
   getConnectedUser(): Compte {
@@ -24,11 +27,17 @@ export class InfosArtisteService {
     return this.http.put<Artiste>("http://localhost:9999/artiste/" + user.id, user)
   }
 
-  deleteUser(user: Artiste) {
-    this.http.delete("http://localhost:9999/compteHistory/compte/" + user.id).subscribe(() => {
-      this.http.delete<Artiste>("http://localhost:9999/artiste/" + user.id).subscribe(() => {
-      this.router.navigate(['/home'])
-        this.compteService.logoutUser()
+  deleteUser(id: number): void {
+    this.http.delete('http://localhost:9999/compteHistory/compte/' + id).subscribe(() => {
+      this.http.delete("http://localhost:9999/contenuPlaylist/artiste/" + id).subscribe(() => {
+        this.http.delete("http://localhost:9999/compteHistory/artiste/" + id).subscribe(() => {
+          this.http.delete("http://localhost:9999/contenu/artiste/" + id).subscribe(() => {
+            this.http.delete<void>('http://localhost:9999/artiste/' + id).subscribe((resp) => {
+              this.musiqueService.load()
+              this.auth.disconnectCompte()
+            });
+          })
+        })
       })
     })
   }

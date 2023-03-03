@@ -35,6 +35,6 @@ export class InfosArtisteComponent implements OnInit {
   }
 
   deleteUser() {
-    this.infosArtisteService.deleteUser(this.artiste)
+    this.infosArtisteService.deleteUser(this.artiste.id)
   }
 }

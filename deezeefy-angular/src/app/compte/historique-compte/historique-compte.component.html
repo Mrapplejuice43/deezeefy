@@ -10,7 +10,7 @@
             <th>Durée</th>
             <th>Date de la derniere écoute</th>
             <th>Nombre d'écoutes</th>
-            <th></th>
+            <!-- <th></th> -->
           </tr>
         </thead>
         <tbody>
@@ -20,9 +20,9 @@
             <td>{{ ch.contenu.duree }}</td>
             <td>{{ ch.dateDerniereEcoute | date:"dd/MM/yyyy" }}</td>
             <td>{{ ch.nombreEcoutes }}</td>
-            <td class="text-center">
+            <!-- <td class="text-center">
               <app-lecture-musique [musicId]="ch.contenu.id"></app-lecture-musique>
-            </td>
+            </td> -->
           </tr>
         </tbody>
       </table>
