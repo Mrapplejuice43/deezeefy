@@ -2,7 +2,12 @@ body {
 
     width: 100%; 
     padding: 20px;
-    background-color: gray;
+   // background-color: gray;
+   background: linear-gradient(#d964e6, #ededed);
    // background-image: url("src/assets/1260080.jpg");
-
+}
+footer{
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }

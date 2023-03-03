@@ -1,12 +1,16 @@
+
+<body>
+    
+
 <div class="container">
 
     <div class="card">
-        <h3 class="card-header">Faire une recherche</h3>
+        <h3 class="card-header">Recherche</h3>
        
 
             <div class="card-header">
-    Recherche par titre : <input type="text" [(ngModel)]="titre" /><button (click)="validerT()">Valider</button>
-    Recherche par artiste : <input type="text" [(ngModel)]="auteur" /><button (click)="validerA()">Valider</button>
+    Recherche par titre : <input type="text" [(ngModel)]="titre" /><button class="bi bi-search" (click)="validerT()"></button>
+    Recherche par artiste : <input type="text" [(ngModel)]="auteur" /><button  class="bi bi-search" (click)="validerA()"></button>
     <br/>Recherche par genre : 
     <select [(ngModel)]="genre">
         <option value="POP">Pop</option>
@@ -17,12 +21,12 @@
         <option value="METAL">Metal</option>
         <option value="ELECTRONIQUE">Electronique</option>
     </select>
-    <button (click)="validerG()">Valider</button><br/>
+    <button class="bi bi-search" (click)="validerG()"></button><br/>
     </div>
     <div class="card-body">
-    <table class="table table-bordered table-striped table-hover align-middle">
-        <thead>
-            <tr>
+    <table class="table table-bordered table-striped table-hover align-middle ">
+        <thead class="table-dark">
+            <tr >
                 <th>Identifiant</th>
                 <th>Titre</th>
                 <th>Duree</th>
@@ -56,3 +60,4 @@
         </div>
     </div>
 </div>
+</body>

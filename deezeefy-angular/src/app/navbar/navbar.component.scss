@@ -2,5 +2,19 @@
   padding: 1em;
   box-shadow: 0px 0px 5px 2px black;
 }
+.nav-pills .nav-link:not(.active) {
+background-color: black;
+}
+.nav-pills .nav-link {
+  background-color: grey ;
+  color: white;
+}
+.btn-success{
+background-color: #d964e6;
+border-color: #d964e6;
+}
+.btn-success:active{
+  background-color: #d964e6;
+  opacity: 30%;
 
-
+}

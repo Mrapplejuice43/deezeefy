@@ -2,7 +2,7 @@ body {
     margin: 20px;
     padding: 20px;
 
-    background-color: gainsboro;
+    background-color: white;
 }
 
 .cards-container{
@@ -19,13 +19,20 @@ body {
     display: flex;
     justify-content: center;
     align-content: center;
+    background-color: black;
+    color:white;
 
+}
+.card-body img{
+    width:250px;
+    height: 350px;
 }
 
 .card-footer{
     display: flex;
     justify-content: center;
     align-content: center;
+    background-color: rgb(0, 0, 0);
 }
 
 .btn_card {
