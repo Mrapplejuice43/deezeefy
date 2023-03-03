@@ -1,17 +1,12 @@
-
-<body>
-    
-
-<div class="container">
-
+<div class="container bg-transparent mt-3">
     <div class="card">
         <h3 class="card-header">Recherche</h3>
-       
+
 
             <div class="card-header">
     Recherche par titre : <input type="text" [(ngModel)]="titre" /><button class="bi bi-search" (click)="validerT()"></button>
     Recherche par artiste : <input type="text" [(ngModel)]="auteur" /><button  class="bi bi-search" (click)="validerA()"></button>
-    <br/>Recherche par genre : 
+    <br/>Recherche par genre :
     <select [(ngModel)]="genre">
         <option value="POP">Pop</option>
         <option value="RAP">Rap</option>
@@ -33,7 +28,7 @@
                 <th>Artiste</th>
                 <th>Genre</th>
                 <th></th>
-                <th></th>
+                <th *ngIf="playlist"></th>
             </tr>
         </thead>
 
@@ -60,4 +55,3 @@
         </div>
     </div>
 </div>
-</body>

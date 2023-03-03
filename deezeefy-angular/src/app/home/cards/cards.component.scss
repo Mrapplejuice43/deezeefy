@@ -1,19 +1,15 @@
-body {
-    margin: 20px;
-    padding: 20px;
-
-    background-color: white;
-}
-
 .cards-container{
 
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 
+  background-color: white;
+  border-radius: 4px;
 }
+
 .card-body{
 
     display: flex;
@@ -43,6 +39,6 @@ body {
     border: 1px solid purple;
     color:white;
     background-color: purple;
-    
+
 
 }
