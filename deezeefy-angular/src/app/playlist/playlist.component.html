@@ -1,128 +1,142 @@
-<div class="container">
+<body class="bg">
+
+
+  <div class="container">
 
     <div class="card">
-        <h4 class="card-header">Playlists Disponibles</h4>
-        <div class="card-body">
-            <table class="table table-bordered table-striped table-hover align-middle">
-              <thead>
-                <tr>
-                  <th *ngIf="getAuthUserType() == 'admin'">Identifiant</th>
-                  <th *ngIf="getAuthUserType() == 'admin'">Version</th>
-                  <th>Titre</th>
-                  <th>Duree</th>
-                  <th>Date de creation</th>
-                  <th>Nombre de pistes</th>
-                  <th>Type de playlist</th>
-                  <!-- <th>Créateur</th> -->
-                  <th *ngIf="getAuthUserType() == 'admin'"></th>
-                  <th *ngIf="getAuthUserType()"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let p of findAll()">
-                  <td *ngIf="getAuthUserType() == 'admin'"> {{p.id}} </td>
-                  <td *ngIf="getAuthUserType() == 'admin'"> {{p.version}} </td>
-                  <td> {{p.titre}} </td>
-                  <td> {{p.duree}} </td>
-                  <td> {{p.dateCreation| date: "dd/MM/yyyy"}} </td>
-                  <td> {{p.nbContenu}} </td>
-                  <td> {{p.typePlaylist}} </td>
-                  <!-- <td> {{p.createur?.pseudo}} </td> -->
-                  <td class="text-center" *ngIf="getAuthUserType() == 'admin'">
-                    <a class="btn btn-primary" (click)="edit(p.id)"><i class="bi bi-pencil-square"></i></a>
-                    <a class="btn btn-danger" (click)="remove(p.id)"><i class="bi bi-trash3"></i></a>
-                  </td>
-                  <td class="text-center" *ngIf="getAuthUserType()"><span class="btn btn-warning" (click)="completer(p.id)">Completer</span></td>
-                </tr>
-              </tbody>
-            </table>
-            </div>
-            <div class="card-body" *ngIf="formPlaylist">
+      <h4 class="card-header">Playlists Disponibles</h4>
+      <div class="card-body">
+        <table class="table table-bordered table-striped table-hover align-middle">
+          <thead class="table-dark">
+            <tr>
+              <th *ngIf="getAuthUserType() == 'admin'">Identifiant</th>
+              <th *ngIf="getAuthUserType() == 'admin'">Version</th>
+              <th>Titre</th>
+              <th>Duree</th>
+              <th>Date de creation</th>
+              <th>Nombre de pistes</th>
+              <th>Type de playlist</th>
+              <!-- <th>Créateur</th> -->
+              <th *ngIf="getAuthUserType() == 'admin'"></th>
+              <th *ngIf="getAuthUserType()"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of findAll()">
+              <td *ngIf="getAuthUserType() == 'admin'"> {{p.id}} </td>
+              <td *ngIf="getAuthUserType() == 'admin'"> {{p.version}} </td>
+              <td> {{p.titre}} </td>
+              <td> {{p.duree}} </td>
+              <td> {{p.dateCreation| date: "dd/MM/yyyy"}} </td>
+              <td> {{p.nbContenu}} </td>
+              <td> {{p.typePlaylist}} </td>
+              <!-- <td> {{p.createur?.pseudo}} </td> -->
+              <td class="text-center" *ngIf="getAuthUserType() == 'admin'">
+                <a class="btn btn-primary" (click)="edit(p.id)"><i class="bi bi-pencil-square"></i></a>
+                <a class="btn btn-danger" (click)="remove(p.id)"><i class="bi bi-trash3"></i></a>
+              </td>
+              <td class="text-center" *ngIf="getAuthUserType()"><span class="btn btn-warning"
+                  (click)="completer(p.id)">Completer</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-body" *ngIf="formPlaylist">
 
-                <div class="mb-3">
-                  <label for="idInp" class="col-form-label col-auto">Identifiant :</label>
-                    <input type="number" name="idInp" id="idInp" class="form-control col" readonly [(ngModel)]="formPlaylist.id">
-                </div>
-                <div class="mb-3">
-                  <label for="versionInp" class="col-form-label col-auto">Version :</label>
-                    <input type="number" name="versionInp" id="versionInp" class="form-control" readonly [(ngModel)]="formPlaylist.version">
-                </div>
-                <div class="mb-3">
-                  <label for="titreInp" class="form-label">Titre</label>
-                  <input type="text" name="titreInp" id="titreInp" class="form-control" [(ngModel)]="formPlaylist.titre">
-                </div>
-                <div class="mb-3">
-                  <label for="dureeInp" class="form-label">Duree</label>
-                  <input type="number" name="dureeInp" id="dureeInp" class="form-control" readonly [(ngModel)]="formPlaylist.duree">
-                </div>
+      <div class="mb-3">
+        <label for="idInp" class="col-form-label col-auto">Identifiant :</label>
+        <input type="number" name="idInp" id="idInp" class="form-control col" readonly [(ngModel)]="formPlaylist.id">
+      </div>
+      <div class="mb-3">
+        <label for="versionInp" class="col-form-label col-auto">Version :</label>
+        <input type="number" name="versionInp" id="versionInp" class="form-control" readonly
+          [(ngModel)]="formPlaylist.version">
+      </div>
+      <div class="mb-3">
+        <label for="titreInp" class="form-label">Titre</label>
+        <input type="text" name="titreInp" id="titreInp" class="form-control" [(ngModel)]="formPlaylist.titre">
+      </div>
+      <div class="mb-3">
+        <label for="dureeInp" class="form-label">Duree</label>
+        <input type="number" name="dureeInp" id="dureeInp" class="form-control" readonly
+          [(ngModel)]="formPlaylist.duree">
+      </div>
 
-                <div class="mb-3">
-                  <label for="dateInp" class="form-label">Date de creation</label>
-                  <input type="date" name="dateInp" id="dateInp" class="form-control" readonly value="{{currentDate|date:'yyyy-MM-dd'}}">
-                </div>
+      <div class="mb-3">
+        <label for="dateInp" class="form-label">Date de creation</label>
+        <input type="date" name="dateInp" id="dateInp" class="form-control" readonly
+          value="{{currentDate|date:'yyyy-MM-dd'}}">
+      </div>
 
-                <div class="mb-3">
-                  <label for="nbContInp" class="form-label">Nombre de pistes</label>
-                  <input type="number" name="nbContInp" id="nbContInp" class="form-control" readonly [(ngModel)]="formPlaylist.nbContenu">
-                </div>
+      <div class="mb-3">
+        <label for="nbContInp" class="form-label">Nombre de pistes</label>
+        <input type="number" name="nbContInp" id="nbContInp" class="form-control" readonly
+          [(ngModel)]="formPlaylist.nbContenu">
+      </div>
 
-                <div class="mb-3">
-                  <label for="typeInp" class="form-label">Type de playlist</label>
-                  <select class="form-control" [(ngModel)]="formPlaylist.typePlaylist">
-                        <option value="ALBUM">Album</option>
-                        <option value="EP">EP</option>
-                        <option value="SINGLE">Single</option>
-                        <option value="COMPILATION">Compilation</option>
-                        <option value="PLAYLIST">Playlist</option>
-                  </select>
-                </div>
+      <div class="mb-3">
+        <label for="typeInp" class="form-label">Type de playlist</label>
+        <select class="form-control" [(ngModel)]="formPlaylist.typePlaylist">
+          <option value="ALBUM">Album</option>
+          <option value="EP">EP</option>
+          <option value="SINGLE">Single</option>
+          <option value="COMPILATION">Compilation</option>
+          <option value="PLAYLIST">Playlist</option>
+        </select>
+      </div>
 
-                <!-- <div class="mb-3">
+      <!-- <div class="mb-3">
                   <label for="crInp" class="form-label">Createur</label>
                   <input type="text" name="crInp" id="crInp" class="form-control" readonly value= "{{formPlaylist.createur?.pseudo}}">
                 </div> -->
-            </div>
-            <div class="card-footer" *ngIf="getAuthUserType()">
-              <a class="btn btn-success" (click)="addPlaylist()"><i class="bi bi-plus-square"></i></a>
-              <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace"></i></a>
-            </div>
-          </div>
-          <div class="card-body" *ngIf="playlistMod?.titre">
+    </div>
+    <div class="card-footer" *ngIf="getAuthUserType()">
+      <a class="btn btn-success" (click)="addPlaylist()"><i class="bi bi-plus-square"></i></a>
+      <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace"></i></a>
+
+    </div>
+
+
+    <div class="card">
+      <div class="card-body" *ngIf="playlistMod?.titre">
         <h4 class="card-header">Rechercher du contenu pour compléter votre playlist {{playlistMod?.titre}}</h4>
         <app-recherche [playlist]="playlistMod"></app-recherche>
         <h4 class="card-header">Votre playlist</h4>
         <div class="card-body">
           <table class="table table-bordered table-striped table-hover align-middle">
-              <thead>
-                  <tr>
-                      <th>Identifiant</th>
-                      <th>Version</th>
-                      <th>Titre</th>
-                      <th>Durée</th>
-                      <!-- <th>Genre</th> -->
-                      <th></th>
-                      <th></th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr *ngFor="let m of musiqueP">
-                      <td> {{m.id}} </td>
-                      <td> {{m.version}} </td>
-                      <td> {{m.titre}} </td>
-                      <td> {{m.duree}} </td>
-                      <!-- <td> {{m.genre}} </td> -->
-                      <td class="text-center">
-                        <app-lecture-musique [musicId]="m.id"></app-lecture-musique>
-                      </td>
-                      <td class="text-center">
-                        <a class="btn btn-danger" (click)="removeContenu(m.id)"><i class="bi bi-trash3"></i></a>
-                      </td>
-                  </tr>
-              </tbody>
+            <thead class="table-dark">
+              <tr>
+                <th>Identifiant</th>
+                <th>Version</th>
+                <th>Titre</th>
+                <th>Durée</th>
+                <!-- <th>Genre</th> -->
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let m of musiqueP">
+                <td> {{m.id}} </td>
+                <td> {{m.version}} </td>
+                <td> {{m.titre}} </td>
+                <td> {{m.duree}} </td>
+                <!-- <td> {{m.genre}} </td> -->
+                <td class="text-center">
+                  <app-lecture-musique [musicId]="m.id"></app-lecture-musique>
+                </td>
+                <td class="text-center">
+                  <a class="btn btn-danger" (click)="removeContenu(m.id)"><i class="bi bi-trash3"></i></a>
+                </td>
+              </tr>
+            </tbody>
           </table>
-      </div>
+        </div>
         <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace"></i></a>
       </div>
     </div>
 
+  </div>
 
+</body>

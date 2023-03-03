@@ -1,18 +1,18 @@
-<nav class="navbar padding-nav bg-dark sticky-top">
-  <div class="nav nav-pills text-center col">
+<nav class="navbar-dark padding-nav sticky-top" style="background-color: black">
+  <div class= "nav nav-pills text-center col " >
     
-    <span class="navbar-brand ms-3 me-3">Deezeefy</span>
-    <a [routerLink]="['/home']" class="nav-link" [routerLinkActive]="'active'"><i class="bi bi-house"></i> Home</a>
-    <a [routerLink]="['/recherche']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-box"></i>Recherche</a>
-    <a [routerLink]="['/musique']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-music-note-beamed"></i> Musique</a>
-    <a [routerLink]="['/playlist']" class="nav-link col-auto" [routerLinkActive]="'active'"><i  class="bi bi-music-note-list"></i> Playlist</a>
-    <a *ngIf="getCompteType() =='admin' " [routerLink]="['/admin']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-person-fill-lock"></i> Admin</a>
+    <span class="navbar-brand ms-3 me-3"> <img src="assets/logo.png" height="40px" width="100px">  </span> 
+    <a [routerLink]="['/home']" class="nav-link" [routerLinkActive]="'active'"><i class="bi bi-house"></i> Home </a>
+    <a [routerLink]="['/recherche']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-search"></i> Recherche </a>
+    <a [routerLink]="['/musique']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-music-note-beamed"></i> Musique </a>
+    <a [routerLink]="['/playlist']" class="nav-link col-auto" [routerLinkActive]="'active'"><i  class="bi bi-music-note-list"></i> Playlist </a>
+    <a *ngIf="getCompteType() =='admin' " [routerLink]="['/admin']" class="nav-link col-auto" [routerLinkActive]="'active'"><i class="bi bi-person-fill-lock"></i> Admin </a>
 
     <div class="row ms-auto">
-      <a *ngIf="!getAuthCompte()" [routerLink]="['/connexion']" class="nav-link ms-auto me-1 col-auto" [routerLinkActive]="'active'"><i class="bi bi-person"></i> Se Connecter</a>
-      <a *ngIf="!getAuthCompte()" [routerLink]="['/creationCompte']" class="nav-link ms-auto me-1 col-auto" [routerLinkActive]="'active'"><i class="bi bi-person"></i> S'inscrire</a>
-      <a *ngIf="getAuthCompte()" [routerLink]="['/compte']" class="btn btn-success ms-auto me-1 col-auto "><i class="bi bi-person"></i> Mon Compte</a>
-      <a *ngIf="getAuthCompte()" class="btn btn-danger ms-auto me-1 col-auto " (click)="logout()"><i class="bi bi-person"></i> Se Déconnecter</a>
+      <a *ngIf="!getAuthCompte()" [routerLink]="['/connexion']" class="nav-link ms-auto me-1 col-auto" [routerLinkActive]="'active'"><i class="bi bi-person"></i> Se Connecter </a>
+      <a *ngIf="!getAuthCompte()" [routerLink]="['/creationCompte']" class="nav-link ms-auto me-1 col-auto" [routerLinkActive]="'active'"><i class="bi bi-person"></i> S'inscrire </a>
+      <a *ngIf="getAuthCompte()" [routerLink]="['/compte']" class="btn btn-success ms-auto me-1 col-auto "><i class="bi bi-person"></i> Mon Compte </a>
+      <a *ngIf="getAuthCompte()" class="btn btn-danger ms-auto me-1 col-auto " (click)="logout()"><i class="bi bi-person"></i> Se Déconnecter </a>
     </div>
 
     <!-- <div class="row ms-auto me-1" *ngIf="currentUser" >
@@ -24,5 +24,6 @@
       </div>
       <a class="btn btn-danger col-auto ms-1" (click)="disconnect()"><i class="bi bi-person"></i> Déconnexion</a>
     </div> -->
+
   </div>
 </nav>

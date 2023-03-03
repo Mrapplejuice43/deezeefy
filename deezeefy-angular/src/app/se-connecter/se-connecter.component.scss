@@ -1,0 +1,27 @@
+.btn-success{
+    background-color: black;
+    color: white;
+    border: black;
+    margin-top: 20px;
+}
+section{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    background: linear-gradient(#d964e6, #ededed);
+  
+
+}
+.cardBox{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    background-color:white;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    color: black;
+   
+}
